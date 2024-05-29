@@ -18,7 +18,9 @@
 # include <stdlib.h>
 # include <unistd.h>
 # include <stdbool.h>
-# include "../MLX/mlx.h"
+// # include "../MLX/mlx.h"
+# include "../minilibx-linux/mlx.h"
+# include "../minilibx-linux/mlx_int.h"
 # include "struct.h"
 
 # ifdef D
@@ -32,6 +34,10 @@
 # endif
 
 /* FUNCTIONS */
+int		handle_key(int key, t_cub3d *cub);
+int		exit_program(t_cub3d *cub);
+void	ft_putendl_fd(char *s, int fd);
+int		init_window(t_cub3d *cub);
 void	*talloc(t_heap **heap, size_t __size);
 void	clearheap(t_heap **node);
 void	leaks();
