@@ -1,23 +1,26 @@
 SRC			=	main.c \
 				utils/talloc.c \
 				srcs/window_handling.c \
-				utils/ft_putendl_fd.c \
+				utils/putendl_fd.c \
 				utils/error.c \
-				srcs/key_hooks.c
+				srcs/key_hooks.c \
+				srcs/draw_line.c \
+				srcs/update.c \
+				srcs/frame_processing.c
 
 CC			=	cc
 NAME		=	cub3d
 HEADER		=	include/cub3d.h include/struct.h
 OBJ			=	$(SRC:.c=.o)
 CFLAGS		=	-Wall -Wextra -Werror -g
-# MLXFLAGS	=	-L MLX -l mlx -framework OpenGL -framework AppKit
-MLXFLAGS_L	=	-L./minilibx-linux -lmlx -lXext -lX11 -lm -lbsd
+MLXFLAGS	=	-L./MLX -l mlx -framework OpenGL -framework AppKit
+# MLXFLAGS_L	=	-L./minilibx-linux -lmlx -lXext -lX11 -lm -lbsd
 
 
-all: $(NAME)
+all: $(NAME) clean
 	
 $(NAME): $(OBJ)
-	@$(CC) $(CFLAGS) $(OBJ) -o $(NAME) $(MLXFLAGS_L)
+	@$(CC) $(CFLAGS) $(OBJ) -o $(NAME) $(MLXFLAGS)
 
 %.o: %.c $(HEADER)
 	@$(CC) $(CFLAGS) -c $< -o $@ 

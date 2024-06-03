@@ -1,0 +1,10 @@
+#!/bin/sh
+
+file=$(find . -name "*.c" -not -path "./MLX*" -not -path "./minilibx-linux*")
+if [ $# -gt 0 ]; then
+	cc -Wall -Wextra -Werror $file -o cub3d -g -L./MLX -l mlx -framework OpenGL -framework AppKit -D Z=1
+	make clean
+else
+	cc -Wall -Wextra -Werror $file -o cub3d -g -L./MLX -l mlx -framework OpenGL -framework AppKit
+	make clean
+fi

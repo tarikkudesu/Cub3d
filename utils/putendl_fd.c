@@ -1,19 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   error.c                                            :+:      :+:    :+:   */
+/*   putendl_fd.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tamehri <tamehri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/06/03 15:40:15 by tamehri           #+#    #+#             */
-/*   Updated: 2024/06/03 15:40:23 by tamehri          ###   ########.fr       */
+/*   Created: 2024/06/03 12:55:29 by tamehri           #+#    #+#             */
+/*   Updated: 2024/06/03 12:55:31 by tamehri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/cub3d.h"
 
-int	exit_program(t_cub3d *cub)
+void	putendl_fd(char *s, int fd)
 {
-	(void)cub;
-	exit(1);
+	if (!s || fd < 0)
+		return ;
+	while (*s)
+		write(fd, s++, 1);
+	write(fd, "\n", 1);
 }

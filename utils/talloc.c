@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   talloc.c                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: tamehri <tamehri@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/06/03 12:54:58 by tamehri           #+#    #+#             */
+/*   Updated: 2024/06/03 18:13:37 by tamehri          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../include/cub3d.h"
 
 void	leaks()
@@ -62,7 +74,7 @@ void	*talloc(t_heap **heap, size_t __size)
 	if (!__node)
 		return (free(__ptr), NULL);
 	heap_add_back(heap, __node);
-	if (D)
+	if (Z)
 		printf("pointer \033[32m%p\033[0m was allocated, size : \033[32m%ld\033[0m\n", __ptr, __size);
 	return (__ptr);
 }
