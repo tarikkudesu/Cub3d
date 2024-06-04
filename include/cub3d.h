@@ -18,9 +18,9 @@
 # include <stdlib.h>
 # include <unistd.h>
 # include <stdbool.h>
-# include "../MLX/mlx.h"
-// # include "../minilibx-linux/mlx.h"
-// # include "../minilibx-linux/mlx_int.h"
+// # include "../MLX/mlx.h"
+# include "../minilibx-linux/mlx.h"
+# include "../minilibx-linux/mlx_int.h"
 # include "struct.h"
 # include "macro.h"
 
@@ -37,7 +37,7 @@
 /* FUNCTIONS */
 int	set_color(bool flag, int value);
 void	put_frame_to_image(t_cub3d *cub);
-int		update(void *param);
+int		update_frame(void *param);
 void	my_mlx_pixel_put(int x, int y, const t_image *img);
 void	draw_line(t_p *a, t_p *b, const t_image *img);
 int		handle_key(int key, t_cub3d *cub);

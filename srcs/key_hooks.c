@@ -14,34 +14,36 @@
 
 int	handle_key(int key, t_cub3d *cub)
 {
-	if (key == ESC)
+	if (key == ESC || key == ESC_L)
 		exit_program(cub);
-	else if (key == SPACE)
+	else if (key == SPACE || key == SPACE_L)
 		cub->panel = 0;
-	else if (key == W)
+	else if (key == W || key == W_L)
 	{
-		cub->player.x_pos += 8 * cos(cub->player.angle);
-		cub->player.y_pos += 8 * sin(cub->player.angle);
+		cub->player.x_pos += cub->player.pdx;
+		cub->player.y_pos += cub->player.pdy;
 	}
-	else if (key == S)
+	else if (key == S || key == S_L)
 	{
-		cub->player.x_pos -= 8 * cos(cub->player.angle);
-		cub->player.y_pos -= 8 * sin(cub->player.angle);
+		cub->player.x_pos -= cub->player.pdx;
+		cub->player.y_pos -= cub->player.pdy;
 	}
-	else if (key == D)
+	else if (key == D || key == D_L)
 	{
-		cub->player.x_pos += 8 * cos(cub->player.angle);
-		cub->player.y_pos -= 8 * sin(cub->player.angle);
+		cub->player.angle += 0.1;
+		if (cub->player.angle > 2 * M_PI)
+			cub->player.angle -= 2 * M_PI;
+		cub->player.pdx = cos(cub->player.angle) * 8;
+		cub->player.pdy = sin(cub->player.angle) * 8;
 	}
-	else if (key == A)
+	else if (key == A || key == A_L)
 	{
-		cub->player.x_pos -= 8 * cos(cub->player.angle);
-		cub->player.y_pos += 8 * sin(cub->player.angle);
+		cub->player.angle -= 0.1;
+		if (cub->player.angle < 0)
+			cub->player.angle += 2 * M_PI;
+		cub->player.pdx = cos(cub->player.angle) * 8;
+		cub->player.pdy = sin(cub->player.angle) * 8;
 	}
-	else if (key == RIGHT)
-		cub->player.angle += 0.05;
-	else if (key == LEFT)
-		cub->player.angle -= 0.05;
 	// printf("%f\n", cub->ray.angle);
 	// printf("%d\n", key);
 	return (0);

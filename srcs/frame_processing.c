@@ -92,6 +92,7 @@ void	put_ray(t_cub3d *cub)
 	t_p	start;
 	t_p	end;
 
+	cub->ray.angle = cub->player.angle;
 	set_color(true, GREEN);
 	start.x = cub->player.x_pos;
 	start.y = cub->player.y_pos;

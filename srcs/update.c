@@ -12,7 +12,7 @@
 
 #include "../include/cub3d.h"
 
-int	update(void *param)
+int	update_frame(void *param)
 {
 	t_cub3d	*cub;
 

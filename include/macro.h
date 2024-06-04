@@ -35,16 +35,27 @@
 # define PLAYER_SPEED	4
 
 # define SPACE			49
+# define SPACE_L		32
 
 # define UP				126
 # define DOWN			125
 # define RIGHT			124
 # define LEFT			123
 
+# define UP_L			65362
+# define DOWN_L			65364
+# define RIGHT_L		65363
+# define LEFT_L			65361
+
 # define W				13
 # define S				1
 # define D				2
 # define A				0
+
+# define W_L			119
+# define S_L			115
+# define D_L			100
+# define A_L			97
 
 # define ESC			53
 # define ESC_L			65307

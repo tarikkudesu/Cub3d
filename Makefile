@@ -14,13 +14,13 @@ HEADER		=	include/cub3d.h include/struct.h
 OBJ			=	$(SRC:.c=.o)
 CFLAGS		=	-Wall -Wextra -Werror -g
 MLXFLAGS	=	-L./MLX -l mlx -framework OpenGL -framework AppKit
-# MLXFLAGS_L	=	-L./minilibx-linux -lmlx -lXext -lX11 -lm -lbsd
+MLXFLAGS_L	=	-L./minilibx-linux -lmlx -lXext -lX11 -lm -lbsd
 
 
 all: $(NAME) clean
 	
 $(NAME): $(OBJ)
-	@$(CC) $(CFLAGS) $(OBJ) -o $(NAME) $(MLXFLAGS)
+	@$(CC) $(CFLAGS) $(OBJ) -o $(NAME) $(MLXFLAGS_L)
 
 %.o: %.c $(HEADER)
 	@$(CC) $(CFLAGS) -c $< -o $@ 

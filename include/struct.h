@@ -48,6 +48,8 @@ struct s_player
 {
 	int		x_pos;
 	int		y_pos;
+	float	pdx;
+	float	pdy;
 	float	angle;
 };
 

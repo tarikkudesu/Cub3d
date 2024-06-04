@@ -45,8 +45,8 @@ int	init_window(t_cub3d *cub)
 			my_mlx_pixel_put(i, j, &cub->img);
 		}
 	}
-	mlx_loop_hook(cub->mlx.__mlx, update, cub);
-	mlx_hook(cub->mlx.__win, 2, 0, handle_key, cub);
+	mlx_loop_hook(cub->mlx.__mlx, update_frame, cub);
+	mlx_hook(cub->mlx.__win, 2, 1L<<0, handle_key, cub);
 	mlx_hook(cub->mlx.__win, 17, 0, exit_program, cub);
 	mlx_loop(cub->mlx.__mlx);
 	return (0);
