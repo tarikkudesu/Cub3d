@@ -6,7 +6,7 @@
 /*   By: tamehri <tamehri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/03 12:54:12 by tamehri           #+#    #+#             */
-/*   Updated: 2024/06/03 12:54:13 by tamehri          ###   ########.fr       */
+/*   Updated: 2024/06/04 11:32:55 by tamehri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ int	init_window(t_cub3d *cub)
 		}
 	}
 	mlx_loop_hook(cub->mlx.__mlx, update_frame, cub);
-	mlx_hook(cub->mlx.__win, 2, 1L<<0, handle_key, cub);
+	mlx_hook(cub->mlx.__win, 2, 0, handle_key, cub);
 	mlx_hook(cub->mlx.__win, 17, 0, exit_program, cub);
 	mlx_loop(cub->mlx.__mlx);
 	return (0);

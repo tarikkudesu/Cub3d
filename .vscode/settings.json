@@ -3,6 +3,18 @@
 	"files.associations": {
 		"mlx.h": "c",
 		"stdio.h": "c",
-		"__node_handle": "c"
+		"__node_handle": "c",
+		"__bit_reference": "c",
+		"__hash_table": "c",
+		"__split_buffer": "c",
+		"array": "c",
+		"initializer_list": "c",
+		"ios": "c",
+		"iterator": "c",
+		"string": "c",
+		"string_view": "c",
+		"unordered_map": "c",
+		"vector": "c",
+		"cub3d.h": "c"
 	}
 }

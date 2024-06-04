@@ -6,7 +6,7 @@
 /*   By: tamehri <tamehri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/12 10:04:05 by tamehri           #+#    #+#             */
-/*   Updated: 2024/06/03 18:14:15 by tamehri          ###   ########.fr       */
+/*   Updated: 2024/06/04 21:21:14 by tamehri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,9 @@
 # include <stdlib.h>
 # include <unistd.h>
 # include <stdbool.h>
-// # include "../MLX/mlx.h"
-# include "../minilibx-linux/mlx.h"
-# include "../minilibx-linux/mlx_int.h"
+# include "../MLX/mlx.h"
+// # include "../minilibx-linux/mlx.h"
+// # include "../minilibx-linux/mlx_int.h"
 # include "struct.h"
 # include "macro.h"
 
@@ -35,7 +35,8 @@
 # endif
 
 /* FUNCTIONS */
-int	set_color(bool flag, int value);
+t_p		end_point(t_cub3d *cub, t_p start);
+int		set_color(bool flag, int value);
 void	put_frame_to_image(t_cub3d *cub);
 int		update_frame(void *param);
 void	my_mlx_pixel_put(int x, int y, const t_image *img);

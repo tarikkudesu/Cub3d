@@ -6,7 +6,7 @@
 /*   By: tamehri <tamehri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/03 18:03:25 by tamehri           #+#    #+#             */
-/*   Updated: 2024/06/03 21:34:29 by tamehri          ###   ########.fr       */
+/*   Updated: 2024/06/04 21:43:35 by tamehri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int worldMap[mapWidth][mapHeight] =
   {1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
   {1,0,0,0,0,0,2,2,2,2,2,0,0,0,0,3,0,3,0,3,0,0,0,1},
   {1,0,0,0,0,0,2,0,0,0,2,0,0,0,0,0,0,0,0,0,0,0,0,1},
-  {1,0,0,0,0,0,2,0,0,0,2,0,0,0,0,3,0,0,0,3,0,0,0,1},
+  {1,0,0,0,0,0,2,0,1,0,2,0,0,0,0,3,0,0,0,3,0,0,0,1},
   {1,0,0,0,0,0,2,0,0,0,2,0,0,0,0,0,0,0,0,0,0,0,0,1},
   {1,0,0,0,0,0,2,2,0,2,2,0,0,0,0,3,0,3,0,3,0,0,0,1},
   {1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
@@ -52,8 +52,8 @@ int	set_color(bool flag, int value)
 void	put_player(t_cub3d *cub)
 {
 	set_color(true, YELLOW);
-	for (int i = cub->player.x_pos - 15; i < cub->player.x_pos + 15; i++) {
-		for (int j = cub->player.y_pos - 15; j < cub->player.y_pos + 15; j++)
+	for (int i = cub->player.x_pos - 5; i < cub->player.x_pos + 5; i++) {
+		for (int j = cub->player.y_pos - 5; j < cub->player.y_pos + 5; j++)
 			my_mlx_pixel_put(i, j, &cub->img);
 	}
 }
@@ -67,22 +67,36 @@ void	put_background(t_cub3d *cub)
 	}
 }
 
-void	put_block(int x, int y, t_cub3d *cub)
+void	put_block(int x, int y, t_cub3d *cub, int flag)
 {
-	for (int i = x; i < x + 30; i++) {
-		for (int j = y; j < y + 30; j++)
-			my_mlx_pixel_put(i, j, &cub->img);
+	if (flag)
+	{
+		for (int i = x; i < x + cub->wall_width; i++) {
+			for (int j = y; j < y + cub->wall_width; j++)
+				my_mlx_pixel_put(i, j, &cub->img);
+		}
+	}
+	for (int i = x; i < x + cub->wall_width; i++) {
+		my_mlx_pixel_put(i, y, &cub->img);
+		my_mlx_pixel_put(i, y + cub->wall_width, &cub->img);
+	}
+	for (int j = y; j < y + cub->wall_width; j++) {
+		my_mlx_pixel_put(x, j, &cub->img);
+		my_mlx_pixel_put(x + cub->wall_width, j, &cub->img);
+		
 	}
 		
 }
 
 void	put_map(t_cub3d *cub)
 {
-	set_color(true, WHITE);
+	set_color(true, CYAN);
 	for (int i = 0; i < cub->map_width; i++) {
 		for (int j = 0; j < cub->map_height; j++) {
-			if (worldMap[i][j] != 0)
-				put_block(i * 30, j * 30, cub);
+			if (worldMap[j][i] != 0)
+				put_block(j * cub->wall_width, i * cub->wall_width, cub, 1);
+			else
+				put_block(j * cub->wall_width, i * cub->wall_width, cub, 0);
 		}
 	}
 }
@@ -92,13 +106,17 @@ void	put_ray(t_cub3d *cub)
 	t_p	start;
 	t_p	end;
 
-	cub->ray.angle = cub->player.angle;
 	set_color(true, GREEN);
-	start.x = cub->player.x_pos;
-	start.y = cub->player.y_pos;
-	end.x = start.x + cub->ray.distance * cos(cub->player.angle);	
-	end.y = start.y + cub->ray.distance * sin(cub->player.angle);
-	draw_line(&start, &end, &cub->img);
+	cub->ray.angle = cub->player.angle;
+	cub->ray.angle = cub->player.angle - M_PI / 9;
+	while (cub->ray.angle < cub->player.angle + M_PI / 9)
+	{
+		start.x = cub->player.x_pos;
+		start.y = cub->player.y_pos;
+		end = end_point(cub, start);
+		draw_line(&start, &end, &cub->img);
+		cub->ray.angle += 0.01;
+	}
 }
 
 void	put_frame_to_image(t_cub3d *cub)

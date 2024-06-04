@@ -6,7 +6,7 @@
 /*   By: tamehri <tamehri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/12 10:04:08 by tamehri           #+#    #+#             */
-/*   Updated: 2024/06/03 20:01:19 by tamehri          ###   ########.fr       */
+/*   Updated: 2024/06/04 18:44:46 by tamehri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,7 @@ struct s_player
 /*--------------------------- Main Struct -------------------------------*/
 struct s_cub3d
 {
+	int			**map;
 	t_heap		*heap;
 	t_image		img;
 	t_mlx		mlx;
@@ -67,6 +68,7 @@ struct s_cub3d
 	int			p_y;
 	int			map_width;
 	int			map_height;
+	int			wall_width;
 };
 /*-----------------------------------------------------------------------*/
 
