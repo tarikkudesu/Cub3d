@@ -6,7 +6,7 @@
 /*   By: tamehri <tamehri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/03 18:03:25 by tamehri           #+#    #+#             */
-/*   Updated: 2024/06/07 20:18:04 by tamehri          ###   ########.fr       */
+/*   Updated: 2024/06/07 20:31:16 by tamehri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,6 +98,7 @@ void	put_frame_to_image(t_cub3d *cub)
 		}
 	}
 	put_rays(cub);
+	set_color(1, MAGENTA);
 	mlx_put_image_to_window(cub->mlx.__mlx, \
 		cub->mlx.__win, cub->img.__img, 0, 0);
 }
