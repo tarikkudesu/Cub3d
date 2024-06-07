@@ -6,7 +6,7 @@
 /*   By: tamehri <tamehri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/03 18:03:25 by tamehri           #+#    #+#             */
-/*   Updated: 2024/06/07 17:23:30 by tamehri          ###   ########.fr       */
+/*   Updated: 2024/06/07 20:18:04 by tamehri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,16 +97,7 @@ void	put_frame_to_image(t_cub3d *cub)
 			my_mlx_pixel_put(i, j, &cub->img);
 		}
 	}
-	for (int i = WIDTH; i < WIDTH * 2; i++) {
-		for (int j = 0; j < HEIGHT; j++) {
-			my_mlx_pixel_put(i, j, &cub->img_3d);
-		}
-	}
-	put_map(cub);
-	put_ray(cub);
-	put_player(cub);
+	put_rays(cub);
 	mlx_put_image_to_window(cub->mlx.__mlx, \
 		cub->mlx.__win, cub->img.__img, 0, 0);
-	mlx_put_image_to_window(cub->mlx.__mlx, \
-		cub->mlx.__win, cub->img_3d.__img, WIDTH, 0);
 }

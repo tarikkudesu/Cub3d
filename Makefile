@@ -7,7 +7,8 @@ SRC			=	main.c \
 				srcs/draw_line.c \
 				srcs/update_frame.c \
 				srcs/frame_processing.c \
-				srcs/ray_processing.c
+				srcs/ray_processing.c \
+				srcs/dda.c
 
 CC			=	cc
 NAME		=	cub3d

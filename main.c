@@ -6,7 +6,7 @@
 /*   By: tamehri <tamehri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/12 10:02:16 by tamehri           #+#    #+#             */
-/*   Updated: 2024/06/06 19:20:29 by tamehri          ###   ########.fr       */
+/*   Updated: 2024/06/07 20:10:28 by tamehri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	initialize_data(t_cub3d *cub)
 	cub->img.__addr = NULL;
 	cub->player.pos.x = 12;
 	cub->player.pos.y = 12;
-	cub->player.dir.x = 1;
+	cub->player.dir.x = -1;
 	cub->player.dir.y = 0;
 	cub->player.plan.x = 0;
 	cub->player.plan.y = 0.66;

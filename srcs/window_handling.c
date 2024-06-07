@@ -6,7 +6,7 @@
 /*   By: tamehri <tamehri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/03 12:54:12 by tamehri           #+#    #+#             */
-/*   Updated: 2024/06/07 17:14:09 by tamehri          ###   ########.fr       */
+/*   Updated: 2024/06/07 20:12:43 by tamehri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int	init_mlx(t_cub3d *cub)
 	cub->mlx.__mlx = mlx_init();
 	if (!cub->mlx.__mlx)
 		return (putendl_fd(ERR_MLX_INIT, 2), 1);
-	cub->mlx.__win = mlx_new_window(cub->mlx.__mlx, WIDTH_2, HEIGHT, "cub3d");
+	cub->mlx.__win = mlx_new_window(cub->mlx.__mlx, WIDTH, HEIGHT, "cub3d");
 	if (!cub->mlx.__win)
 		return (putendl_fd(ERR_MLX_WIN, 2), 1);
 	cub->mlx.__intro = mlx_xpm_file_to_image(cub->mlx.__mlx, "assets/intro_white.xpm", a, a + 1);
@@ -29,16 +29,9 @@ int	init_mlx(t_cub3d *cub)
 	cub->img.__img = mlx_new_image(cub->mlx.__mlx, WIDTH, HEIGHT);
 	if (!cub->img.__img)
 		(putendl_fd(ERR_MLX_IMG, 2), exit(EXIT_FAILURE));
-	cub->img_3d.__img = mlx_new_image(cub->mlx.__mlx, WIDTH, HEIGHT);
-	if (!cub->img_3d.__img)
-		(putendl_fd(ERR_MLX_IMG, 2), exit(EXIT_FAILURE));
 	cub->img.__addr = mlx_get_data_addr(cub->img.__img, &cub->img.pixel_bits, \
 	&cub->img.line_bytes, &cub->img.endian);
 	if (!cub->img.__addr)
-		(putendl_fd(ERR_MLX_ADDRESS, 2), exit(EXIT_FAILURE));
-	cub->img_3d.__addr = mlx_get_data_addr(cub->img_3d.__img, &cub->img_3d.pixel_bits, \
-	&cub->img_3d.line_bytes, &cub->img_3d.endian);
-	if (!cub->img_3d.__addr)
 		(putendl_fd(ERR_MLX_ADDRESS, 2), exit(EXIT_FAILURE));
 	return (0);	
 }

@@ -6,7 +6,7 @@
 /*   By: tamehri <tamehri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/12 10:04:05 by tamehri           #+#    #+#             */
-/*   Updated: 2024/06/05 16:50:18 by tamehri          ###   ########.fr       */
+/*   Updated: 2024/06/07 17:45:11 by tamehri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,9 @@
 # endif
 
 /* FUNCTIONS */
+void	dda(t_cub3d *cub, t_ray *ray);
 void	put_block(int x, int y, t_cub3d *cub, int flag);
-void	put_ray(t_cub3d *cub);
+void	put_rays(t_cub3d *cub);
 int		set_color(bool flag, int value);
 void	put_frame_to_image(t_cub3d *cub);
 int		update_frame(void *param);

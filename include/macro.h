@@ -6,7 +6,7 @@
 /*   By: tamehri <tamehri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/03 15:24:23 by tamehri           #+#    #+#             */
-/*   Updated: 2024/06/07 17:23:10 by tamehri          ###   ########.fr       */
+/*   Updated: 2024/06/07 20:11:23 by tamehri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,7 @@
 # define mapWidth		20 //temp
 # define mapHeight		20 //temp
 
-# define WIDTH			1280
-# define WIDTH_2		2560
+# define WIDTH			1200
 # define HEIGHT			800
 # define FOV			60
 # define ROT_SPEED		0.045
@@ -72,6 +71,7 @@
 # define BLUE		0x0000FF
 # define YELLOW		0xFFFF00
 # define CYAN		0x00FFFF
+# define CYAN_D		0x00E2E2
 # define MAGENTA	0xFF00FF
 
 #endif

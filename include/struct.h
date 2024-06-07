@@ -6,10 +6,9 @@
 /*   By: tamehri <tamehri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/12 10:04:08 by tamehri           #+#    #+#             */
-/*   Updated: 2024/06/06 12:04:43 by tamehri          ###   ########.fr       */
+/*   Updated: 2024/06/07 20:14:16 by tamehri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 
 #ifndef STRUCT_H
 # define STRUCT_H
@@ -31,8 +30,8 @@ struct s_mlx
 
 struct	s_vect
 {
-	float	x;
-	float	y;
+	double	x;
+	double	y;
 };
 
 struct s_ray
@@ -43,6 +42,11 @@ struct s_ray
 	double	delta_y;
 	double	initial_dx;
 	double	initial_dy;
+	double	perp_distance;
+	int		x_step;
+	int		y_step;
+	int		map_x;
+	int		map_y;
 };
 
 struct s_image
@@ -66,15 +70,11 @@ struct s_cub3d
 {
 	int			**map;
 	t_heap		*heap;
-	t_image		img;
-	t_image		img_3d;
 	t_mlx		mlx;
-	t_ray		ray;
+	t_image		img;
 	t_player	player;
 	int			panel;
 
-	int			p_x;
-	int			p_y;
 	int			map_width;
 	int			map_height;
 	int			wall_width;
@@ -86,6 +86,5 @@ struct s_heap
 	void	*ptr;
 	t_heap	*next;
 };
-
 
 #endif
