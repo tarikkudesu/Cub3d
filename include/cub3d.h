@@ -6,7 +6,7 @@
 /*   By: tamehri <tamehri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/12 10:04:05 by tamehri           #+#    #+#             */
-/*   Updated: 2024/06/04 21:21:14 by tamehri          ###   ########.fr       */
+/*   Updated: 2024/06/05 16:50:18 by tamehri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,12 +35,13 @@
 # endif
 
 /* FUNCTIONS */
-t_p		end_point(t_cub3d *cub, t_p start);
+void	put_block(int x, int y, t_cub3d *cub, int flag);
+void	put_ray(t_cub3d *cub);
 int		set_color(bool flag, int value);
 void	put_frame_to_image(t_cub3d *cub);
 int		update_frame(void *param);
 void	my_mlx_pixel_put(int x, int y, const t_image *img);
-void	draw_line(t_p *a, t_p *b, const t_image *img);
+void	draw_line(t_vect *a, t_vect *b, const t_image *img);
 int		handle_key(int key, t_cub3d *cub);
 int		exit_program(t_cub3d *cub);
 void	putendl_fd(char *s, int fd);

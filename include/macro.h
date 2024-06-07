@@ -6,7 +6,7 @@
 /*   By: tamehri <tamehri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/03 15:24:23 by tamehri           #+#    #+#             */
-/*   Updated: 2024/06/04 12:08:49 by tamehri          ###   ########.fr       */
+/*   Updated: 2024/06/07 17:23:10 by tamehri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,10 +25,11 @@
 # define ERR_MAL			"Error : malloc error"
 # define ERR_EMTY			"Error : empty file"
 
-# define mapWidth		24 //temp
-# define mapHeight		24 //temp
+# define mapWidth		20 //temp
+# define mapHeight		20 //temp
 
-# define WIDTH			1200
+# define WIDTH			1280
+# define WIDTH_2		2560
 # define HEIGHT			800
 # define FOV			60
 # define ROT_SPEED		0.045
@@ -64,6 +65,7 @@
 # define GAME			0
 
 # define BLACK		0x000000
+# define BACKGROUND	0x081020
 # define WHITE		0xFFFFFF
 # define RED		0xFF0000
 # define GREEN		0x00FF00

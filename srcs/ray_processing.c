@@ -6,7 +6,7 @@
 /*   By: tamehri <tamehri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/04 12:27:54 by tamehri           #+#    #+#             */
-/*   Updated: 2024/06/04 21:46:04 by tamehri          ###   ########.fr       */
+/*   Updated: 2024/06/06 19:22:41 by tamehri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,14 @@
 
 extern int worldMap[mapWidth][mapHeight];
 
-float hypotenuse(t_cub3d *cub, t_p end)
+float hypotenuse(t_vect *a, t_vect *b)
 {
 	double	opposite;
 	double	adjacent;
 
-	adjacent = abs(cub->player.x_pos - end.x);
-	opposite = abs(cub->player.y_pos - end.y);
-	return (sqrt(pow(adjacent, 2) + pow(opposite, 2)));
+	adjacent = fabsf(a->x - a->y);
+	opposite = fabsf(b->x - b->y);
+	return (sqrt(adjacent * adjacent + opposite * opposite));
 }
 
 int	is_wall(t_cub3d *cub, int x, int y)
@@ -34,52 +34,92 @@ int	is_wall(t_cub3d *cub, int x, int y)
 	return (0);
 }
 
-t_p	horizontal_intersection(t_cub3d *cub, t_p start)
+void	put_ray(t_cub3d *cub)
 {
-	t_p		first_inter;
+	int		mapx;
+	int		mapy;
+	double	stepX;
+	double	stepY;
 
-	if (cub->ray.angle <= M_PI)
-		first_inter.y = (int)(start.y / cub->wall_width) \
-			* cub->wall_width - 1;
-	else
-		first_inter.y = (int)(start.y / cub->wall_width) \
-			* cub->wall_width + cub->wall_width;
-	first_inter.x = start.x + \
-		(start.y - first_inter.y) / tan(M_PI - cub->ray.angle);
-	if (is_wall(cub, first_inter.x / cub->wall_width, first_inter.y / cub->wall_width))
-		return (first_inter);
-	return (first_inter);
-}
+	set_color(1, GREEN);
 
+	int wall = 0;
+	int side = 0;
+	double camera;
+	int distance;
+	for (int i = 0; i < WIDTH; i++) {
+		camera = (2 * i / (double)WIDTH - 1);
+		cub->ray.dir.x = cub->player.dir.x + cub->player.plan.x * camera;
+		cub->ray.dir.y = cub->player.dir.y + cub->player.plan.y * camera;
+		mapx = (int)cub->player.pos.x;
+		mapy = (int)cub->player.pos.y;
+		if (cub->ray.dir.x == 0)
+			cub->ray.delta_x = 1e30;
+		else
+			cub->ray.delta_x = fabs((1 / cub->ray.dir.x));
+		if (cub->ray.dir.y == 0)
+			cub->ray.delta_y = 1e30;
+		else
+			cub->ray.delta_y = fabs((1 / cub->ray.dir.y));
 
-t_p	vertical_intersection(t_cub3d *cub, t_p start)
-{
-	t_p	first_inter;
+		if (cub->ray.dir.x < 0)
+		{
+			stepX = -1;
+			cub->ray.initial_dx = (cub->player.pos.x - mapx) * cub->ray.delta_x;
+		}
+		else
+		{
+			stepX = 1;
+			cub->ray.initial_dx = (mapx + 1 - cub->player.pos.x) * cub->ray.delta_x;
+		}
 
-	if (cub->ray.angle >= M_PI / 2 && cub->ray.angle <= (3 * M_PI) / 2)
-		first_inter.x = (int)(start.x / cub->wall_width) \
-			* cub->wall_width + cub->wall_width;
-	else if (cub->ray.angle < M_PI / 2 || cub->ray.angle > (3 * M_PI) / 2)
-		first_inter.x = (int)(start.x / cub->wall_width) \
-			* cub->wall_width - 1;
-	first_inter.y = start.y + \
-		(start.x - first_inter.x) * tan(M_PI - cub->ray.angle);
-	return (first_inter);
-}
-
-t_p	end_point(t_cub3d *cub, t_p start)
-{
-	t_p	horizontal_end;
-	t_p	vertical_end;
-	t_p	end;
-
-	horizontal_end = horizontal_intersection(cub, start);
-	vertical_end = vertical_intersection(cub, start);
-	if (hypotenuse(cub, horizontal_end) < hypotenuse(cub, vertical_end))
-		end = horizontal_end;
-	else
-		end = vertical_end;
-	if (is_wall(cub, end.x / cub->wall_width, end.y / cub->wall_width))
-		return (end);
-	return (end_point(cub, end));
+		if (cub->ray.dir.y < 0)
+		{
+			stepY = -1;
+			cub->ray.initial_dy = (cub->player.pos.y - mapy) * cub->ray.delta_y;
+		}
+		else
+		{
+			stepY = 1;
+			cub->ray.initial_dy = (mapy + 1.0 - cub->player.pos.y) * cub->ray.delta_y;
+		}
+		wall = 0;
+		while (wall == 0)
+		{
+			if (cub->ray.initial_dx < cub->ray.initial_dy)
+			{
+				cub->ray.initial_dx += cub->ray.delta_x;
+				mapx += stepX;
+				side = 0;
+			}
+			else
+			{
+				cub->ray.initial_dy += cub->ray.delta_y;
+				mapy += stepY;
+				side = 1;
+			}
+			if (mapx < 0 || mapx > mapWidth || mapy < 0 || mapy > mapHeight || worldMap[mapx][mapy] != 0)
+				wall = 1;
+		}
+		if (side == 0)
+			distance = cub->ray.initial_dx - cub->ray.delta_x;
+		else
+			distance = cub->ray.initial_dy - cub->ray.delta_y;
+		
+		double height = (double)HEIGHT / distance;
+		t_vect	start;
+		t_vect	end;
+		start.x = i;
+		end.x = i;
+		start.y = HEIGHT / 2 - height / 2;
+		if (start.y < 0)
+			start.y = 0;
+		end.y = HEIGHT / 2 + height / 2;
+		if (end.y > HEIGHT)
+			end.y = HEIGHT;
+		set_color(1, WHITE);
+		draw_line(&start, &end, &cub->img_3d);
+		// put_block(mapx * cub->wall_width, mapy * cub->wall_width, cub, 1);
+		// distance = 
+	}
 }
