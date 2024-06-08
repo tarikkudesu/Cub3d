@@ -27,7 +27,7 @@
 
 # define mapWidth		20 //temp
 # define mapHeight		20 //temp
-
+# define PI_1			0.0174533
 # define WIDTH			1200
 # define HEIGHT			800
 # define MINI_MAP_W		200

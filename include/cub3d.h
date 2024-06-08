@@ -18,9 +18,9 @@
 # include <stdlib.h>
 # include <unistd.h>
 # include <stdbool.h>
-# include "../MLX/mlx.h"
-// # include "../minilibx-linux/mlx.h"
-// # include "../minilibx-linux/mlx_int.h"
+// # include "../MLX/mlx.h"
+# include "../minilibx-linux/mlx.h"
+# include "../minilibx-linux/mlx_int.h"
 # include "struct.h"
 # include "macro.h"
 
@@ -35,6 +35,8 @@
 # endif
 
 /* FUNCTIONS */
+void	my_mlx_pixel(int x, int y, const t_image *img);
+void	rotate_vector(t_vect *vector, double angle);
 int		is_wall(t_cub3d *cub, int x, int y);
 int		from_rgb(t_color rgb);
 t_color	to_rgb(int color);

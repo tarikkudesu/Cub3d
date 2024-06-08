@@ -16,8 +16,8 @@ NAME		=	cub3d
 HEADER		=	include/cub3d.h include/struct.h
 OBJ			=	$(SRC:.c=.o)
 CFLAGS		=	-Wall -Wextra -Werror -g
-MLXFLAGS	=	-L./MLX -l mlx -framework OpenGL -framework AppKit
-# MLXFLAGS_L	=	-L./minilibx-linux -lmlx -lXext -lX11 -lm -lbsd
+# MLXFLAGS	=	-L./MLX -l mlx -framework OpenGL -framework AppKit
+MLXFLAGS_L	=	-L./minilibx-linux -lmlx -lXext -lX11 -lm -lbsd
 
 
 all: $(NAME) clean
