@@ -6,7 +6,7 @@
 /*   By: tamehri <tamehri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/07 18:21:02 by tamehri           #+#    #+#             */
-/*   Updated: 2024/06/07 19:34:06 by tamehri          ###   ########.fr       */
+/*   Updated: 2024/06/08 10:39:02 by tamehri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int	is_wall(t_cub3d *cub, int x, int y)
 	if (x >= 0 && x < cub->map_width && y >= 0 && y < cub->map_width)
 	{
 		if (worldMap[x][y] != 0)
-			return (1);	
+			return (1);
 	}
 	return (0);
 }

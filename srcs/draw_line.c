@@ -6,7 +6,7 @@
 /*   By: tamehri <tamehri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/02 20:02:37 by tamehri           #+#    #+#             */
-/*   Updated: 2024/06/05 19:08:33 by tamehri          ###   ########.fr       */
+/*   Updated: 2024/06/08 12:37:54 by tamehri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	my_mlx_pixel_put(int x, int y, const t_image *img)
 
 	addr = (int *)img->__addr;
 	pixel = y * img->line_bytes / 4 + x;
-	if (x < WIDTH && x > 0 && y < HEIGHT && y > 0)
+	if (x < WIDTH && x >= 0 && y < HEIGHT && y >= 0)
 		addr[pixel] = set_color(false, 0);
 }
 

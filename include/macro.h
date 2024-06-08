@@ -6,7 +6,7 @@
 /*   By: tamehri <tamehri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/03 15:24:23 by tamehri           #+#    #+#             */
-/*   Updated: 2024/06/07 20:11:23 by tamehri          ###   ########.fr       */
+/*   Updated: 2024/06/08 12:38:39 by tamehri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,8 @@
 
 # define WIDTH			1200
 # define HEIGHT			800
+# define MINI_MAP_W		200
+# define MINI_MAP_H		200
 # define FOV			60
 # define ROT_SPEED		0.045
 # define PLAYER_SPEED	4

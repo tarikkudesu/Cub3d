@@ -6,7 +6,7 @@
 /*   By: tamehri <tamehri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/12 10:04:05 by tamehri           #+#    #+#             */
-/*   Updated: 2024/06/07 17:45:11 by tamehri          ###   ########.fr       */
+/*   Updated: 2024/06/08 10:36:51 by tamehri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,9 @@
 # endif
 
 /* FUNCTIONS */
+int		is_wall(t_cub3d *cub, int x, int y);
+int		from_rgb(t_color rgb);
+t_color	to_rgb(int color);
 void	dda(t_cub3d *cub, t_ray *ray);
 void	put_block(int x, int y, t_cub3d *cub, int flag);
 void	put_rays(t_cub3d *cub);
