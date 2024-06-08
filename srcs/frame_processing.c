@@ -132,7 +132,7 @@ void	put_minimap(t_cub3d *cub)
 	start.y = 100;
 	dir.x = cub->player.dir.x;
 	dir.y = cub->player.dir.y;
-	rotate_vector(&dir, - PI_1 * 2w0);
+	rotate_vector(&dir, - PI_1 * 20);
 	for (int i = 0; i < 40; i++) {
 		rotate_vector(&dir, PI_1);
 		end.x = start.x + 100 * dir.x;
