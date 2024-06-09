@@ -6,7 +6,7 @@
 /*   By: tamehri <tamehri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/12 10:04:08 by tamehri           #+#    #+#             */
-/*   Updated: 2024/06/09 20:36:36 by tamehri          ###   ########.fr       */
+/*   Updated: 2024/06/09 21:16:09 by tamehri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,8 @@ struct s_image
 	char	*__addr;
 	int		pixel_bits;
 	int		line_bytes;
+	int		width;
+	int		height;
 	int		endian;
 };
 

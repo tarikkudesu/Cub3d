@@ -6,23 +6,25 @@
 /*   By: tamehri <tamehri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/03 12:54:12 by tamehri           #+#    #+#             */
-/*   Updated: 2024/06/09 20:42:29 by tamehri          ###   ########.fr       */
+/*   Updated: 2024/06/09 21:18:00 by tamehri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 
 #include "../include/cub3d.h"
 
-int	init_texture(t_cub3d *cub)
+int	init_textures(t_cub3d *cub)
 {
-	cub->tex[0].img.__img = mlx_new_image(cub->mlx.__mlx, WIDTH, HEIGHT);
+	cub->tex[0].img.__img = mlx_xpm_file_to_image(cub->mlx.__mlx, \
+		cub->tex[0].file, &cub->tex[0].img.width, &cub->tex[0].img.width);
 	if (!cub->tex[0].img.__img)
 		(putendl_fd(ERR_MLX_IMG, 2), exit(EXIT_FAILURE));
-	cub->tex[0].img.__addr = mlx_get_data_addr(cub->img.__img, &cub->img.pixel_bits, \
-	&cub->img.line_bytes, &cub->img.endian);
-	if (!cub->img.__addr)
+	cub->tex[0].img.__addr = mlx_get_data_addr(cub->tex[0].img.__img, \
+		&cub->tex[0].img.pixel_bits, &cub->tex[0].img.line_bytes, \
+		&cub->tex[0].img.endian);
+	if (!cub->tex[0].img.__addr)
 		(putendl_fd(ERR_MLX_ADDRESS, 2), exit(EXIT_FAILURE));
-	
+	return (0);
 }
 
 int	init_mlx(t_cub3d *cub)

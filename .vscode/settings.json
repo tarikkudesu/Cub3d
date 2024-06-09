@@ -15,6 +15,7 @@
 		"string_view": "c",
 		"unordered_map": "c",
 		"vector": "c",
-		"cub3d.h": "c"
+		"cub3d.h": "c",
+		"algorithm": "c"
 	}
 }
