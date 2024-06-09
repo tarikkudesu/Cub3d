@@ -1,15 +1,18 @@
 SRC			=	main.c \
-				utils/talloc.c \
-				srcs/window_handling.c \
-				utils/putendl_fd.c \
-				utils/error.c \
-				srcs/key_hooks.c \
-				srcs/draw_line.c \
-				srcs/update_frame.c \
-				srcs/frame_processing.c \
-				srcs/ray_processing.c \
+				srcs/colors.c \
 				srcs/dda.c \
-				srcs/colors.c
+				srcs/draw_line.c \
+				srcs/frame_processing.c \
+				srcs/key_hooks.c \
+				srcs/mini_map.c \
+				srcs/mouse_hooks.c \
+				srcs/pole.c \
+				srcs/ray_processing.c \
+				srcs/update_frame.c \
+				srcs/window_handling.c \
+				utils/error.c \
+				utils/putendl_fd.c \
+				utils/talloc.c
 
 CC			=	cc
 NAME		=	cub3d

@@ -6,7 +6,7 @@
 /*   By: tamehri <tamehri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/12 10:04:05 by tamehri           #+#    #+#             */
-/*   Updated: 2024/06/08 10:36:51 by tamehri          ###   ########.fr       */
+/*   Updated: 2024/06/09 12:55:01 by tamehri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,9 @@
 # include <stdlib.h>
 # include <unistd.h>
 # include <stdbool.h>
-// # include "../MLX/mlx.h"
-# include "../minilibx-linux/mlx.h"
-# include "../minilibx-linux/mlx_int.h"
+# include "../MLX/mlx.h"
+// # include "../minilibx-linux/mlx.h"
+// # include "../minilibx-linux/mlx_int.h"
 # include "struct.h"
 # include "macro.h"
 
@@ -35,6 +35,8 @@
 # endif
 
 /* FUNCTIONS */
+void	check_for_wall(t_cub3d *cub, t_vect *new_pos);
+void	put_minimap(t_cub3d *cub);
 void	my_mlx_pixel(int x, int y, const t_image *img);
 void	rotate_vector(t_vect *vector, double angle);
 int		is_wall(t_cub3d *cub, int x, int y);

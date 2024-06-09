@@ -6,7 +6,7 @@
 /*   By: tamehri <tamehri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/12 10:04:08 by tamehri           #+#    #+#             */
-/*   Updated: 2024/06/08 12:30:22 by tamehri          ###   ########.fr       */
+/*   Updated: 2024/06/09 11:49:46 by tamehri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ typedef struct s_color	t_color;
 typedef struct s_heap	t_heap;
 typedef struct s_mlx	t_mlx;
 typedef struct s_ray	t_ray;
+typedef enum e_dir		t_dir;
 typedef struct s_info	t_info;
 typedef	struct s_vect	t_vect;
 typedef struct s_image	t_image;
@@ -67,11 +68,20 @@ struct s_image
 	int		endian;
 };
 
+enum e_dir
+{
+	NORTH = 'N',
+	EASTH = 'E',
+	SOUTH = 'S',
+	WEST = 'W',
+};
+
 struct s_player
 {
 	t_vect	pos;
 	t_vect	dir;
 	t_vect	plan;
+	t_dir	pole;
 };
 
 struct s_heap
@@ -98,7 +108,6 @@ struct s_cub3d
 	t_info		info;
 	t_mlx		mlx;
 	t_image		img;
-	t_image		mini_map;
 	t_player	player;
 	int			panel;
 

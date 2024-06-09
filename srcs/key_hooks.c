@@ -6,7 +6,7 @@
 /*   By: tamehri <tamehri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/03 12:53:35 by tamehri           #+#    #+#             */
-/*   Updated: 2024/06/08 12:22:45 by tamehri          ###   ########.fr       */
+/*   Updated: 2024/06/09 15:05:32 by tamehri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ void	rotate_vector(t_vect *vector, double angle)
 	vector->x = tmp * cos(angle) - vector->y * sin(angle);
 	vector->y = tmp * sin(angle) + vector->y * cos(angle);
 }
+// printf("(%.3f, %.3f) : (%.3f, %.3f)\n", new_pos->x, new_pos->y, cub->player.pos.x, cub->player.pos.y);
 
 void	move_player(int key, t_cub3d *cub)
 {
@@ -35,21 +36,34 @@ void	move_player(int key, t_cub3d *cub)
 		rotate_vector(&rotated, - M_PI / 2);
 	else if (key == D || key == D_L)
 		rotate_vector(&rotated, M_PI / 2);
-	cub->player.pos.x += rotated.x * 0.2;
-	cub->player.pos.y += rotated.y * 0.2;
+	check_for_wall(cub, &rotated);
 }
 
 void	rotate_player(int key, t_cub3d *cub)
 {
 	if (key == RIGHT || key == RIGHT_L)
 	{
-		rotate_vector(&cub->player.dir, 0.0174533 * 2);
-		rotate_vector(&cub->player.plan, 0.0174533 * 2);
+		rotate_vector(&cub->player.dir, 0.0174533 * 4);
+		rotate_vector(&cub->player.plan, 0.0174533 * 4);
 	}
 	else if (key == LEFT || key == LEFT_L)
 	{
-		rotate_vector(&cub->player.dir, -0.0174533 * 2);
-		rotate_vector(&cub->player.plan, -0.0174533 * 2);
+		rotate_vector(&cub->player.dir, -0.0174533 * 4);
+		rotate_vector(&cub->player.plan, -0.0174533 * 4);
+	}
+	if (fabs(cub->player.dir.x) < fabs(cub->player.dir.y)) // ------------------------- you might need this so keep it, if not remove it
+	{
+		if (cub->player.dir.y < 0)
+			cub->player.pole = NORTH;
+		else
+			cub->player.pole = SOUTH;
+	}
+	else
+	{
+		if (cub->player.dir.x < 0)
+			cub->player.pole = EASTH;
+		else
+			cub->player.pole = WEST;
 	}
 }
 
@@ -67,6 +81,5 @@ int	handle_key(int key, t_cub3d *cub)
 	else if (key == RIGHT || key == RIGHT_L \
 			|| key == LEFT || key == LEFT_L)
 			rotate_player(key, cub);
-	// printf("Dir : (%f, %f), Camera : (%f, %f)\n", cub->player.dir.x, cub->player.dir.y, cub->player.plan.x, cub->player.plan.y);
 	return (0);
 }

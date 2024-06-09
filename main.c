@@ -6,7 +6,7 @@
 /*   By: tamehri <tamehri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/12 10:02:16 by tamehri           #+#    #+#             */
-/*   Updated: 2024/06/08 12:37:03 by tamehri          ###   ########.fr       */
+/*   Updated: 2024/06/09 17:40:13 by tamehri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,20 +16,21 @@ void	initialize_data(t_cub3d *cub)
 {
 	if (Z) {atexit(leaks);}
 	cub->panel = 1;
-	// cub->heap = NULL;
+	cub->heap = NULL;
+	cub->wall_width = 20;
 	cub->img.__img = NULL;
 	cub->img.__addr = NULL;
 	cub->player.pos.x = 2;
-	cub->player.pos.y = 2;
+	cub->player.pos.y = 7;
 	cub->player.dir.x = 1;
 	cub->player.dir.y = 0;
 	cub->player.plan.x = 0;
+	cub->player.pole = EASTH;
 	cub->player.plan.y = 0.66;
-	cub->wall_width = 20;
 	cub->map_width = mapWidth;
 	cub->map_height = mapHeight;
-	cub->info.ceiling_color = to_rgb(BACKGROUND);
-	cub->info.floor_color = to_rgb(BACKGROUND);
+	cub->info.ceiling_color = to_rgb(SKY);
+	cub->info.floor_color = to_rgb(FLOOR);
 }
 
 int	main()

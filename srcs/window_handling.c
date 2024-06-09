@@ -6,7 +6,7 @@
 /*   By: tamehri <tamehri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/03 12:54:12 by tamehri           #+#    #+#             */
-/*   Updated: 2024/06/08 12:31:22 by tamehri          ###   ########.fr       */
+/*   Updated: 2024/06/09 15:04:32 by tamehri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,13 +33,6 @@ int	init_mlx(t_cub3d *cub)
 	&cub->img.line_bytes, &cub->img.endian);
 	if (!cub->img.__addr)
 		(putendl_fd(ERR_MLX_ADDRESS, 2), exit(EXIT_FAILURE));
-	cub->mini_map.__img = mlx_new_image(cub->mlx.__mlx, MINI_MAP_W, MINI_MAP_H);
-	if (!cub->mini_map.__img)
-		(putendl_fd(ERR_MLX_IMG, 2), exit(EXIT_FAILURE));
-	cub->mini_map.__addr = mlx_get_data_addr(cub->mini_map.__img, &cub->mini_map.pixel_bits, \
-	&cub->mini_map.line_bytes, &cub->mini_map.endian);
-	if (!cub->mini_map.__addr)
-		(putendl_fd(ERR_MLX_ADDRESS, 2), exit(EXIT_FAILURE));
 	return (0);	
 }
 
@@ -47,8 +40,12 @@ int	init_window(t_cub3d *cub)
 {
 	if (init_mlx(cub))
 		return (1);
+	// mlx_hook(cub->mlx.__win, 2, 1L<<0, handle_key, cub);
 	mlx_loop_hook(cub->mlx.__mlx, update_frame, cub);
-	mlx_hook(cub->mlx.__win, 2, 1L<<0, handle_key, cub);
+	mlx_hook(cub->mlx.__win, 2, 0, handle_key, cub);
+	// mlx_hook(cub->mlx.__win, 6, 0, mouse_move, cub);
+	// mlx_hook(cub->mlx.__win, 4, 0, mouse_press, cub);
+	// mlx_hook(cub->mlx.__win, 5, 0, mouse_release, cub);
 	mlx_hook(cub->mlx.__win, 17, 0, exit_program, cub);
 	mlx_loop(cub->mlx.__mlx);
 	return (0);

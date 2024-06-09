@@ -6,7 +6,7 @@
 /*   By: tamehri <tamehri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/07 18:21:02 by tamehri           #+#    #+#             */
-/*   Updated: 2024/06/08 10:39:02 by tamehri          ###   ########.fr       */
+/*   Updated: 2024/06/08 19:33:03 by tamehri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,9 +45,9 @@ void	dda(t_cub3d *cub, t_ray *ray)
 		}
 	}
 	if (side == 0) {
-		ray->perp_distance = ray->initial_dx - ray->delta_x; set_color(1, CYAN);
+		ray->perp_distance = ray->initial_dx - ray->delta_x; set_color(1, WALL1);
 	}
 	else {
-		ray->perp_distance = ray->initial_dy - ray->delta_y; set_color(1, CYAN_D);
+		ray->perp_distance = ray->initial_dy - ray->delta_y; set_color(1, WALL2);
 	}
 }

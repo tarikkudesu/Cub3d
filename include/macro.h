@@ -6,7 +6,7 @@
 /*   By: tamehri <tamehri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/03 15:24:23 by tamehri           #+#    #+#             */
-/*   Updated: 2024/06/08 12:38:39 by tamehri          ###   ########.fr       */
+/*   Updated: 2024/06/08 20:57:45 by tamehri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,9 +71,13 @@
 # define RED		0xFF0000
 # define GREEN		0x00FF00
 # define BLUE		0x0000FF
+# define SKY		0x4592AF
+# define FLOOR		0x430D27
 # define YELLOW		0xFFFF00
 # define CYAN		0x00FFFF
 # define CYAN_D		0x00E2E2
 # define MAGENTA	0xFF00FF
+# define WALL1		0x582233
+# define WALL2		0x713045
 
 #endif
