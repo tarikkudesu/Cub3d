@@ -6,7 +6,7 @@
 /*   By: tamehri <tamehri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/03 18:03:25 by tamehri           #+#    #+#             */
-/*   Updated: 2024/06/09 17:15:57 by tamehri          ###   ########.fr       */
+/*   Updated: 2024/06/09 20:37:26 by tamehri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,10 +63,10 @@ void	put_background(t_cub3d *cub)
 	while (++w < WIDTH)
 	{
 		h = -1;
-		set_color(1, from_rgb(cub->info.ceiling_color));
+		set_color(1, rgb_to_hex(cub->ceiling_color));
 		while (++h < HEIGHT / 2)
 			my_mlx_pixel_put(w, h, &cub->img);
-		set_color(1, from_rgb(cub->info.floor_color));
+		set_color(1, rgb_to_hex(cub->floor_color));
 		while (++h < HEIGHT)
 			my_mlx_pixel_put(w, h, &cub->img);
 	}

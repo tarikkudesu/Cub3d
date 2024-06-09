@@ -6,13 +6,13 @@
 /*   By: tamehri <tamehri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/08 09:58:23 by tamehri           #+#    #+#             */
-/*   Updated: 2024/06/08 10:05:48 by tamehri          ###   ########.fr       */
+/*   Updated: 2024/06/09 20:37:56 by tamehri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/cub3d.h"
 
-t_color	to_rgb(int color)
+t_color	hex_to_rgb(int color)
 {
 	t_color	rgb;
 
@@ -22,7 +22,7 @@ t_color	to_rgb(int color)
 	return (rgb);
 }
 
-int	from_rgb(t_color rgb)
+int	rgb_to_hex(t_color rgb)
 {
 	return (rgb.blue | rgb.green << 8 | rgb.red << 16);
 }

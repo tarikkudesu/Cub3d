@@ -6,7 +6,7 @@
 /*   By: tamehri <tamehri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/03 12:55:29 by tamehri           #+#    #+#             */
-/*   Updated: 2024/06/03 12:55:31 by tamehri          ###   ########.fr       */
+/*   Updated: 2024/06/09 20:39:49 by tamehri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,4 +19,23 @@ void	putendl_fd(char *s, int fd)
 	while (*s)
 		write(fd, s++, 1);
 	write(fd, "\n", 1);
+}
+
+char	*ft_strdup(const char *s1)
+{
+	int		i;
+	char	*res;
+
+	i = ft_strlen(s1);
+	res = malloc((i + 1) * sizeof(char));
+	if (!res)
+		return (NULL);
+	i = 0;
+	while (*(s1 + i))
+	{
+		*(res + i) = *(s1 + i);
+		i++;
+	}
+	*(res + i) = '\0';
+	return (res);
 }

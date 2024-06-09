@@ -6,7 +6,7 @@
 /*   By: tamehri <tamehri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/12 10:04:05 by tamehri           #+#    #+#             */
-/*   Updated: 2024/06/09 12:55:01 by tamehri          ###   ########.fr       */
+/*   Updated: 2024/06/09 20:37:49 by tamehri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,13 +35,14 @@
 # endif
 
 /* FUNCTIONS */
+char	*ft_strdup(const char *s1);
 void	check_for_wall(t_cub3d *cub, t_vect *new_pos);
 void	put_minimap(t_cub3d *cub);
 void	my_mlx_pixel(int x, int y, const t_image *img);
 void	rotate_vector(t_vect *vector, double angle);
 int		is_wall(t_cub3d *cub, int x, int y);
-int		from_rgb(t_color rgb);
-t_color	to_rgb(int color);
+int		rgb_to_hex(t_color rgb);
+t_color	hex_to_rgb(int color);
 void	dda(t_cub3d *cub, t_ray *ray);
 void	put_block(int x, int y, t_cub3d *cub, int flag);
 void	put_rays(t_cub3d *cub);
