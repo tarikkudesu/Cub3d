@@ -6,21 +6,11 @@
 /*   By: tamehri <tamehri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/04 12:27:54 by tamehri           #+#    #+#             */
-/*   Updated: 2024/06/09 18:36:50 by tamehri          ###   ########.fr       */
+/*   Updated: 2024/06/10 20:42:14 by tamehri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/cub3d.h"
-
-float hypotenuse(t_vect *a, t_vect *b)
-{
-	double	opposite;
-	double	adjacent;
-
-	adjacent = fabs(a->x - a->y);
-	opposite = fabs(b->x - b->y);
-	return (sqrt(adjacent * adjacent + opposite * opposite));
-}
 
 void	put_ray(t_cub3d *cub, t_ray *ray, int x)
 {
@@ -32,12 +22,8 @@ void	put_ray(t_cub3d *cub, t_ray *ray, int x)
 	start.x = x;
 	end.x = x;
 	start.y = HEIGHT / 2 - line_height / 2;
-	if (start.y < 0)
-		start.y = 0;
 	end.y = HEIGHT / 2 + line_height / 2;
-	if (end.y >= HEIGHT)
-		end.y = HEIGHT - 1;
-	draw_line(&start, &end, &cub->img);
+	render_wall(&start, &end, ray, cub);
 }
 
 void	set_ray(t_cub3d *cub, t_ray *ray)
@@ -72,6 +58,7 @@ void	put_rays(t_cub3d *cub)
 	i = -1;
 	while (++i < WIDTH)
 	{
+		ray.column = i;
 		ray.camera = 2 * i / (double)WIDTH - 1;
 		ray.dir.x = cub->player.dir.x + cub->player.plan.x * ray.camera;
 		ray.dir.y = cub->player.dir.y + cub->player.plan.y * ray.camera;

@@ -6,7 +6,7 @@
 /*   By: tamehri <tamehri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/03 15:24:23 by tamehri           #+#    #+#             */
-/*   Updated: 2024/06/08 20:57:45 by tamehri          ###   ########.fr       */
+/*   Updated: 2024/06/10 19:41:13 by tamehri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@
 # define ERR_EMTY			"Error : empty file"
 
 # define mapWidth		20 //temp
-# define mapHeight		20 //temp
+# define mapHeight		30 //temp
 # define PI_1			0.0174533
 # define WIDTH			1200
 # define HEIGHT			800
@@ -65,19 +65,19 @@
 # define INTRO			1
 # define GAME			0
 
-# define BLACK		0x000000
+// # define BLACK		0x000000
 # define BACKGROUND	0x081020
 # define WHITE		0xFFFFFF
-# define RED		0xFF0000
+// # define RED		0xFF0000
 # define GREEN		0x00FF00
-# define BLUE		0x0000FF
-# define SKY		0x4592AF
-# define FLOOR		0x430D27
-# define YELLOW		0xFFFF00
-# define CYAN		0x00FFFF
-# define CYAN_D		0x00E2E2
-# define MAGENTA	0xFF00FF
-# define WALL1		0x582233
-# define WALL2		0x713045
+// # define BLUE		0x0000FF
+// # define SKY		0x4592AF
+// # define FLOOR		0x430D27
+// # define YELLOW		0xFFFF00
+// # define CYAN		0x00FFFF
+// # define CYAN_D		0x00E2E2
+// # define MAGENTA	0xFF00FF
+// # define WALL1		0x582233
+// # define WALL2		0x713045
 
 #endif

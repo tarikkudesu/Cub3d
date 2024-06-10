@@ -6,7 +6,7 @@
 /*   By: tamehri <tamehri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/07 18:21:02 by tamehri           #+#    #+#             */
-/*   Updated: 2024/06/08 19:33:03 by tamehri          ###   ########.fr       */
+/*   Updated: 2024/06/10 19:45:37 by tamehri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,36 +18,38 @@ int	is_wall(t_cub3d *cub, int x, int y)
 {
 	if (x >= 0 && x < cub->map_width && y >= 0 && y < cub->map_width)
 	{
-		if (worldMap[x][y] != 0)
-			return (1);
+		if (worldMap[x][y] == 0)
+			return (0);
 	}
-	return (0);
+	return (1);
 }
 
 void	dda(t_cub3d *cub, t_ray *ray)
 {
-	int	side;
-
-	side = 0;
 	while (0 == is_wall(cub, ray->map_x, ray->map_y))
 	{
 		if (ray->initial_dx < ray->initial_dy)
 		{
 			ray->initial_dx += ray->delta_x;
 			ray->map_x += ray->x_step;
-			side = 0;
+			ray->side = 0;
 		}
 		else
 		{
 			ray->initial_dy += ray->delta_y;
 			ray->map_y += ray->y_step;
-			side = 1;
+			ray->side = 1;
 		}
 	}
-	if (side == 0) {
-		ray->perp_distance = ray->initial_dx - ray->delta_x; set_color(1, WALL1);
+	if (ray->side == 0)
+	{
+		ray->perp_distance = ray->initial_dx - ray->delta_x;
+		ray->tex_pos_x = cub->player.pos.y + ray->perp_distance * ray->dir.y;
 	}
-	else {
-		ray->perp_distance = ray->initial_dy - ray->delta_y; set_color(1, WALL2);
+	else
+	{
+		ray->perp_distance = ray->initial_dy - ray->delta_y;
+		ray->tex_pos_x = cub->player.pos.x + ray->perp_distance * ray->dir.x;
 	}
+	ray->tex_pos_x -= (int)ray->tex_pos_x;
 }

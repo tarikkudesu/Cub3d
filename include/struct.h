@@ -6,7 +6,7 @@
 /*   By: tamehri <tamehri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/12 10:04:08 by tamehri           #+#    #+#             */
-/*   Updated: 2024/06/09 21:16:09 by tamehri          ###   ########.fr       */
+/*   Updated: 2024/06/10 19:33:10 by tamehri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,16 +53,19 @@ struct s_ray
 	double	initial_dx;
 	double	initial_dy;
 	double	perp_distance;
+	double	tex_pos_x;
+	int		column;
 	int		x_step;
 	int		y_step;
 	int		map_x;
 	int		map_y;
+	int		side;
 };
 
 struct s_image
 {
 	void	*__img;
-	char	*__addr;
+	int		*__addr;
 	int		pixel_bits;
 	int		line_bytes;
 	int		width;
@@ -109,8 +112,9 @@ struct s_cub3d
 	t_mlx		mlx;
 	t_image		img;
 	t_player	player;
-	int			panel;
+	int			mode;
 
+	int			button;
 	int			map_width;
 	int			map_height;
 	int			wall_width;

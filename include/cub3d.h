@@ -6,7 +6,7 @@
 /*   By: tamehri <tamehri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/12 10:04:05 by tamehri           #+#    #+#             */
-/*   Updated: 2024/06/09 20:37:49 by tamehri          ###   ########.fr       */
+/*   Updated: 2024/06/10 20:37:33 by tamehri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,9 +35,14 @@
 # endif
 
 /* FUNCTIONS */
+void	render_wall(t_vect *start, t_vect *end, t_ray *ray, t_cub3d *cub);
+void	move_player(int key, t_cub3d *cub);
+int	mouse_release(int button, int x, int y, void *param);
+int	mouse_move(int x, int y, void *param);
+int	mouse_press(int button, int x, int y, void *param);
 char	*ft_strdup(const char *s1);
 void	check_for_wall(t_cub3d *cub, t_vect *new_pos);
-void	put_minimap(t_cub3d *cub);
+void	minimap(t_cub3d *cub);
 void	my_mlx_pixel(int x, int y, const t_image *img);
 void	rotate_vector(t_vect *vector, double angle);
 int		is_wall(t_cub3d *cub, int x, int y);
@@ -47,7 +52,6 @@ void	dda(t_cub3d *cub, t_ray *ray);
 void	put_block(int x, int y, t_cub3d *cub, int flag);
 void	put_rays(t_cub3d *cub);
 int		set_color(bool flag, int value);
-void	put_frame_to_image(t_cub3d *cub);
 int		update_frame(void *param);
 void	my_mlx_pixel_put(int x, int y, const t_image *img);
 void	draw_line(t_vect *a, t_vect *b, const t_image *img);

@@ -15,7 +15,7 @@ SRC			=	main.c \
 				utils/talloc.c
 
 CC			=	cc
-NAME		=	cub3d
+NAME		=	cub3D
 HEADER		=	include/cub3d.h include/struct.h
 OBJ			=	$(SRC:.c=.o)
 CFLAGS		=	-Wall -Wextra -Werror -g
