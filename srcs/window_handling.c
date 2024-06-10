@@ -6,13 +6,13 @@
 /*   By: tamehri <tamehri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/03 12:54:12 by tamehri           #+#    #+#             */
-/*   Updated: 2024/06/10 20:51:26 by tamehri          ###   ########.fr       */
+/*   Updated: 2024/06/10 22:00:17 by tamehri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/cub3d.h"
 
-int	init_textures(t_cub3d *cub)
+static int	init_textures(t_cub3d *cub)
 {
 	int i;
 
@@ -32,7 +32,7 @@ int	init_textures(t_cub3d *cub)
 	return (0);
 }
 
-int	init_mlx(t_cub3d *cub)
+static int	init_mlx(t_cub3d *cub)
 {
 	int	a[2];
 

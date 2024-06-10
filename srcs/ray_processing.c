@@ -6,13 +6,13 @@
 /*   By: tamehri <tamehri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/04 12:27:54 by tamehri           #+#    #+#             */
-/*   Updated: 2024/06/10 20:42:14 by tamehri          ###   ########.fr       */
+/*   Updated: 2024/06/10 22:01:50 by tamehri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/cub3d.h"
 
-void	put_ray(t_cub3d *cub, t_ray *ray, int x)
+static void	put_ray(t_cub3d *cub, t_ray *ray, int x)
 {
 	int		line_height;
 	t_vect	start;
@@ -26,7 +26,7 @@ void	put_ray(t_cub3d *cub, t_ray *ray, int x)
 	render_wall(&start, &end, ray, cub);
 }
 
-void	set_ray(t_cub3d *cub, t_ray *ray)
+static void	set_ray(t_cub3d *cub, t_ray *ray)
 {
 	ray->map_x = (int)cub->player.pos.x;
 	ray->map_y = (int)cub->player.pos.y;

@@ -6,13 +6,13 @@
 /*   By: tamehri <tamehri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/10 09:56:27 by tamehri           #+#    #+#             */
-/*   Updated: 2024/06/10 20:56:46 by tamehri          ###   ########.fr       */
+/*   Updated: 2024/06/10 22:05:14 by tamehri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/cub3d.h"
 
-static int	mouse_release(int button, int x, int y, void *param)
+int	mouse_release(int button, int x, int y, void *param)
 {
 	t_cub3d	*cub;
 
@@ -26,7 +26,7 @@ static int	mouse_release(int button, int x, int y, void *param)
 	return (0);	
 }
 
-static int	mouse_move(int x, int y, void *param)
+int	mouse_move(int x, int y, void *param)
 {
 	static int	old_x;
 	t_cub3d		*cub;
@@ -44,7 +44,7 @@ static int	mouse_move(int x, int y, void *param)
 	return (0);
 }
 
-static int	mouse_press(int button, int x, int y, void *param)
+int	mouse_press(int button, int x, int y, void *param)
 {
 	t_cub3d	*cub;
 
