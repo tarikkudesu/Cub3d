@@ -6,7 +6,7 @@
 /*   By: tamehri <tamehri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/03 12:53:35 by tamehri           #+#    #+#             */
-/*   Updated: 2024/06/11 18:48:40 by tamehri          ###   ########.fr       */
+/*   Updated: 2024/06/11 22:41:08 by tamehri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,8 +61,8 @@ int	handle_key(int key, t_cub3d *cub)
 {
 	if (key == Q)
 		exit_program(cub);
-	else if (key == SPACE && cub->mode == INTRO && cub->button == 0)
-		cub->mode = GAME;
+	else if (key == SPACE && cub->mode == INTRO && cub->button == 0) {
+		cub->mode = GAME; return (0); }
 	else if (key == ESC && cub->mode == MENU && cub->button == 0)
 		cub->mode = GAME;
 	else if (key == ESC && cub->mode == GAME && cub->button == 0)
@@ -79,5 +79,7 @@ int	handle_key(int key, t_cub3d *cub)
 			rotate_player(key, cub);
 	else if (key == E)
 		cub->gun = 1;
+	else if (key == SPACE)
+		cub->doors->isopen = 1;
 	return (0);
 }

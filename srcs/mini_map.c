@@ -6,7 +6,7 @@
 /*   By: tamehri <tamehri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/08 19:36:29 by tamehri           #+#    #+#             */
-/*   Updated: 2024/06/11 18:44:03 by tamehri          ###   ########.fr       */
+/*   Updated: 2024/06/11 22:41:51 by tamehri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,8 @@ static void	put_background(t_cub3d *cub)
 	int	j;
 
 	i = 40;
-	set_color(true, 0x142F3B);
+	// set_color(true, 0x142F3B);
+	set_color(true, BACKGROUND);
 	while (i < 240)
 	{
 		j = 40;

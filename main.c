@@ -6,7 +6,7 @@
 /*   By: tamehri <tamehri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/12 10:02:16 by tamehri           #+#    #+#             */
-/*   Updated: 2024/06/11 18:00:34 by tamehri          ###   ########.fr       */
+/*   Updated: 2024/06/11 22:33:30 by tamehri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,9 @@ void	initialize_data(t_cub3d *cub)
 	if (Z) {atexit(leaks);}
 	cub->gun = 0;
 	cub->button = 0;
+	cub->doors_n = 1;
 	cub->heap = NULL;
+	cub->doors = NULL;
 	cub->mode = INTRO;
 	cub->wall_width = 20;
 	cub->img.__img = NULL;
@@ -44,6 +46,14 @@ int	main()
 	t_cub3d	cub;
 
 	initialize_data(&cub);
+	cub.doors = talloc(&cub.heap, sizeof(t_door) * cub.doors_n); _MAL_CALL_INFO();
+	if (!cub.doors)
+		return (1);
+	cub.doors->progress = 0;
+	cub.doors->ismoving = 0;
+	cub.doors->isopen = 0;
+	cub.doors->x = 21;
+	cub.doors->y = 1;
 	if (init_window(&cub))
 		return (0);
 }

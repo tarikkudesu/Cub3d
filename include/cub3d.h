@@ -6,7 +6,7 @@
 /*   By: tamehri <tamehri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/12 10:04:05 by tamehri           #+#    #+#             */
-/*   Updated: 2024/06/11 15:34:39 by tamehri          ###   ########.fr       */
+/*   Updated: 2024/06/11 22:46:56 by tamehri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,10 +34,6 @@
 #  define _MAL_CALL_INFO() 1
 # endif
 
-
-
-
-
 char	*ft_strdup(const char *s1);
 void	rotate_vector(t_vect *vector, double angle);
 int		rgb_to_hex(t_color rgb);
@@ -50,8 +46,7 @@ void	putendl_fd(char *s, int fd);
 int		init_window(t_cub3d *cub);
 void	*talloc(t_heap **heap, size_t __size);
 void	clearheap(t_heap **node);
-void	leaks();
-
+void	leaks(void);
 
 /* FUNCTIONS */
 void	move_player(int key, t_cub3d *cub);
@@ -62,7 +57,7 @@ bool	is_in_cercle(int x, int y);
 void	minimap_pixel_put(int x, int y, const t_image *img);
 void	check_for_wall(t_cub3d *cub, t_vect *new_pos);
 void	render_wall(t_vect *start, t_vect *end, t_ray *ray, t_cub3d *cub);
-int		is_wall(t_cub3d *cub, int x, int y);
+int		is_wall(t_cub3d *cub, t_ray *ray, int x, int y);
 void	dda(t_cub3d *cub, t_ray *ray);
 void	put_rays(t_cub3d *cub);
 void	minimap(t_cub3d *cub);

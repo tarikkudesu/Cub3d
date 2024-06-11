@@ -6,7 +6,7 @@
 /*   By: tamehri <tamehri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/03 12:54:12 by tamehri           #+#    #+#             */
-/*   Updated: 2024/06/11 19:33:06 by tamehri          ###   ########.fr       */
+/*   Updated: 2024/06/11 22:20:10 by tamehri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,16 @@ static int	init_textures(t_cub3d *cub)
 		if (!cub->tex[i].img.__addr)
 			(putendl_fd(ERR_MLX_ADDRESS, 2), exit(EXIT_FAILURE));
 	}
+	cub->tex[i].img.__img = mlx_xpm_file_to_image(cub->mlx.__mlx, \
+		"assets/door.xpm", &cub->tex[i].img.width, &cub->tex[i].img.height);
+	if (!cub->tex[i].img.__img)
+		(putendl_fd(ERR_MLX_IMG, 2), exit(EXIT_FAILURE));
+	cub->tex[i].img.__addr = \
+		(int *)mlx_get_data_addr(cub->tex[i].img.__img, \
+		&cub->tex[i].img.pixel_bits, &cub->tex[i].img.line_bytes, \
+		&cub->tex[i].img.endian);
+	if (!cub->tex[i].img.__addr)
+		(putendl_fd(ERR_MLX_ADDRESS, 2), exit(EXIT_FAILURE));
 	return (init_xpm(cub));
 }
 

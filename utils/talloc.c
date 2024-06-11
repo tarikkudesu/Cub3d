@@ -6,7 +6,7 @@
 /*   By: tamehri <tamehri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/03 12:54:58 by tamehri           #+#    #+#             */
-/*   Updated: 2024/06/10 20:50:18 by tamehri          ###   ########.fr       */
+/*   Updated: 2024/06/11 22:07:30 by tamehri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	leaks(void)
 {
-	system("leaks cub3d");
+	system("leaks cub3D");
 }
 
 t_heap	*heapnew(void *content)
