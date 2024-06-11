@@ -6,7 +6,7 @@
 /*   By: tamehri <tamehri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/12 10:04:08 by tamehri           #+#    #+#             */
-/*   Updated: 2024/06/10 19:33:10 by tamehri          ###   ########.fr       */
+/*   Updated: 2024/06/11 17:59:11 by tamehri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,10 @@ struct s_mlx
 {
 	void	*__mlx;
 	void	*__win;
+	void	*__gun;
 	void	*__intro;
+	void	*__gun_shot;
+	void	*__menu;
 };
 
 struct	s_color
@@ -114,6 +117,7 @@ struct s_cub3d
 	t_player	player;
 	int			mode;
 
+	int			gun;
 	int			button;
 	int			map_width;
 	int			map_height;

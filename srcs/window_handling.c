@@ -6,11 +6,35 @@
 /*   By: tamehri <tamehri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/03 12:54:12 by tamehri           #+#    #+#             */
-/*   Updated: 2024/06/10 22:00:17 by tamehri          ###   ########.fr       */
+/*   Updated: 2024/06/11 17:58:44 by tamehri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/cub3d.h"
+
+static int	init_xpm(t_cub3d *cub)
+{
+	int	a[2];
+
+
+	cub->mlx.__intro = mlx_xpm_file_to_image(cub->mlx.__mlx, \
+		"assets/cub3d.xpm", a, a + 1);
+	if (!cub->mlx.__intro)
+		return (putendl_fd(ERR_MLX_XPM, 2), 1);
+	cub->mlx.__gun = mlx_xpm_file_to_image(cub->mlx.__mlx, \
+		"assets/gun.xpm", a, a + 1);
+	if (!cub->mlx.__gun)
+		return (putendl_fd(ERR_MLX_XPM, 2), 1);
+	cub->mlx.__gun_shot = mlx_xpm_file_to_image(cub->mlx.__mlx, \
+		"assets/gun_shot.xpm", a, a + 1);
+	if (!cub->mlx.__gun_shot)
+		return (putendl_fd(ERR_MLX_XPM, 2), 1);
+	cub->mlx.__menu = mlx_xpm_file_to_image(cub->mlx.__mlx, \
+		"assets/menu.xpm", a, a + 1);
+	if (!cub->mlx.__menu)
+		return (putendl_fd(ERR_MLX_XPM, 2), 1);
+	return (0);
+}
 
 static int	init_textures(t_cub3d *cub)
 {
@@ -29,13 +53,11 @@ static int	init_textures(t_cub3d *cub)
 		if (!cub->tex[i].img.__addr)
 			(putendl_fd(ERR_MLX_ADDRESS, 2), exit(EXIT_FAILURE));
 	}
-	return (0);
+	return (init_xpm(cub));
 }
 
 static int	init_mlx(t_cub3d *cub)
 {
-	int	a[2];
-
 	cub->mlx.__mlx = mlx_init();
 	if (!cub->mlx.__mlx)
 		return (putendl_fd(ERR_MLX_INIT, 2), 1);
@@ -45,14 +67,6 @@ static int	init_mlx(t_cub3d *cub)
 	cub->img.__img = mlx_new_image(cub->mlx.__mlx, WIDTH, HEIGHT);
 	if (!cub->img.__img)
 		(putendl_fd(ERR_MLX_IMG, 2), exit(EXIT_FAILURE));
-	cub->mlx.__intro = mlx_xpm_file_to_image(cub->mlx.__mlx, \
-		"assets/cub3d.xpm", a, a + 1);
-	if (!cub->mlx.__intro)
-		return (putendl_fd(ERR_MLX_XPM, 2), 1);
-	cub->img.__addr = (int *)mlx_get_data_addr(cub->img.__img, &cub->img.pixel_bits, \
-	&cub->img.line_bytes, &cub->img.endian);
-	if (!cub->img.__addr)
-		(putendl_fd(ERR_MLX_ADDRESS, 2), exit(EXIT_FAILURE));
 	cub->img.__addr = (int *)mlx_get_data_addr(cub->img.__img, &cub->img.pixel_bits, \
 	&cub->img.line_bytes, &cub->img.endian);
 	if (!cub->img.__addr)
@@ -64,7 +78,7 @@ int	init_window(t_cub3d *cub)
 {
 	if (init_mlx(cub))
 		return (1);
-	// mlx_hook(cub->mlx.__win, 2, 1L<<0, handle_key, cub);
+	// mlx_hook(cub->mlx.__win, 2, 1L<<0, handle_key, cub); // Linux
 	mlx_loop_hook(cub->mlx.__mlx, update_frame, cub);
 	mlx_hook(cub->mlx.__win, 2, 0, handle_key, cub);
 	mlx_hook(cub->mlx.__win, 6, 0, mouse_move, cub);

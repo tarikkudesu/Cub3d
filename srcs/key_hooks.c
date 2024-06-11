@@ -6,7 +6,7 @@
 /*   By: tamehri <tamehri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/03 12:53:35 by tamehri           #+#    #+#             */
-/*   Updated: 2024/06/10 20:54:19 by tamehri          ###   ########.fr       */
+/*   Updated: 2024/06/11 17:54:05 by tamehri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,11 +59,15 @@ void	rotate_player(int key, t_cub3d *cub)
 
 int	handle_key(int key, t_cub3d *cub)
 {
-	if (key == ESC || key == ESC_L)
+	if (key == Q)
 		exit_program(cub);
-	else if (key == SPACE || key == SPACE_L)
+	else if (key == SPACE && cub->mode == INTRO)
 		cub->mode = GAME;
-	if (cub->mode == INTRO)
+	else if (key == ESC && cub->mode == MENU)
+		cub->mode = GAME;
+	else if (key == ESC && cub->mode == GAME)
+		cub->mode = MENU;
+	if (cub->mode == INTRO || cub->mode == MENU)
 		return (0);
 	if (key == W || key == W_L \
 			|| key == S || key == S_L \
@@ -73,7 +77,7 @@ int	handle_key(int key, t_cub3d *cub)
 	else if (key == RIGHT || key == RIGHT_L \
 			|| key == LEFT || key == LEFT_L)
 			rotate_player(key, cub);
-	// else if (key == 17)
-	// 	update_frame(cub);
+	else if (key == E)
+		cub->gun = 1;
 	return (0);
 }

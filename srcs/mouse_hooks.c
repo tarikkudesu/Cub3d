@@ -6,7 +6,7 @@
 /*   By: tamehri <tamehri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/10 09:56:27 by tamehri           #+#    #+#             */
-/*   Updated: 2024/06/10 22:05:14 by tamehri          ###   ########.fr       */
+/*   Updated: 2024/06/11 17:57:17 by tamehri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int	mouse_release(int button, int x, int y, void *param)
 	(void)x;
 	(void)y;
 	cub = (t_cub3d *)param;
-	if (cub->mode == INTRO)
+	if (cub->mode == INTRO || cub->mode == MENU)
 		return (0);
 	if (button == 1)
 		cub->button = 0;
@@ -33,7 +33,7 @@ int	mouse_move(int x, int y, void *param)
 
 	(void)y;
 	cub = (t_cub3d *)param;
-	if (cub->mode == INTRO)
+	if (cub->mode == INTRO || cub->mode == MENU)
 		return (0);
 	if (cub->button == 1)
 	{
@@ -51,7 +51,7 @@ int	mouse_press(int button, int x, int y, void *param)
 	(void)x;
 	(void)y;
 	cub = (t_cub3d *)param;
-	if (cub->mode == INTRO)
+	if (cub->mode == INTRO || cub->mode == MENU)
 		return (0);
 	if (button == 1)
 		cub->button = 1;

@@ -6,7 +6,7 @@
 /*   By: tamehri <tamehri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/08 19:36:29 by tamehri           #+#    #+#             */
-/*   Updated: 2024/06/10 20:55:50 by tamehri          ###   ########.fr       */
+/*   Updated: 2024/06/11 18:44:03 by tamehri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ static void	put_background(t_cub3d *cub)
 	int	j;
 
 	i = 40;
-	set_color(true, BACKGROUND);
+	set_color(true, 0x142F3B);
 	while (i < 240)
 	{
 		j = 40;
@@ -63,10 +63,10 @@ static void	put_minimap(t_cub3d *cub)
 
 	set_color(true, WHITE);
 	i = -1;
-	while (++i < cub->map_width)
+	while (++i < cub->map_height)
 	{
 		j = -1;
-		while (++j < cub->map_height)
+		while (++j < cub->map_width)
 		{
 			if (worldMap[i][j] != 0)
 				put_block((i - cub->player.pos.x) * 20 + 140, \

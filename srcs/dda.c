@@ -6,7 +6,7 @@
 /*   By: tamehri <tamehri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/07 18:21:02 by tamehri           #+#    #+#             */
-/*   Updated: 2024/06/10 19:45:37 by tamehri          ###   ########.fr       */
+/*   Updated: 2024/06/11 15:45:25 by tamehri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ extern int worldMap[mapWidth][mapHeight];
 
 int	is_wall(t_cub3d *cub, int x, int y)
 {
-	if (x >= 0 && x < cub->map_width && y >= 0 && y < cub->map_width)
+	if (x >= 0 && x < cub->map_height && y >= 0 && y < cub->map_width)
 	{
 		if (worldMap[x][y] == 0)
 			return (0);

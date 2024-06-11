@@ -6,7 +6,7 @@
 /*   By: tamehri <tamehri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/12 10:04:05 by tamehri           #+#    #+#             */
-/*   Updated: 2024/06/10 22:04:18 by tamehri          ###   ########.fr       */
+/*   Updated: 2024/06/11 15:34:39 by tamehri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,9 +55,9 @@ void	leaks();
 
 /* FUNCTIONS */
 void	move_player(int key, t_cub3d *cub);
-int	mouse_press(int button, int x, int y, void *param);
-int	mouse_release(int button, int x, int y, void *param);
-int	mouse_move(int x, int y, void *param);
+int		mouse_press(int button, int x, int y, void *param);
+int		mouse_release(int button, int x, int y, void *param);
+int		mouse_move(int x, int y, void *param);
 bool	is_in_cercle(int x, int y);
 void	minimap_pixel_put(int x, int y, const t_image *img);
 void	check_for_wall(t_cub3d *cub, t_vect *new_pos);
