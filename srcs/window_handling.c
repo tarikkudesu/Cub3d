@@ -6,7 +6,7 @@
 /*   By: tamehri <tamehri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/03 12:54:12 by tamehri           #+#    #+#             */
-/*   Updated: 2024/06/11 17:58:44 by tamehri          ###   ########.fr       */
+/*   Updated: 2024/06/11 19:33:06 by tamehri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 static int	init_xpm(t_cub3d *cub)
 {
 	int	a[2];
-
 
 	cub->mlx.__intro = mlx_xpm_file_to_image(cub->mlx.__mlx, \
 		"assets/cub3d.xpm", a, a + 1);
@@ -38,7 +37,7 @@ static int	init_xpm(t_cub3d *cub)
 
 static int	init_textures(t_cub3d *cub)
 {
-	int i;
+	int	i;
 
 	i = -1;
 	while (++i < 4)
@@ -47,7 +46,8 @@ static int	init_textures(t_cub3d *cub)
 			cub->tex[i].file, &cub->tex[i].img.width, &cub->tex[i].img.height);
 		if (!cub->tex[i].img.__img)
 			(putendl_fd(ERR_MLX_IMG, 2), exit(EXIT_FAILURE));
-		cub->tex[i].img.__addr = (int *)mlx_get_data_addr(cub->tex[i].img.__img, \
+		cub->tex[i].img.__addr = \
+			(int *)mlx_get_data_addr(cub->tex[i].img.__img, \
 			&cub->tex[i].img.pixel_bits, &cub->tex[i].img.line_bytes, \
 			&cub->tex[i].img.endian);
 		if (!cub->tex[i].img.__addr)
@@ -67,8 +67,8 @@ static int	init_mlx(t_cub3d *cub)
 	cub->img.__img = mlx_new_image(cub->mlx.__mlx, WIDTH, HEIGHT);
 	if (!cub->img.__img)
 		(putendl_fd(ERR_MLX_IMG, 2), exit(EXIT_FAILURE));
-	cub->img.__addr = (int *)mlx_get_data_addr(cub->img.__img, &cub->img.pixel_bits, \
-	&cub->img.line_bytes, &cub->img.endian);
+	cub->img.__addr = (int *)mlx_get_data_addr(cub->img.__img, \
+	&cub->img.pixel_bits, &cub->img.line_bytes, &cub->img.endian);
 	if (!cub->img.__addr)
 		(putendl_fd(ERR_MLX_ADDRESS, 2), exit(EXIT_FAILURE));
 	return (init_textures(cub));

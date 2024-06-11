@@ -6,11 +6,11 @@
 /*   By: tamehri <tamehri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/10 20:52:52 by tamehri           #+#    #+#             */
-/*   Updated: 2024/06/10 20:55:31 by tamehri          ###   ########.fr       */
+/*   Updated: 2024/06/11 19:31:47 by tamehri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "../include/cub3d.h"
+#include "../include/cub3d.h"
 
 t_color	hex_to_rgb(int color)
 {
@@ -27,7 +27,6 @@ int	rgb_to_hex(t_color rgb)
 	return (rgb.blue | rgb.green << 8 | rgb.red << 16);
 }
 
-
 void	rotate_vector(t_vect *vector, double angle)
 {
 	double	tmp;
@@ -42,7 +41,7 @@ bool	is_in_cercle(int x, int y)
 	int	dx;
 	int	dy;
 	int	distance;
-	
+
 	dx = x - 140;
 	dy = y - 140;
 	distance = dx * dx + dy * dy;

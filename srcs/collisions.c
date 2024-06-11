@@ -6,7 +6,7 @@
 /*   By: tamehri <tamehri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/09 12:19:59 by tamehri           #+#    #+#             */
-/*   Updated: 2024/06/11 15:22:42 by tamehri          ###   ########.fr       */
+/*   Updated: 2024/06/11 19:35:09 by tamehri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,23 +91,23 @@ void	west(t_cub3d *cub, t_vect *new_pos)
 {
 	if (!is_wall(cub, (int)cub->player.pos.x + 1, (int)cub->player.pos.y))
 		cub->player.pos.x = new_pos->x;
-	else if (is_wall(cub, (int)cub->player.pos.x + 1, (int)cub->player.pos.y) && \
-		new_pos->x <= (int)cub->player.pos.x + 1 - 0.2)
+	else if (is_wall(cub, (int)cub->player.pos.x + 1, (int)cub->player.pos.y) \
+		&& new_pos->x <= (int)cub->player.pos.x + 1 - 0.2)
 		cub->player.pos.x = new_pos->x;
 	if (new_pos->y < cub->player.pos.y)
 	{
 		if (!is_wall(cub, (int)cub->player.pos.x, (int)cub->player.pos.y - 1))
 			cub->player.pos.y = new_pos->y;
-		else if (is_wall(cub, (int)cub->player.pos.x, (int)cub->player.pos.y - 1) && \
-			new_pos->y >= (int)cub->player.pos.y + 0.2)
+		else if (is_wall(cub, (int)cub->player.pos.x, (int)cub->player.pos.y - 1) \
+			&& new_pos->y >= (int)cub->player.pos.y + 0.2)
 			cub->player.pos.y = new_pos->y;
 	}
 	else
 	{
 		if (!is_wall(cub, (int)cub->player.pos.x, (int)cub->player.pos.y + 1))
 			cub->player.pos.y = new_pos->y;
-		else if (is_wall(cub, (int)cub->player.pos.x, (int)cub->player.pos.y + 1) && \
-			new_pos->y <= (int)cub->player.pos.y + 1 - 0.2)
+		else if (is_wall(cub, (int)cub->player.pos.x, (int)cub->player.pos.y + 1) \
+			&& new_pos->y <= (int)cub->player.pos.y + 1 - 0.2)
 			cub->player.pos.y = new_pos->y;
 	}
 }
