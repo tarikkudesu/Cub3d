@@ -18,9 +18,9 @@
 # include <stdlib.h>
 # include <unistd.h>
 # include <stdbool.h>
-# include "../MLX/mlx.h"
-// # include "../minilibx-linux/mlx.h"
-// # include "../minilibx-linux/mlx_int.h"
+// # include "../MLX/mlx.h"
+# include "../minilibx-linux/mlx.h"
+# include "../minilibx-linux/mlx_int.h"
 # include "struct.h"
 # include "macro.h"
 
@@ -31,7 +31,7 @@
 
 # ifndef Z
 #  define Z 0
-#  define _MAL_CALL_INFO() 1
+#  define _MAL_CALL_INFO() puts("malloc called")
 # endif
 
 char	*ft_strdup(const char *s1);
@@ -49,6 +49,8 @@ void	clearheap(t_heap **node);
 void	leaks(void);
 
 /* FUNCTIONS */
+int     init_doors(t_cub3d *cub);
+void    open_doors(t_cub3d *cub);
 void	move_player(int key, t_cub3d *cub);
 int		mouse_press(int button, int x, int y, void *param);
 int		mouse_release(int button, int x, int y, void *param);
@@ -57,7 +59,9 @@ bool	is_in_cercle(int x, int y);
 void	minimap_pixel_put(int x, int y, const t_image *img);
 void	check_for_wall(t_cub3d *cub, t_vect *new_pos);
 void	render_wall(t_vect *start, t_vect *end, t_ray *ray, t_cub3d *cub);
-int		is_wall(t_cub3d *cub, t_ray *ray, int x, int y);
+int     is_wall(t_cub3d *cub, int x, int y);
+bool    is_door(t_cub3d *cub, int x, int y);
+int		is_wall__dda(t_cub3d *cub, t_ray *ray, int x, int y);
 void	dda(t_cub3d *cub, t_ray *ray);
 void	put_rays(t_cub3d *cub);
 void	minimap(t_cub3d *cub);

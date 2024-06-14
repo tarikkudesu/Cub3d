@@ -12,7 +12,7 @@
 
 #include "../include/cub3d.h"
 
-extern int worldMap[mapWidth][mapHeight];
+// extern int worldMap[mapWidth][mapHeight];
 
 static int	get_tex_idx(t_ray *ray)
 {
@@ -33,16 +33,6 @@ static int	get_tex_idx(t_ray *ray)
 			idx = 3;
 	}
 	return (idx);
-}
-
-bool	is_door(t_cub3d *cub, int x, int y)
-{
-	if (x >= 0 && x < cub->map_height && y >= 0 && y < cub->map_width)
-	{
-		if (worldMap[x][y] == 2)
-			return (1);
-	}
-	return (0);
 }
 
 void	render_wall(t_vect *start, t_vect *end, t_ray *ray, t_cub3d *cub)

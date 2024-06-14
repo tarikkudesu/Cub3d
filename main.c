@@ -24,8 +24,8 @@ void	initialize_data(t_cub3d *cub)
 	cub->wall_width = 20;
 	cub->img.__img = NULL;
 	cub->img.__addr = NULL;
-	cub->player.pos.x = 1.2;
-	cub->player.pos.y = 1.2;
+	cub->player.pos.x = 7.2;
+	cub->player.pos.y = 4.2;
 	cub->player.dir.x = 1;
 	cub->player.dir.y = 0;
 	cub->player.plan.x = 0;
@@ -35,10 +35,10 @@ void	initialize_data(t_cub3d *cub)
 	cub->map_height = mapWidth;
 	cub->floor_color = hex_to_rgb(0x000000);
 	cub->ceiling_color = hex_to_rgb(0x000000);
-	cub->tex[0].file = ft_strdup("orange/south.xpm");
-	cub->tex[1].file = ft_strdup("orange/north.xpm");
-	cub->tex[2].file = ft_strdup("orange/west.xpm");
-	cub->tex[3].file = ft_strdup("orange/east.xpm");
+	cub->tex[0].file = ft_strdup("xpm/south.xpm");
+	cub->tex[1].file = ft_strdup("xpm/north.xpm");
+	cub->tex[2].file = ft_strdup("xpm/west.xpm");
+	cub->tex[3].file = ft_strdup("xpm/east.xpm");
 }
 
 int	main()
@@ -46,14 +46,7 @@ int	main()
 	t_cub3d	cub;
 
 	initialize_data(&cub);
-	cub.doors = talloc(&cub.heap, sizeof(t_door) * cub.doors_n); _MAL_CALL_INFO();
-	if (!cub.doors)
-		return (1);
-	cub.doors->progress = 0;
-	cub.doors->ismoving = 0;
-	cub.doors->isopen = 0;
-	cub.doors->x = 21;
-	cub.doors->y = 1;
+	init_doors(&cub);
 	if (init_window(&cub))
 		return (0);
 }

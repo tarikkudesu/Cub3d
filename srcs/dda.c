@@ -12,12 +12,20 @@
 
 #include "../include/cub3d.h"
 
-extern int worldMap[mapWidth][mapHeight];
+// extern int worldMap[mapWidth][mapHeight];
 
-static void	set_ray_data(t_cub3d *cub, t_ray *ray, bool flag)
+int	is_wall(t_cub3d *cub, int x, int y)
 {
-	if (flag)
-		return ;
+	if (x >= 0 && x < cub->map_height && y >= 0 && y < cub->map_width)
+	{
+		if (cub->map[x][y] == 1)
+			return (1);
+	}
+	return (0);
+}
+
+static void	set_ray_data(t_cub3d *cub, t_ray *ray)
+{
 	if (ray->side == 0)
 	{
 		ray->perp_distance = ray->initial_dx - ray->delta_x;
@@ -31,33 +39,53 @@ static void	set_ray_data(t_cub3d *cub, t_ray *ray, bool flag)
 	ray->tex_pos_x -= (int)ray->tex_pos_x;
 }
 
-int	is_wall(t_cub3d *cub, t_ray *ray, int x, int y)
+int	door_hit(t_cub3d *cub, t_ray *ray, int x, int y)
 {
-	if (x >= 0 && x < cub->map_height && y >= 0 && y < cub->map_width)
+	t_door	*tmp;
+
+	tmp = cub->doors;
+	while (tmp)
 	{
-		if (worldMap[x][y] == 2)
+		if (tmp->x == x && tmp->y == y)
 		{
-			if (cub->doors->isopen)
+			if (tmp->isopen)
 				return (0);
 			else
 			{
-				set_ray_data(cub, ray, false);
-				if (ray->tex_pos_x <= cub->doors->progress)
+				set_ray_data(cub, ray);
+				if (ray->tex_pos_x <= tmp->progress)
 					return (0);
 				else
-					return (1);
+				{
+					ray->tex_pos_x -= tmp->progress;
+					return (2);
+				}
 			}
 		}
-		if (worldMap[x][y] == 0)
-			return (0);
+		tmp = tmp->next;
 	}
+	return(0);
+}
+
+int	hit(t_cub3d *cub, t_ray *ray, int x, int y)
+{
+	if (is_door(cub, x, y))
+		return (door_hit(cub, ray, x, y));
+	else if (!is_wall(cub, x, y))
+		return (0);
 	return (1);
 }
 
 void	dda(t_cub3d *cub, t_ray *ray)
 {
-	while (0 == is_wall(cub, ray, ray->map_x, ray->map_y))
+	int rt;
+
+	rt = 0;
+	while (rt == 0)
 	{
+		rt = hit(cub, ray, ray->map_x, ray->map_y);
+		if (rt != 0)
+			break ;
 		if (ray->initial_dx < ray->initial_dy)
 		{
 			ray->initial_dx += ray->delta_x;
@@ -71,5 +99,6 @@ void	dda(t_cub3d *cub, t_ray *ray)
 			ray->side = 1;
 		}
 	}
-	set_ray_data(cub, ray, true);
+	if (rt != 2)
+		set_ray_data(cub, ray);
 }

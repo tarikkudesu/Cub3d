@@ -25,8 +25,8 @@
 # define ERR_MAL			"Error : malloc error"
 # define ERR_EMTY			"Error : empty file"
 
-# define mapWidth		38 //temp
-# define mapHeight		7 //temp
+# define mapWidth		20 //temp
+# define mapHeight		11 //temp
 # define PI_1			0.0174533
 # define WIDTH			1200
 # define HEIGHT			800
@@ -51,6 +51,8 @@
 # define D				2
 # define A				0
 
+# define E_L			101
+# define Q_L			113
 # define W_L			119
 # define S_L			115
 # define D_L			100
@@ -60,6 +62,7 @@
 # define ESC_L			65307
 
 # define MENU			2
+# define MINIMAP		3
 # define INTRO			1
 # define GAME			0
 
@@ -74,7 +77,7 @@
 // # define YELLOW		0xFFFF00
 // # define CYAN		0x00FFFF
 // # define CYAN_D		0x00E2E2
-// # define MAGENTA	0xFF00FF
+# define MAGENTA	0xFF00FF
 // # define WALL1		0x582233
 // # define WALL2		0x713045
 

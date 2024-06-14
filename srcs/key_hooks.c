@@ -51,21 +51,21 @@ void	rotate_player(int key, t_cub3d *cub)
 	else
 	{
 		if (cub->player.dir.x < 0)
-			cub->player.pole = EASTH;
-		else
 			cub->player.pole = WEST;
+		else
+			cub->player.pole = EASTH;
 	}
 }
 
 int	handle_key(int key, t_cub3d *cub)
 {
-	if (key == Q)
+	if (key == Q || key == Q_L)
 		exit_program(cub);
-	else if (key == SPACE && cub->mode == INTRO && cub->button == 0) {
+	else if ((key == SPACE || key == SPACE_L) && cub->mode == INTRO && cub->button == 0) {
 		cub->mode = GAME; return (0); }
-	else if (key == ESC && cub->mode == MENU && cub->button == 0)
+	else if ((key == ESC || key == ESC_L) && cub->mode == MENU && cub->button == 0)
 		cub->mode = GAME;
-	else if (key == ESC && cub->mode == GAME && cub->button == 0)
+	else if ((key == ESC || key == ESC_L) && cub->mode == GAME && cub->button == 0)
 		cub->mode = MENU;
 	if (cub->mode == INTRO || cub->mode == MENU)
 		return (0);
@@ -73,13 +73,23 @@ int	handle_key(int key, t_cub3d *cub)
 			|| key == S || key == S_L \
 			|| key == D || key == D_L \
 			|| key == A || key == A_L)
-			move_player(key, cub);
+		move_player(key, cub);
 	else if (key == RIGHT || key == RIGHT_L \
 			|| key == LEFT || key == LEFT_L)
-			rotate_player(key, cub);
-	else if (key == E)
+		rotate_player(key, cub);
+	else if (key == E || key == E_L)
 		cub->gun = 1;
-	else if (key == SPACE)
-		cub->doors->isopen = 1;
+	else if (key == SPACE || key == SPACE_L)
+		open_doors(cub);
+	else if (key == 112)
+	{
+		t_door *tmp = cub->doors;
+		while (tmp)
+		{
+			printf("(%d, %d) : %d %d\n", tmp->x, tmp->y, tmp->isopen, tmp->ismoving);
+			tmp = tmp->next;
+		}
+	}
+	printf("%d\n", key);
 	return (0);
 }

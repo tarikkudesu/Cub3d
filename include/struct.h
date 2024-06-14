@@ -42,6 +42,7 @@ struct s_door
 	int		isopen;
 	int		ismoving;
 	double	progress;
+	t_door	*next;
 };
 
 struct	s_color

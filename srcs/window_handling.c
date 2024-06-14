@@ -17,19 +17,19 @@ static int	init_xpm(t_cub3d *cub)
 	int	a[2];
 
 	cub->mlx.__intro = mlx_xpm_file_to_image(cub->mlx.__mlx, \
-		"assets/cub3d.xpm", a, a + 1);
+		"xpm/intro.xpm", a, a + 1);
 	if (!cub->mlx.__intro)
 		return (putendl_fd(ERR_MLX_XPM, 2), 1);
-	cub->mlx.__gun = mlx_xpm_file_to_image(cub->mlx.__mlx, \
-		"assets/gun.xpm", a, a + 1);
-	if (!cub->mlx.__gun)
-		return (putendl_fd(ERR_MLX_XPM, 2), 1);
-	cub->mlx.__gun_shot = mlx_xpm_file_to_image(cub->mlx.__mlx, \
-		"assets/gun_shot.xpm", a, a + 1);
-	if (!cub->mlx.__gun_shot)
-		return (putendl_fd(ERR_MLX_XPM, 2), 1);
+	// cub->mlx.__gun = mlx_xpm_file_to_image(cub->mlx.__mlx, 
+	// 	"assets/gun.xpm", a, a + 1);
+	// if (!cub->mlx.__gun)
+	// 	return (putendl_fd(ERR_MLX_XPM, 2), 1);
+	// cub->mlx.__gun_shot = mlx_xpm_file_to_image(cub->mlx.__mlx, 
+	// 	"assets/gun_shot.xpm", a, a + 1);
+	// if (!cub->mlx.__gun_shot)
+	// 	return (putendl_fd(ERR_MLX_XPM, 2), 1);
 	cub->mlx.__menu = mlx_xpm_file_to_image(cub->mlx.__mlx, \
-		"assets/menu.xpm", a, a + 1);
+		"xpm/controls.xpm", a, a + 1);
 	if (!cub->mlx.__menu)
 		return (putendl_fd(ERR_MLX_XPM, 2), 1);
 	return (0);
@@ -54,7 +54,7 @@ static int	init_textures(t_cub3d *cub)
 			(putendl_fd(ERR_MLX_ADDRESS, 2), exit(EXIT_FAILURE));
 	}
 	cub->tex[i].img.__img = mlx_xpm_file_to_image(cub->mlx.__mlx, \
-		"assets/door.xpm", &cub->tex[i].img.width, &cub->tex[i].img.height);
+		"xpm/door.xpm", &cub->tex[i].img.width, &cub->tex[i].img.height);
 	if (!cub->tex[i].img.__img)
 		(putendl_fd(ERR_MLX_IMG, 2), exit(EXIT_FAILURE));
 	cub->tex[i].img.__addr = \
@@ -88,9 +88,9 @@ int	init_window(t_cub3d *cub)
 {
 	if (init_mlx(cub))
 		return (1);
-	// mlx_hook(cub->mlx.__win, 2, 1L<<0, handle_key, cub); // Linux
+	// mlx_hook(cub->mlx.__win, 2, 0, handle_key, cub);
 	mlx_loop_hook(cub->mlx.__mlx, update_frame, cub);
-	mlx_hook(cub->mlx.__win, 2, 0, handle_key, cub);
+	mlx_hook(cub->mlx.__win, 2, 1L<<0, handle_key, cub); // Linux
 	mlx_hook(cub->mlx.__win, 6, 0, mouse_move, cub);
 	mlx_hook(cub->mlx.__win, 4, 0, mouse_press, cub);
 	mlx_hook(cub->mlx.__win, 5, 0, mouse_release, cub);

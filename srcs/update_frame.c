@@ -12,47 +12,29 @@
 
 #include "../include/cub3d.h"
 
-int worldMap[mapWidth][mapHeight] =
-{
-  {1, 1, 1, 1, 1, 1, 1},
-  {1, 0, 1, 0, 0, 0, 1},
-  {1, 0, 1, 0, 1, 0, 1},
-  {1, 0, 1, 0, 1, 0, 1},
-  {1, 0, 1, 0, 1, 0, 1},
-  {1, 0, 1, 1, 1, 0, 1},
-  {1, 0, 0, 0, 1, 0, 1},
-  {1, 0, 1, 0, 0, 0, 1},
-  {1, 0, 1, 1, 1, 0, 1},
-  {1, 0, 1, 0, 1, 0, 1},
-  {1, 0, 1, 0, 0, 0, 1},
-  {1, 0, 1, 0, 0, 0, 1},
-  {1, 0, 1, 0, 0, 0, 1},
-  {1, 0, 1, 0, 0, 0, 1},
-  {1, 0, 1, 0, 0, 0, 1},
-  {1, 0, 1, 0, 0, 0, 1},
-  {1, 0, 1, 0, 0, 0, 1},
-  {1, 0, 1, 0, 0, 0, 1},
-  {1, 0, 1, 1, 1, 0, 1},
-  {1, 0, 1, 0, 0, 0, 1},
-  {1, 0, 1, 0, 0, 0, 1},
-  {1, 2, 1, 0, 1, 1, 1},
-  {1, 0, 1, 0, 0, 0, 1},
-  {1, 0, 1, 0, 0, 0, 1},
-  {1, 0, 1, 1, 1, 0, 1},
-  {1, 0, 1, 0, 0, 0, 1},
-  {1, 0, 1, 0, 0, 0, 1},
-  {1, 0, 1, 0, 0, 0, 1},
-  {1, 0, 1, 0, 1, 1, 1},
-  {1, 0, 1, 0, 0, 0, 1},
-  {1, 0, 1, 0, 0, 0, 1},
-  {1, 0, 1, 1, 1, 0, 1},
-  {1, 0, 1, 0, 0, 0, 1},
-  {1, 0, 1, 0, 0, 0, 1},
-  {1, 0, 1, 0, 0, 0, 1},
-  {1, 0, 1, 1, 1, 0, 1},
-  {1, 0, 0, 0, 0, 0, 1},
-  {1, 1, 1, 1, 1, 1, 1},
-};
+// int worldMap[mapWidth][mapHeight] =
+// {
+// {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
+// {1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1},
+// {1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1},
+// {1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1},
+// {1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1},
+// {1, 0, 1, 1, 1, 1, 2, 1, 1, 1, 1},
+// {1, 0, 1, 0, 0, 0, 0, 0, 0, 1, 1},
+// {1, 0, 1, 0, 0, 0, 0, 0, 0, 1, 1},
+// {1, 0, 1, 0, 0, 0, 0, 0, 0, 1, 1},
+// {1, 0, 1, 0, 0, 0, 0, 0, 0, 1, 1},
+// {1, 0, 2, 0, 0, 0, 0, 0, 0, 1, 1},
+// {1, 0, 1, 0, 0, 0, 0, 0, 0, 2, 1},
+// {1, 0, 1, 0, 0, 0, 0, 0, 0, 1, 1},
+// {1, 0, 1, 0, 0, 0, 0, 0, 0, 1, 1},
+// {1, 0, 1, 0, 0, 0, 0, 0, 0, 1, 1},
+// {1, 0, 1, 0, 0, 0, 0, 0, 0, 1, 1},
+// {1, 0, 1, 1, 1, 1, 2, 1, 1, 1, 1},
+// {1, 0, 1, 1, 1, 1, 1, 0, 0, 0, 1},
+// {1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1},
+// {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
+// };
 
 int	set_color(bool flag, int value)
 {
@@ -85,31 +67,40 @@ static void	put_image_to_window(t_cub3d *cub)
 {
 	mlx_put_image_to_window(cub->mlx.__mlx, \
 		cub->mlx.__win, cub->img.__img, 0, 0);
-	if (cub->gun == 0)
-		mlx_put_image_to_window(cub->mlx.__mlx, \
-			cub->mlx.__win, cub->mlx.__gun, 0, 0);
-	else
-	{
-		mlx_put_image_to_window(cub->mlx.__mlx, \
-			cub->mlx.__win, cub->mlx.__gun_shot, 0, 0);
-		cub->gun++;
-		if (cub->gun == 5)
-			cub->gun = 0;
-	}
+	// if (cub->gun == 0)
+	// 	mlx_put_image_to_window(cub->mlx.__mlx, 
+	// 		cub->mlx.__win, cub->mlx.__gun, 0, 0);
+	// else
+	// {
+	// 	mlx_put_image_to_window(cub->mlx.__mlx, 
+	// 		cub->mlx.__win, cub->mlx.__gun_shot, 0, 0);
+	// 	cub->gun++;
+	// 	if (cub->gun == 5)
+	// 		cub->gun = 0;
+	// }
 }
 
-void	update_door(t_cub3d *cub)
+static void	update_doors(t_cub3d *cub)
 {
-	if (cub->doors->ismoving == 1)
+	t_door	*tmp;
+
+	tmp = cub->doors;
+	while (tmp)
 	{
-		if (cub->doors->progress <= 1)
-			cub->doors->progress += 0.01;
-		else
+		if (tmp->ismoving == 1)
 		{
-			cub->doors->progress = 1;
-			cub->doors->isopen = 1;
+			if (tmp->progress <= 1)
+				tmp->progress += 0.06;
+			else
+			{
+				tmp->progress = 1;
+				tmp->isopen = 1;
+				tmp->ismoving = 0;
+			}
 		}
+		tmp = tmp->next;
 	}
+
 }
 
 int	update_frame(void *param)
@@ -125,7 +116,7 @@ int	update_frame(void *param)
 			cub->mlx.__win, cub->mlx.__menu, 0, 0);
 	else if (cub->mode == GAME)
 	{
-		update_door(cub);
+		update_doors(cub);
 		put_background(cub);
 		put_rays(cub);
 		minimap(cub);
