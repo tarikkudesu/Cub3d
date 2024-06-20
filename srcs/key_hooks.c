@@ -12,6 +12,28 @@
 
 #include "../include/cub3d.h"
 
+static void	check_for_wall(t_cub3d *cub, t_vect *rotated)
+{
+	t_vect	new_pos;
+
+	new_pos.x = cub->player.pos.x + rotated->x * 0.4;
+	new_pos.y = cub->player.pos.y + rotated->y * 0.4;
+	if (fabs(rotated->x) < fabs(rotated->y))
+	{
+		if (rotated->y < 0)
+			north(cub, &new_pos);
+		else
+			south(cub, &new_pos);
+	}
+	else
+	{
+		if (rotated->x < 0)
+			easth(cub, &new_pos);
+		else
+			west(cub, &new_pos);
+	}
+}
+
 void	move_player(int key, t_cub3d *cub)
 {
 	t_vect	rotated;
@@ -29,7 +51,7 @@ void	move_player(int key, t_cub3d *cub)
 	check_for_wall(cub, &rotated);
 }
 
-void	rotate_player(int key, t_cub3d *cub)
+static void	rotate_player(int key, t_cub3d *cub)
 {
 	if (key == RIGHT || key == RIGHT_L)
 	{
@@ -41,7 +63,7 @@ void	rotate_player(int key, t_cub3d *cub)
 		rotate_vector(&cub->player.dir, -0.0174533 * 4);
 		rotate_vector(&cub->player.plan, -0.0174533 * 4);
 	}
-	if (fabs(cub->player.dir.x) < fabs(cub->player.dir.y)) // ------------------------- you might need this so keep it, if not remove it
+	if (fabs(cub->player.dir.x) < fabs(cub->player.dir.y))
 	{
 		if (cub->player.dir.y < 0)
 			cub->player.pole = NORTH;
@@ -81,15 +103,5 @@ int	handle_key(int key, t_cub3d *cub)
 		cub->gun = 1;
 	else if (key == SPACE || key == SPACE_L)
 		open_doors(cub);
-	else if (key == 112)
-	{
-		t_door *tmp = cub->doors;
-		while (tmp)
-		{
-			printf("(%d, %d) : %d %d\n", tmp->x, tmp->y, tmp->isopen, tmp->ismoving);
-			tmp = tmp->next;
-		}
-	}
-	printf("%d\n", key);
 	return (0);
 }

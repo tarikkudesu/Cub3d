@@ -49,6 +49,14 @@ void	clearheap(t_heap **node);
 void	leaks(void);
 
 /* FUNCTIONS */
+void    update_doors(t_cub3d *cub);
+void    put_sprites(t_cub3d *cub);
+t_sprite    *new_sprite(t_cub3d *cub, int x, int y);
+void    sprite_addback(t_cub3d *cub, t_sprite *new);
+void    north(t_cub3d *cub, t_vect *new_pos);
+void    easth(t_cub3d *cub, t_vect *new_pos);
+void    south(t_cub3d *cub, t_vect *new_pos);
+void    west(t_cub3d *cub, t_vect *new_pos);
 int     init_doors(t_cub3d *cub);
 void    open_doors(t_cub3d *cub);
 void	move_player(int key, t_cub3d *cub);
@@ -57,8 +65,7 @@ int		mouse_release(int button, int x, int y, void *param);
 int		mouse_move(int x, int y, void *param);
 bool	is_in_cercle(int x, int y);
 void	minimap_pixel_put(int x, int y, const t_image *img);
-void	check_for_wall(t_cub3d *cub, t_vect *new_pos);
-void	render_wall(t_vect *start, t_vect *end, t_ray *ray, t_cub3d *cub);
+void	render_column(t_vect *start, t_vect *end, t_ray *ray, t_cub3d *cub);
 int     is_wall(t_cub3d *cub, int x, int y);
 bool    is_door(t_cub3d *cub, int x, int y);
 int		is_wall__dda(t_cub3d *cub, t_ray *ray, int x, int y);

@@ -18,12 +18,22 @@ typedef struct s_color	t_color;
 typedef struct s_heap	t_heap;
 typedef struct s_mlx	t_mlx;
 typedef struct s_ray	t_ray;
+typedef struct s_map	t_map;
 typedef enum e_dir		t_dir;
 typedef struct s_tex	t_tex;
 typedef struct s_vect	t_vect;
 typedef struct s_door	t_door;
 typedef struct s_image	t_image;
+typedef struct s_sprite	t_sprite;
 typedef struct s_player	t_player;
+
+struct s_map
+{
+	int		v;
+	bool	wall;
+	bool	door;
+	bool	visited;
+};
 
 struct s_mlx
 {
@@ -68,6 +78,7 @@ struct s_ray
 	double	initial_dy;
 	double	perp_distance;
 	double	tex_pos_x;
+	int		height;
 	int		column;
 	int		x_step;
 	int		y_step;
@@ -115,20 +126,38 @@ struct s_tex
 	t_image	img;
 };
 
+struct s_sprite
+{
+	double		x;
+	double		y;
+	int			width;
+	int			height;
+	int			start_x;
+	int			start_y;
+	int			end_x;
+	int			end_y;
+	int			index;
+	bool		visible;
+	double		distance;
+	t_sprite	*node;
+};
+
 /*--------------------------- Main Struct -------------------------------*/
 struct s_cub3d
 {
-	int			**map;
+	t_map		**mapS;
 	t_color		floor_color;
 	t_color		ceiling_color;
 	t_heap		*heap;
 	t_tex		tex[5];
 	t_mlx		mlx;
 	t_image		img;
-	t_player	player;
 	int			mode;
+	t_player	player;
 	int			doors_n;
 	t_door		*doors;
+	t_sprite	*sprites;
+	t_image		sprite_img;
 
 	int			gun;
 	int			button;

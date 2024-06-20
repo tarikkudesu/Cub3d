@@ -12,15 +12,10 @@
 
 #include "../include/cub3d.h"
 
-// extern int worldMap[mapWidth][mapHeight];
-
 int	is_wall(t_cub3d *cub, int x, int y)
 {
 	if (x >= 0 && x < cub->map_height && y >= 0 && y < cub->map_width)
-	{
-		if (cub->map[x][y] == 1)
-			return (1);
-	}
+		return (cub->mapS[x][y].wall);
 	return (0);
 }
 
@@ -39,7 +34,7 @@ static void	set_ray_data(t_cub3d *cub, t_ray *ray)
 	ray->tex_pos_x -= (int)ray->tex_pos_x;
 }
 
-int	door_hit(t_cub3d *cub, t_ray *ray, int x, int y)
+static int	door_hit(t_cub3d *cub, t_ray *ray, int x, int y)
 {
 	t_door	*tmp;
 
@@ -67,13 +62,14 @@ int	door_hit(t_cub3d *cub, t_ray *ray, int x, int y)
 	return(0);
 }
 
-int	hit(t_cub3d *cub, t_ray *ray, int x, int y)
+static int	hit(t_cub3d *cub, t_ray *ray, int x, int y)
 {
+	cub->mapS[x][y].visited = true;
 	if (is_door(cub, x, y))
 		return (door_hit(cub, ray, x, y));
-	else if (!is_wall(cub, x, y))
-		return (0);
-	return (1);
+	else if (is_wall(cub, x, y))
+		return (1);
+	return (0);
 }
 
 void	dda(t_cub3d *cub, t_ray *ray)

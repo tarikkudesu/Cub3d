@@ -12,16 +12,11 @@
 
 #include "../include/cub3d.h"
 
-// extern int worldMap[mapWidth][mapHeight];
-
 bool	is_door(t_cub3d *cub, int x, int y)
 {
 	if (x >= 0 && x < cub->map_height && y >= 0 && y < cub->map_width)
-	{
-		if (cub->map[x][y] == 2)
-			return (1);
-	}
-	return (0);
+		return (cub->mapS[x][y].door);
+	return (false);
 }
 
 static void	open_door(t_cub3d *cub, int d_x, int d_y)
@@ -56,5 +51,28 @@ void	open_doors(t_cub3d *cub)
 			open_door(cub, p_x - i, p_y);
 		else if (cub->player.pole == EASTH && is_door(cub, p_x + i, p_y))
 			open_door(cub, p_x + i, p_y);
+	}
+}
+
+
+void	update_doors(t_cub3d *cub)
+{
+	t_door	*tmp;
+
+	tmp = cub->doors;
+	while (tmp)
+	{
+		if (tmp->ismoving == 1)
+		{
+			if (tmp->progress <= 1)
+				tmp->progress += 0.06;
+			else
+			{
+				tmp->progress = 1;
+				tmp->ismoving = 0;
+				tmp->isopen = 1;
+			}
+		}
+		tmp = tmp->next;
 	}
 }

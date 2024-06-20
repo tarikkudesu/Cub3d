@@ -63,46 +63,6 @@ static void	put_background(t_cub3d *cub)
 	}
 }
 
-static void	put_image_to_window(t_cub3d *cub)
-{
-	mlx_put_image_to_window(cub->mlx.__mlx, \
-		cub->mlx.__win, cub->img.__img, 0, 0);
-	// if (cub->gun == 0)
-	// 	mlx_put_image_to_window(cub->mlx.__mlx, 
-	// 		cub->mlx.__win, cub->mlx.__gun, 0, 0);
-	// else
-	// {
-	// 	mlx_put_image_to_window(cub->mlx.__mlx, 
-	// 		cub->mlx.__win, cub->mlx.__gun_shot, 0, 0);
-	// 	cub->gun++;
-	// 	if (cub->gun == 5)
-	// 		cub->gun = 0;
-	// }
-}
-
-static void	update_doors(t_cub3d *cub)
-{
-	t_door	*tmp;
-
-	tmp = cub->doors;
-	while (tmp)
-	{
-		if (tmp->ismoving == 1)
-		{
-			if (tmp->progress <= 1)
-				tmp->progress += 0.06;
-			else
-			{
-				tmp->progress = 1;
-				tmp->isopen = 1;
-				tmp->ismoving = 0;
-			}
-		}
-		tmp = tmp->next;
-	}
-
-}
-
 int	update_frame(void *param)
 {
 	t_cub3d	*cub;
@@ -118,9 +78,11 @@ int	update_frame(void *param)
 	{
 		update_doors(cub);
 		put_background(cub);
+		put_sprites(cub);
 		put_rays(cub);
 		minimap(cub);
-		put_image_to_window(cub);
+		mlx_put_image_to_window(cub->mlx.__mlx, \
+			cub->mlx.__win, cub->img.__img, 0, 0);
 	}
 	return (0);
 }

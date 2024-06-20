@@ -14,16 +14,15 @@
 
 static void	put_ray(t_cub3d *cub, t_ray *ray, int x)
 {
-	int		line_height;
 	t_vect	start;
 	t_vect	end;
 
-	line_height = (int)(HEIGHT / ray->perp_distance);
+	ray->height = (int)(HEIGHT / ray->perp_distance);
 	start.x = x;
 	end.x = x;
-	start.y = HEIGHT / 2 - line_height / 2;
-	end.y = HEIGHT / 2 + line_height / 2;
-	render_wall(&start, &end, ray, cub);
+	start.y = HEIGHT / 2 - ray->height / 2;
+	end.y = HEIGHT / 2 + ray->height / 2;
+	render_column(&start, &end, ray, cub);
 }
 
 static void	set_ray(t_cub3d *cub, t_ray *ray)
@@ -50,12 +49,27 @@ static void	set_ray(t_cub3d *cub, t_ray *ray)
 	}
 }
 
+static void	update_map(t_cub3d *cub)
+{
+	int	x;
+	int	y;
+
+	x = -1;
+	while (++x < cub->map_height)
+	{
+		y = -1;
+		while (++y < cub->map_width)
+			cub->mapS[x][y].visited = false;
+	}
+}
+
 void	put_rays(t_cub3d *cub)
 {
 	t_ray	ray;
 	int		i;
 
 	i = -1;
+	update_map(cub);
 	while (++i < WIDTH)
 	{
 		ray.column = i;

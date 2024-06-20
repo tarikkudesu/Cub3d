@@ -8,12 +8,13 @@ SRC			=		./main.c       \
 					./srcs/utilities.c    \
 					./srcs/collisions.c    \
 					./srcs/mouse_hooks.c    \
-					./srcs/render_wall.c     \
+					./srcs/render_column.c     \
 					./utils/putendl_fd.c      \
 					./srcs/update_frame.c      \
 					./srcs/ray_processing.c     \
 					./srcs/window_handling.c \
 					./srcs/doors.c \
+					./srcs/sprites.c \
 					./parse/init.c
 
 CC			=	cc
