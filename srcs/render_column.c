@@ -75,36 +75,10 @@ static void	render_wall(t_vect *start, t_vect *end, t_ray *ray, t_cub3d *cub)
 	}
 }
 
-static void	put_sprite(t_cub3d *cub, t_ray *ray, int x)
-{
-	int	tex_x;
-	int	tex_y;
-	int i;
-
-	if (x < cub->sprites->start_x || x > cub->sprites->end_x)
-		return;
-	if (ray->height >= cub->sprites->height)
-		return ;
-	tex_x = (double)(x - cub->sprites->start_x) / \
-		(cub->sprites->end_x - cub->sprites->start_x) * cub->sprite_img.width;
-	i = cub->sprites->start_y - 1;
-	while (++i < cub->sprites->end_y)
-	{
-		if (i < 0 || i >= HEIGHT)
-			continue ;
-		tex_y = (double)(i - cub->sprites->start_y) / \
-			(cub->sprites->end_y - cub->sprites->start_y) * cub->sprite_img.height;
-		set_color(1, cub->sprite_img.__addr[cub->sprite_img.height * tex_y + tex_x]);
-		if (set_color(0, 0) != 0x000000)
-			my_mlx_pixel_put(x, i, &cub->img);
-	}
-}
-
 void	render_column(t_vect *start, t_vect *end, t_ray *ray, t_cub3d *cub)
 {
 	if (is_door(cub, ray->map_x, ray->map_y))
 		render_door(start, end, ray, cub);
 	else
 		render_wall(start, end, ray, cub);
-	put_sprite(cub, ray, ray->column);
 }

@@ -39,8 +39,8 @@ t_sprite	*new_sprite(t_cub3d *cub, int x, int y)
 	new = talloc(&cub->heap, sizeof(t_sprite *)); _MAL_CALL_INFO();
 	if (!new)
 		return (NULL);
-	new->x = x + 0.5 - 1;
-	new->y = y + 0.5 - 1;
+	new->x = x + 0.5;
+	new->y = y + 0.5;
 	new->visible = false;
 	new->distance = 0;
 	new->index = 0;
@@ -71,12 +71,12 @@ int	init_doors(t_cub3d *cub)
 	door_addback(cub, door);
 	door = new_door(cub, 10, 2);
 	door_addback(cub, door);
-	door = new_door(cub, 11, 9);
+	door = new_door(cub, 11, 5);
 	door_addback(cub, door);
 	door = new_door(cub, 16, 6);
 	door_addback(cub, door);
 
-	t_sprite *s = new_sprite(cub, 4, 3);
+	t_sprite *s = new_sprite(cub, 4, 4);
 	cub->sprites = s;
 	// sprite_addback(cub, s);
 

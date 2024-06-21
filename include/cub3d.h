@@ -50,7 +50,7 @@ void	leaks(void);
 
 /* FUNCTIONS */
 void    update_doors(t_cub3d *cub);
-void    put_sprites(t_cub3d *cub);
+void    put_sprites(t_cub3d *cub, int *z_coor);
 t_sprite    *new_sprite(t_cub3d *cub, int x, int y);
 void    sprite_addback(t_cub3d *cub, t_sprite *new);
 void    north(t_cub3d *cub, t_vect *new_pos);
@@ -72,7 +72,7 @@ int		is_wall__dda(t_cub3d *cub, t_ray *ray, int x, int y);
 void	dda(t_cub3d *cub, t_ray *ray);
 void	put_rays(t_cub3d *cub);
 void	minimap(t_cub3d *cub);
-int		set_color(bool flag, int value);
-int		update_frame(void *param);
+unsigned int        set_color(bool flag, int value);
+int		            update_frame(void *param);
 
 #endif

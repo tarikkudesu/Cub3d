@@ -15,9 +15,9 @@
 int	init_sprites(t_cub3d *cub)
 {
 	cub->sprite_img.__img = mlx_xpm_file_to_image(cub->mlx.__mlx, \
-		"xpm/gris/sprite.xpm", &cub->sprite_img.width, &cub->sprite_img.height);
+		"assets/nova/sprite.xpm", &cub->sprite_img.width, &cub->sprite_img.height);
 	if (!cub->sprite_img.__img)
-		(putendl_fd(ERR_MLX_IMG, 2), exit(EXIT_FAILURE));
+		(putendl_fd(ERR_MLX_XPM, 2), exit(EXIT_FAILURE));
 	cub->sprite_img.__addr = \
 		(int *)mlx_get_data_addr(cub->sprite_img.__img, \
 		&cub->sprite_img.pixel_bits, &cub->sprite_img.line_bytes, \
@@ -32,7 +32,7 @@ static int	init_xpm(t_cub3d *cub)
 	int	a[2];
 
 	cub->mlx.__intro = mlx_xpm_file_to_image(cub->mlx.__mlx, \
-		"xpm/gris/intro.xpm", a, a + 1);
+		"assets/ui/intro.xpm", a, a + 1);
 	if (!cub->mlx.__intro)
 		return (putendl_fd(ERR_MLX_XPM, 2), 1);
 	// cub->mlx.__gun = mlx_xpm_file_to_image(cub->mlx.__mlx, 
@@ -44,7 +44,7 @@ static int	init_xpm(t_cub3d *cub)
 	// if (!cub->mlx.__gun_shot)
 	// 	return (putendl_fd(ERR_MLX_XPM, 2), 1);
 	cub->mlx.__menu = mlx_xpm_file_to_image(cub->mlx.__mlx, \
-		"xpm/gris/controls.xpm", a, a + 1);
+		"assets/ui/controls.xpm", a, a + 1);
 	if (!cub->mlx.__menu)
 		return (putendl_fd(ERR_MLX_XPM, 2), 1);
 	return (init_sprites(cub));
@@ -69,9 +69,9 @@ static int	init_textures(t_cub3d *cub)
 			(putendl_fd(ERR_MLX_ADDRESS, 2), exit(EXIT_FAILURE));
 	}
 	cub->tex[i].img.__img = mlx_xpm_file_to_image(cub->mlx.__mlx, \
-		"xpm/gris/door.xpm", &cub->tex[i].img.width, &cub->tex[i].img.height);
+		"assets/nova/door.xpm", &cub->tex[i].img.width, &cub->tex[i].img.height);
 	if (!cub->tex[i].img.__img)
-		(putendl_fd(ERR_MLX_IMG, 2), exit(EXIT_FAILURE));
+		(putendl_fd(ERR_MLX_XPM, 2), exit(EXIT_FAILURE));
 	cub->tex[i].img.__addr = \
 		(int *)mlx_get_data_addr(cub->tex[i].img.__img, \
 		&cub->tex[i].img.pixel_bits, &cub->tex[i].img.line_bytes, \

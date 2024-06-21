@@ -25,6 +25,7 @@ t_heap	*heapnew(void *content)
 	if (!head)
 		return (NULL);
 	head->ptr = content;
+	head->next = NULL;
 	return (head);
 }
 

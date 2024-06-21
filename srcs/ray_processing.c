@@ -65,6 +65,7 @@ static void	update_map(t_cub3d *cub)
 
 void	put_rays(t_cub3d *cub)
 {
+	int		z_coor[WIDTH];
 	t_ray	ray;
 	int		i;
 
@@ -87,5 +88,7 @@ void	put_rays(t_cub3d *cub)
 		set_ray(cub, &ray);
 		dda(cub, &ray);
 		put_ray(cub, &ray, i);
+		z_coor[i] = ray.height;
 	}
+	put_sprites(cub, z_coor);
 }

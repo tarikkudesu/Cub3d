@@ -36,7 +36,7 @@
 // {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
 // };
 
-int	set_color(bool flag, int value)
+unsigned int	set_color(bool flag, int value)
 {
 	static int	color;
 
@@ -78,7 +78,7 @@ int	update_frame(void *param)
 	{
 		update_doors(cub);
 		put_background(cub);
-		put_sprites(cub);
+		// put_sprites(cub);
 		put_rays(cub);
 		minimap(cub);
 		mlx_put_image_to_window(cub->mlx.__mlx, \

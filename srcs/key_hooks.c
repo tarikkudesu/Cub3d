@@ -55,13 +55,13 @@ static void	rotate_player(int key, t_cub3d *cub)
 {
 	if (key == RIGHT || key == RIGHT_L)
 	{
-		rotate_vector(&cub->player.dir, 0.0174533 * 4);
-		rotate_vector(&cub->player.plan, 0.0174533 * 4);
+		rotate_vector(&cub->player.dir, 0.0174533 * 2);
+		rotate_vector(&cub->player.plan, 0.0174533 * 2);
 	}
 	else if (key == LEFT || key == LEFT_L)
 	{
-		rotate_vector(&cub->player.dir, -0.0174533 * 4);
-		rotate_vector(&cub->player.plan, -0.0174533 * 4);
+		rotate_vector(&cub->player.dir, -0.0174533 * 2);
+		rotate_vector(&cub->player.plan, -0.0174533 * 2);
 	}
 	if (fabs(cub->player.dir.x) < fabs(cub->player.dir.y))
 	{

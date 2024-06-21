@@ -30,17 +30,19 @@ void	initialize_data(t_cub3d *cub)
 	cub->player.pos.y = 1.5;
 	cub->player.dir.x = 0;
 	cub->player.dir.y = 1;
-	cub->player.plan.x = -0.7;
+	cub->player.plan.x = -0.66;
 	cub->player.pole = EASTH;
 	cub->player.plan.y = 0;
 	cub->map_width = mapHeight;
 	cub->map_height = mapWidth;
 	cub->floor_color = hex_to_rgb(0x142F3B);
 	cub->ceiling_color = hex_to_rgb(WHITE);
-	cub->tex[0].file = ft_strdup("xpm/gris/south.xpm");
-	cub->tex[1].file = ft_strdup("xpm/gris/north.xpm");
-	cub->tex[2].file = ft_strdup("xpm/gris/east.xpm");
-	cub->tex[3].file = ft_strdup("xpm/gris/west.xpm");
+	cub->floor_color = hex_to_rgb(BLACK);
+	cub->ceiling_color = hex_to_rgb(BLACK);
+	cub->tex[0].file = ft_strdup("assets/nova/south.xpm");
+	cub->tex[1].file = ft_strdup("assets/nova/north.xpm");
+	cub->tex[2].file = ft_strdup("assets/nova/east.xpm");
+	cub->tex[3].file = ft_strdup("assets/nova/west.xpm");
 }
 
 int	main()

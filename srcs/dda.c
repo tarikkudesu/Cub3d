@@ -67,9 +67,7 @@ static int	hit(t_cub3d *cub, t_ray *ray, int x, int y)
 	cub->mapS[x][y].visited = true;
 	if (is_door(cub, x, y))
 		return (door_hit(cub, ray, x, y));
-	else if (is_wall(cub, x, y))
-		return (1);
-	return (0);
+	return (is_wall(cub, x, y));
 }
 
 void	dda(t_cub3d *cub, t_ray *ray)

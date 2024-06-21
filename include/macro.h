@@ -66,7 +66,7 @@
 # define INTRO			1
 # define GAME			0
 
-// # define BLACK		0x000000
+# define BLACK		0x000000
 # define BACKGROUND	0x081020
 # define WHITE		0xFFFFFF
 // # define RED		0xFF0000
