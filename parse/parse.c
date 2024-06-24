@@ -6,7 +6,7 @@
 /*   By: tamehri <tamehri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/20 15:29:12 by ooulcaid          #+#    #+#             */
-/*   Updated: 2024/06/23 15:32:19 by tamehri          ###   ########.fr       */
+/*   Updated: 2024/06/24 19:49:46 by tamehri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,12 +78,12 @@ int	valid_map(t_cub3d *cub, int fd)
 
 	line = get_next_line(fd);
 	while (line && empty(line))
-		(free(line), line = get_next_line(fd));
+		line = get_next_line(fd);
 	while (line)
 	{
 		if (!parse_line(line, &first, &last))
 			return (0);
-		node = new_line(cub, line, first, last);
+		node = new_line(line, first, last);
 		if (!node)
 			return (0);
 		line_add_back(&cub->line, node);
@@ -110,7 +110,6 @@ int	headers_parse(t_cub3d *cub, int fd)
 				return (0);
 			i++;
 		}
-		free(line);
 		if (i < 6) //in order to not lose the offset of the first line of map
 			line = get_next_line(fd);
 	}

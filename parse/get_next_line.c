@@ -6,7 +6,7 @@
 /*   By: tamehri <tamehri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/18 12:29:37 by ooulcaid          #+#    #+#             */
-/*   Updated: 2024/06/23 14:03:11 by tamehri          ###   ########.fr       */
+/*   Updated: 2024/06/24 19:51:42 by tamehri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,11 +19,7 @@ char	*get_next_line(int fd)
 	int			check;
 
 	if (fd < 0 || fd > OPEN_MAX || read(fd, buffer, 0) < 0 || BUFFER_SIZE < 1)
-	{
-		if (buffer)
-			free(buffer);
 		return (NULL);
-	}
 	if (buffer && *buffer && exist(buffer))
 		return (ft_gl(&buffer));
 	while (read_swap(&buffer, fd, &check) > 0 && !exist(buffer))
@@ -36,7 +32,6 @@ char	*get_next_line(int fd)
 		change(&tmp, &buffer);
 		return (tmp);
 	}
-	free(buffer);
 	return (NULL);
 }
 
@@ -46,27 +41,17 @@ int	read_swap(char **buf, int fd, int *check)
 	char	*ptr;
 
 	*check = 0;
-	tmp = malloc(BUFFER_SIZE + 1);
+	tmp = talloc(BUFFER_SIZE + 1);
 	if (!tmp)
 		return (*check);
 	*check = read(fd, tmp, BUFFER_SIZE);
 	if (*check <= 0)
-	{
-		free(tmp);
 		return (*check);
-	}
 	*(tmp + *check) = '\0';
 	ptr = strjoin(*buf, tmp);
 	if (!ptr)
-	{
-		free(tmp);
-		*check = 0;
-		return (*check);
-	}
-	free(*buf);
-	free(tmp);
-	*buf = ptr;
-	return (*check);
+		return (*check = 0);
+	return (*buf = ptr, *check);
 }
 
 char	*strjoin(char *s1, char *s2)
@@ -79,7 +64,7 @@ char	*strjoin(char *s1, char *s2)
 		j = ft_strlen(s2);
 	else
 		j = ft_strlen(s2) + ft_strlen(s1);
-	result = (char *)malloc(j + 1);
+	result = (char *)talloc(j + 1);
 	if (!result)
 		return (NULL);
 	i = 0;
@@ -92,8 +77,7 @@ char	*strjoin(char *s1, char *s2)
 	j = 0;
 	while (*(s2 + j))
 		result[i++] = s2[j++];
-	result[i] = '\0';
-	return (result);
+	return (result[i] = '\0', result);
 }
 
 char	*ft_gl(char	**buf)
@@ -103,18 +87,14 @@ char	*ft_gl(char	**buf)
 	char	*tmp;
 
 	l = get_index(*buf);
-	ret = malloc(l + 2);
+	ret = talloc(l + 2);
 	if (!ret)
 		return (NULL);
 	ft_cpy(ret, *buf, l + 1);
 	ret[l + 1] = '\0';
 	tmp = strjoin(*buf + l + 1, "");
 	if (!tmp)
-	{
-		free(ret);
 		return (NULL);
-	}
-	free(*buf);
 	*buf = tmp;
 	return (ret);
 }

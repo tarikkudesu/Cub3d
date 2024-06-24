@@ -6,7 +6,7 @@
 /*   By: tamehri <tamehri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/23 15:51:06 by tamehri           #+#    #+#             */
-/*   Updated: 2024/06/24 10:33:06 by tamehri          ###   ########.fr       */
+/*   Updated: 2024/06/24 19:38:24 by tamehri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,9 @@ static void	sprite_addback(t_sprite **sprites, t_sprite *new)
 void	new_sprite(t_cub3d *cub, int x, int y)
 {
 	t_sprite	*new;
+	static int	size;
 
-	new = talloc(&cub->heap, sizeof(t_sprite));
+	new = talloc(sizeof(t_sprite));
 	if (!new)
 		return ;
 	new->x = y + 0.5;
@@ -40,5 +41,6 @@ void	new_sprite(t_cub3d *cub, int x, int y)
 	new->distance = 0;
 	new->index = 0;
 	new->next = NULL;
-	sprite_addback(&cub->sprites, new);
+	cub->sprites_n = ++size;
+	sprite_addback(&cub->sprites_list, new);
 }

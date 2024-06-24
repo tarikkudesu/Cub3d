@@ -6,7 +6,7 @@
 /*   By: tamehri <tamehri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/23 13:29:48 by tamehri           #+#    #+#             */
-/*   Updated: 2024/06/24 11:19:21 by tamehri          ###   ########.fr       */
+/*   Updated: 2024/06/24 19:40:11 by tamehri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,15 @@ int	main(int ac, char **av)
 
 	if (ac != 2)
 		return (putendl_fd("Error\nbad number of arguments", 2), 1);
+	get_cub(&cub);
 	initialize_data(&cub);
 	if (!file_parse(&cub, av[1]))
 		return (2);
+	set_data(&cub);
+	if (init_window(&cub))
+		return (0);
+}
+
 	// printf("width : %d height : %d\n", cub.map_width, cub.map_height);
 	// printf("pole %c\n", cub.player.pole);
 	// printf("floor : (%d %d %d), ceiling : (%d %d %d)\n", cub.floor_color.red, cub.floor_color.green, cub.floor_color.blue, cub.ceiling_color.red, cub.ceiling_color.green, cub.ceiling_color.blue);
@@ -33,19 +39,18 @@ int	main(int ac, char **av)
 	// 		printf("(%d %d %d) ", cub.map[i][j].v, cub.map[i][j].wall, cub.map[i][j].door);
 	// 	printf("\n");
 	// }
-	set_data(&cub);
+
+
+	
 	// t_door *doors = cub.doors;
 	// while (doors)
 	// {
 	// 	printf("%d %d %d %d %f\n", doors->x, doors->y, doors->isopen, doors->ismoving, doors->progress);
 	// 	doors = doors->next;
 	// }
-	t_sprite *sprites = cub.sprites;
-	while (sprites)
-	{
-		printf("%f %f\n", sprites->x, sprites->y);
-		sprites = sprites->next;
-	}
-	if (init_window(&cub))
-		return (0);
-}
+	// t_sprite *sprites = cub.sprites_list;
+	// while (sprites)
+	// {
+	// 	printf("%f %f\n", sprites->x, sprites->y);
+	// 	sprites = sprites->next;
+	// }

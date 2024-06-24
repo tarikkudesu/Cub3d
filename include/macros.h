@@ -6,7 +6,7 @@
 /*   By: tamehri <tamehri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/23 13:11:05 by tamehri           #+#    #+#             */
-/*   Updated: 2024/06/23 15:26:35 by tamehri          ###   ########.fr       */
+/*   Updated: 2024/06/24 19:47:00 by tamehri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,11 +22,22 @@
 # define ERR_MLX_IMG		"Error : mlx_new_image error"
 # define ERR_FILE			"Error : Wrong file format"
 # define ERR_MLX_INIT		"Error : mlx_init error"
-# define ERR_MAL			"Error : malloc error"
+# define ERR_MAL			"Error : talloc error"
 # define ERR_EMTY			"Error : empty file"
 
-#  define _MAL_CALL_INFO() printf("\t\tFile: \033[35m%s\033[0m, Line: \033[35m%d\033[0m, Function: \033[35m%s\033[0m\n", __FILE__, __LINE__, __func__);
-# define Z				0
+// #  define _MAL_CALL_INFO() printf("\t\tFile: \033[35m%s\033[0m, Line: \033[35m%d\033[0m, Function: \033[35m%s\033[0m\n", __FILE__, __LINE__, __func__);
+// # define Z				0
+
+
+# ifdef Z
+#  define _MAL_CALL_INFO() \
+    printf("\t\tFile: \033[35m%s\033[0m, Line: \033[35m%d\033[0m, Function: \033[35m%s\033[0m\n", __FILE__, __LINE__, __func__)
+# endif
+
+# ifndef Z
+#  define Z 0
+#  define _MAL_CALL_INFO() 1
+# endif
 
 # define PI_1			0.0174533
 # define WIDTH			1200

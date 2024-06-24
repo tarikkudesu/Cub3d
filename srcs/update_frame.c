@@ -6,7 +6,7 @@
 /*   By: tamehri <tamehri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/23 17:00:29 by tamehri           #+#    #+#             */
-/*   Updated: 2024/06/23 20:12:39 by tamehri          ###   ########.fr       */
+/*   Updated: 2024/06/24 19:18:58 by tamehri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,10 +23,13 @@ unsigned int	set_color(bool flag, int value)
 
 static void	update_map(t_cub3d *cub)
 {
-	int	x;
-	int	y;
+	int			x;
+	int			y;
 
 	x = -1;
+	cub->frame++;
+	if (cub->frame == 40)
+		cub->frame = 0;
 	while (++x < cub->map_height)
 	{
 		y = -1;

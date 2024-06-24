@@ -6,24 +6,61 @@
 /*   By: tamehri <tamehri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/23 16:49:03 by tamehri           #+#    #+#             */
-/*   Updated: 2024/06/24 09:45:44 by tamehri          ###   ########.fr       */
+/*   Updated: 2024/06/24 20:27:16 by tamehri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/cub3d.h"
 
+char	*get_name(int c, bool f)
+{
+	int 	i;
+	int 	j;
+	char	*name;
+	char	*prename;
+	char	*postname;
+
+	i = -1;
+	if (f)
+		name = talloc(sizeof(char) * 21);
+	else
+		name = talloc(sizeof(char) * 20);
+	if (!name)
+		return (NULL);
+	prename = ft_strdup("assets/sprite/");
+	postname = ft_strdup(".xpm");
+	while (*(prename + ++i))
+		*(name + i) = *(prename + i);
+	*(name + i++) = c;
+	if (f)
+		*(name + i++) = c;
+	j = 0;
+	while (*(postname + j))
+		*(name + i++) = *(postname + j++);
+	*(name + i) = '\0';
+	return (name);
+}
+
 int	init_sprites(t_cub3d *cub)
 {
-	cub->sprite_img.__img = mlx_xpm_file_to_image(cub->mlx.__mlx, \
-		"assets/nova/sprite.xpm", &cub->sprite_img.width, &cub->sprite_img.height);
-	if (!cub->sprite_img.__img)
-		(putendl_fd(ERR_MLX_XPM, 2), exit(EXIT_FAILURE));
-	cub->sprite_img.__addr = \
-		(int *)mlx_get_data_addr(cub->sprite_img.__img, \
-		&cub->sprite_img.pixel_bits, &cub->sprite_img.line_bytes, \
-		&cub->sprite_img.endian);
-	if (!cub->sprite_img.__addr)
-		(putendl_fd(ERR_MLX_ADDRESS, 2), exit(EXIT_FAILURE));
+	for (int i = 0 ; i < 40; i++)
+	{
+		if (i < 20)
+			cub->frames[i] = get_name(i + 'a', false);
+		else
+			cub->frames[i] = get_name(i + 'a' - 20, true);
+		// printf("%s\n", cub->frames[i]);
+		cub->sprite_img[i].__img = mlx_xpm_file_to_image(cub->mlx.__mlx, \
+			cub->frames[i], &cub->sprite_img[i].width, &cub->sprite_img[i].height);
+		if (!cub->sprite_img[i].__img)
+			(putendl_fd(ERR_MLX_XPM, 2), exit(EXIT_FAILURE));
+		cub->sprite_img[i].__addr = \
+			(int *)mlx_get_data_addr(cub->sprite_img[i].__img, \
+			&cub->sprite_img[i].pixel_bits, &cub->sprite_img[i].line_bytes, \
+			&cub->sprite_img[i].endian);
+		if (!cub->sprite_img[i].__addr)
+			(putendl_fd(ERR_MLX_ADDRESS, 2), exit(EXIT_FAILURE));
+	}
 	return (0);
 }
 
@@ -59,10 +96,8 @@ static int	init_textures(t_cub3d *cub)
 	i = -1;
 	while (++i < 4)
 	{
-		cub->tex[i].img.__img = mlx_xpm_file_to_image(cub->mlx.__mlx, \
-			cub->tex[i].file, &cub->tex[i].img.width, &cub->tex[i].img.height);
-		if (!cub->tex[i].img.__img)
-			(putendl_fd(ERR_MLX_XPM, 2), exit(EXIT_FAILURE));
+		cub->tex[i].img.__img = create_image(cub->tex[i].file, \
+			&cub->tex[i].img.width, &cub->tex[i].img.height);
 		cub->tex[i].img.__addr = \
 			(int *)mlx_get_data_addr(cub->tex[i].img.__img, \
 			&cub->tex[i].img.pixel_bits, &cub->tex[i].img.line_bytes, \

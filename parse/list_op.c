@@ -6,18 +6,18 @@
 /*   By: tamehri <tamehri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/21 09:22:20 by ooulcaid          #+#    #+#             */
-/*   Updated: 2024/06/23 18:06:02 by tamehri          ###   ########.fr       */
+/*   Updated: 2024/06/24 19:49:31 by tamehri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/cub3d.h"
 
-t_line	*new_line(t_cub3d *cub, char *line, int off, int last)
+t_line	*new_line(char *line, int off, int last)
 {
 	static int	y;
 	t_line		*node;
 
-	node = talloc(&(cub->heap), sizeof(t_line));
+	node = talloc(sizeof(t_line));
 	if (!node)
 		return (NULL);
 	node->last = last;
@@ -53,6 +53,5 @@ void	clear_lines(t_line *line)
 	{
 		tmp = line;
 		line = line->next;
-		(free(tmp->line), free(tmp));
 	}
 }

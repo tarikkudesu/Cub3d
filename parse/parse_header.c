@@ -6,7 +6,7 @@
 /*   By: tamehri <tamehri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/20 15:24:39 by ooulcaid          #+#    #+#             */
-/*   Updated: 2024/06/23 15:32:13 by tamehri          ###   ########.fr       */
+/*   Updated: 2024/06/24 19:49:39 by tamehri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ int	valid_component(t_cub3d *cub, char *line)
 		return (parse_color(&cub->floor_color, ft_strchr(trim, ' ')));
 	if (!ft_strncmp(trim, "C ", 2))
 		return (parse_color(&cub->ceiling_color, ft_strchr(trim, ' ')));
-	return (free(trim), 0);
+	return (0);
 }
 
 int	empty(char *str)

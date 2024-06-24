@@ -6,7 +6,7 @@
 /*   By: tamehri <tamehri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/20 15:26:58 by ooulcaid          #+#    #+#             */
-/*   Updated: 2024/06/23 16:40:52 by tamehri          ###   ########.fr       */
+/*   Updated: 2024/06/24 19:38:07 by tamehri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,10 +66,10 @@ int	get_map_cord(t_cub3d *cub)
 	int		max;
 
 	(get_min_max(cub->line, &min, &max), cub->map_width = max - min + 1);
-	cub->map = talloc(&cub->heap, sizeof(t_map *) * cub->map_height);
+	cub->map = talloc(sizeof(t_map *) * cub->map_height);
 	i = 0;
 	while (i < cub->map_height)
-		(cub->map)[i++] = talloc(&cub->heap, sizeof(t_map) * cub->map_width);
+		(cub->map)[i++] = talloc(sizeof(t_map) * cub->map_width);
 	line = cub->line;
 	i = 0;
 	while (line)

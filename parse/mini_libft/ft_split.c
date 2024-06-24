@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_split.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ooulcaid <ooulcaid@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tamehri <tamehri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/03 22:26:36 by ooulcaid          #+#    #+#             */
-/*   Updated: 2024/06/21 09:43:28 by ooulcaid         ###   ########.fr       */
+/*   Updated: 2024/06/24 19:50:02 by tamehri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,19 +30,6 @@ static int	count(char const *s, char c)
 			i++;
 	}
 	return (count);
-}
-
-static void	free_space(char **str, int len)
-{
-	int	i;
-
-	i = 0;
-	while (i < len)
-	{
-		free(*(str + i));
-		i++;
-	}
-	free(str);
 }
 
 static const char	*get_offset(char const *s, char c)
@@ -71,7 +58,7 @@ char	**ft_split(char const *s, char c)
 	if (!s)
 		return (NULL);
 	words = count(s, c);
-	strings = (char **)malloc((words + 1) * sizeof(char *));
+	strings = (char **)talloc((words + 1) * sizeof(char *));
 	if (!strings)
 		return (NULL);
 	i = 0;
@@ -80,10 +67,7 @@ char	**ft_split(char const *s, char c)
 		s = get_offset(s, c);
 		*(strings + i) = ft_substr(s, 0, len_word(s, c));
 		if (!*(strings + i))
-		{
-			free_space(strings, i);
 			return (NULL);
-		}
 		i++;
 		s += len_word(s, c);
 	}

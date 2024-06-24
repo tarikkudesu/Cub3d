@@ -6,27 +6,34 @@
 /*   By: tamehri <tamehri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/23 13:16:36 by tamehri           #+#    #+#             */
-/*   Updated: 2024/06/23 15:52:21 by tamehri          ###   ########.fr       */
+/*   Updated: 2024/06/24 20:08:25 by tamehri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef STRUCT_H
 # define STRUCT_H
 
-typedef struct s_line	t_line;
-typedef struct s_cub3d	t_cub3d;
-typedef struct s_color	t_color;
-typedef struct s_heap	t_heap;
-typedef struct s_mlx	t_mlx;
-typedef struct s_ray	t_ray;
-typedef struct s_map	t_map;
-typedef enum e_dir		t_dir;
-typedef struct s_tex	t_tex;
-typedef struct s_vect	t_vect;
-typedef struct s_door	t_door;
-typedef struct s_image	t_image;
-typedef struct s_sprite	t_sprite;
-typedef struct s_player	t_player;
+typedef struct s_line			t_line;
+typedef struct s_cub3d			t_cub3d;
+typedef struct s_color			t_color;
+typedef struct s_heap			t_heap;
+typedef struct s_mlx			t_mlx;
+typedef struct s_ray			t_ray;
+typedef struct s_map			t_map;
+typedef enum e_dir				t_dir;
+typedef struct s_tex			t_tex;
+typedef struct s_vect			t_vect;
+typedef struct s_door			t_door;
+typedef struct s_image			t_image;
+typedef struct s_sprite			t_sprite;
+typedef struct s_player			t_player;
+typedef struct s_imgcontainer	t_imgcontainer;
+
+struct s_imgcontainer
+{
+	void			*image;
+	t_imgcontainer	*next;
+};
 
 struct s_line
 {
@@ -152,30 +159,31 @@ struct s_sprite
 	t_sprite	*next;
 };
 
-/*--------------------------- Main Struct -------------------------------*/
 struct s_cub3d
 {
-	t_map		**map;
-	t_color		floor_color;
-	t_color		ceiling_color;
-	t_heap		*heap;
-	t_tex		tex[5];
-	t_mlx		mlx;
-	t_image		img;
-	int			mode;
-	t_player	player;
-	int			doors_n;
-	t_door		*doors;
-	t_sprite	*sprites;
-	t_image		sprite_img;
-	t_line		*line;
+	t_map			**map;
+	t_color			floor_color;
+	t_color			ceiling_color;
+	t_image			sprite_img[40];
+	t_imgcontainer	*imgcontainer;
+	t_tex			tex[5];
+	t_mlx			mlx;
+	t_image			img;
+	int				frame;
+	t_player		player;
+	t_sprite		*sprites_list;
+	char			*frames[40];
+	int				sprites_n;
+	t_sprite		*sprite;
+	t_door			*doors;
+	t_heap			*heap;
+	t_line			*line;
 
-	int			gun;
-	int			button;
-	int			map_width;
-	int			map_height;
-	int			wall_width;
+	int				mode;
+	int				button;
+	int				map_width;
+	int				map_height;
+	int				wall_width;
 };
-/*-----------------------------------------------------------------------*/
 
 #endif
