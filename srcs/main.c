@@ -6,7 +6,7 @@
 /*   By: tamehri <tamehri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/23 13:29:48 by tamehri           #+#    #+#             */
-/*   Updated: 2024/06/24 10:24:52 by tamehri          ###   ########.fr       */
+/*   Updated: 2024/06/24 11:19:21 by tamehri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,6 @@ int	main(int ac, char **av)
 	initialize_data(&cub);
 	if (!file_parse(&cub, av[1]))
 		return (2);
-	printf("%c\n", cub.player.pole);
 	// printf("width : %d height : %d\n", cub.map_width, cub.map_height);
 	// printf("pole %c\n", cub.player.pole);
 	// printf("floor : (%d %d %d), ceiling : (%d %d %d)\n", cub.floor_color.red, cub.floor_color.green, cub.floor_color.blue, cub.ceiling_color.red, cub.ceiling_color.green, cub.ceiling_color.blue);

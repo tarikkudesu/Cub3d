@@ -6,7 +6,7 @@
 /*   By: tamehri <tamehri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/23 17:14:14 by tamehri           #+#    #+#             */
-/*   Updated: 2024/06/23 17:14:38 by tamehri          ###   ########.fr       */
+/*   Updated: 2024/06/24 11:24:57 by tamehri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,8 @@ static int	door_hit(t_cub3d *cub, t_ray *ray, int x, int y)
 
 static int	hit(t_cub3d *cub, t_ray *ray, int x, int y)
 {
-	cub->map[x][y].visited = true;
+	if (x >= 0 && x < cub->map_height && y >= 0 && y < cub->map_width)
+		cub->map[x][y].visited = true;
 	if (is_door(cub, x, y))
 		return (door_hit(cub, ray, x, y));
 	return (is_wall(cub, x, y));

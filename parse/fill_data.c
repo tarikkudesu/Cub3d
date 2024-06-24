@@ -6,7 +6,7 @@
 /*   By: tamehri <tamehri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/20 21:19:48 by ooulcaid          #+#    #+#             */
-/*   Updated: 2024/06/23 16:41:21 by tamehri          ###   ########.fr       */
+/*   Updated: 2024/06/24 11:17:01 by tamehri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ int	fill_one(t_cub3d *cub, t_map **map, t_line *line, int min)
 		else if (line->line[i + min] == '0')
 			set_space(map, i);
 		else
-			(set_space(map, i), cub->player.pole = line->line[i + min]);
+			cub->map[line->y][i].v = line->line[i + min];
 		i++;
 	}
 	while (i < cub->map_width)

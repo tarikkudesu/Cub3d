@@ -6,7 +6,7 @@
 /*   By: tamehri <tamehri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/23 15:48:54 by tamehri           #+#    #+#             */
-/*   Updated: 2024/06/24 10:27:18 by tamehri          ###   ########.fr       */
+/*   Updated: 2024/06/24 10:33:13 by tamehri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,9 +31,9 @@ void new_door(t_cub3d *cub, int x, int y)
 {
 	t_door *door;
 
-	door = malloc(sizeof(t_door));
+	door = talloc(&cub->heap, sizeof(t_door));
 	if (!door)
-		return (NULL);
+		return ;
 	door->x = y;
 	door->y	= x;
 	door->isopen = 0;
@@ -41,5 +41,4 @@ void new_door(t_cub3d *cub, int x, int y)
 	door->progress = 0.f;
 	door->next = NULL;
 	door_addback(&cub->doors, door);
-	return (door);
 }

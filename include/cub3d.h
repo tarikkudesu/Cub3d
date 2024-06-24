@@ -6,7 +6,7 @@
 /*   By: tamehri <tamehri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/23 13:13:44 by tamehri           #+#    #+#             */
-/*   Updated: 2024/06/24 10:25:48 by tamehri          ###   ########.fr       */
+/*   Updated: 2024/06/24 10:33:29 by tamehri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,7 +99,7 @@ int	mouse_press(int button, int x, int y, void *param);
 void	move_player(int key, t_cub3d *cub);
 int	handle_key(int key, t_cub3d *cub);
 void	set_data(t_cub3d *cub);
-t_sprite	*new_sprite(t_cub3d *cub, int x, int y);
-t_door		*new_door(t_cub3d *cub, int x, int y);
+void		new_sprite(t_cub3d *cub, int x, int y);
+void		new_door(t_cub3d *cub, int x, int y);
 
 #endif
