@@ -1,8 +1,20 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   sprites.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: tamehri <tamehri@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/06/23 17:16:03 by tamehri           #+#    #+#             */
+/*   Updated: 2024/06/24 09:51:43 by tamehri          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../include/cub3d.h"
 
 bool	is_visible(t_cub3d *cub, int x, int y)
 {
-	return (cub->mapS[x][y].visited);
+	return (cub->map[x][y].visited);
 }
 
 static void	transform_sprite(t_cub3d *cub, double *trans_x, double *trans_y)

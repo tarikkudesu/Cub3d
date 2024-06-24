@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: tamehri <tamehri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/06/03 12:54:12 by tamehri           #+#    #+#             */
-/*   Updated: 2024/06/11 22:20:10 by tamehri          ###   ########.fr       */
+/*   Created: 2024/06/23 16:49:03 by tamehri           #+#    #+#             */
+/*   Updated: 2024/06/24 09:45:44 by tamehri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,18 +35,20 @@ static int	init_xpm(t_cub3d *cub)
 		"assets/ui/intro.xpm", a, a + 1);
 	if (!cub->mlx.__intro)
 		return (putendl_fd(ERR_MLX_XPM, 2), 1);
-	// cub->mlx.__gun = mlx_xpm_file_to_image(cub->mlx.__mlx, 
-	// 	"assets/gun.xpm", a, a + 1);
-	// if (!cub->mlx.__gun)
-	// 	return (putendl_fd(ERR_MLX_XPM, 2), 1);
-	// cub->mlx.__gun_shot = mlx_xpm_file_to_image(cub->mlx.__mlx, 
-	// 	"assets/gun_shot.xpm", a, a + 1);
-	// if (!cub->mlx.__gun_shot)
-	// 	return (putendl_fd(ERR_MLX_XPM, 2), 1);
 	cub->mlx.__menu = mlx_xpm_file_to_image(cub->mlx.__mlx, \
 		"assets/ui/controls.xpm", a, a + 1);
 	if (!cub->mlx.__menu)
 		return (putendl_fd(ERR_MLX_XPM, 2), 1);
+	cub->tex[4].img.__img = mlx_xpm_file_to_image(cub->mlx.__mlx, \
+		"assets/nova/door.xpm", &cub->tex[4].img.width, &cub->tex[4].img.height);
+	if (!cub->tex[4].img.__img)
+		(putendl_fd(ERR_MLX_XPM, 2), exit(EXIT_FAILURE));
+	cub->tex[4].img.__addr = \
+		(int *)mlx_get_data_addr(cub->tex[4].img.__img, \
+		&cub->tex[4].img.pixel_bits, &cub->tex[4].img.line_bytes, \
+		&cub->tex[4].img.endian);
+	if (!cub->tex[4].img.__addr)
+		(putendl_fd(ERR_MLX_ADDRESS, 2), exit(EXIT_FAILURE));
 	return (init_sprites(cub));
 }
 
@@ -68,16 +70,6 @@ static int	init_textures(t_cub3d *cub)
 		if (!cub->tex[i].img.__addr)
 			(putendl_fd(ERR_MLX_ADDRESS, 2), exit(EXIT_FAILURE));
 	}
-	cub->tex[i].img.__img = mlx_xpm_file_to_image(cub->mlx.__mlx, \
-		"assets/nova/door.xpm", &cub->tex[i].img.width, &cub->tex[i].img.height);
-	if (!cub->tex[i].img.__img)
-		(putendl_fd(ERR_MLX_XPM, 2), exit(EXIT_FAILURE));
-	cub->tex[i].img.__addr = \
-		(int *)mlx_get_data_addr(cub->tex[i].img.__img, \
-		&cub->tex[i].img.pixel_bits, &cub->tex[i].img.line_bytes, \
-		&cub->tex[i].img.endian);
-	if (!cub->tex[i].img.__addr)
-		(putendl_fd(ERR_MLX_ADDRESS, 2), exit(EXIT_FAILURE));
 	return (init_xpm(cub));
 }
 
@@ -103,9 +95,8 @@ int	init_window(t_cub3d *cub)
 {
 	if (init_mlx(cub))
 		return (1);
-	// mlx_hook(cub->mlx.__win, 2, 0, handle_key, cub);
 	mlx_loop_hook(cub->mlx.__mlx, update_frame, cub);
-	mlx_hook(cub->mlx.__win, 2, 1L<<0, handle_key, cub); // Linux
+	mlx_hook(cub->mlx.__win, 2, 0, handle_key, cub);
 	mlx_hook(cub->mlx.__win, 6, 0, mouse_move, cub);
 	mlx_hook(cub->mlx.__win, 4, 0, mouse_press, cub);
 	mlx_hook(cub->mlx.__win, 5, 0, mouse_release, cub);

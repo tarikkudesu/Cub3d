@@ -5,36 +5,12 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: tamehri <tamehri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/06/03 12:18:34 by tamehri           #+#    #+#             */
-/*   Updated: 2024/06/11 22:33:20 by tamehri          ###   ########.fr       */
+/*   Created: 2024/06/23 17:00:29 by tamehri           #+#    #+#             */
+/*   Updated: 2024/06/23 20:12:39 by tamehri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/cub3d.h"
-
-// int worldMap[mapWidth][mapHeight] =
-// {
-// {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
-// {1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1},
-// {1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1},
-// {1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1},
-// {1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1},
-// {1, 0, 1, 1, 1, 1, 2, 1, 1, 1, 1},
-// {1, 0, 1, 0, 0, 0, 0, 0, 0, 1, 1},
-// {1, 0, 1, 0, 0, 0, 0, 0, 0, 1, 1},
-// {1, 0, 1, 0, 0, 0, 0, 0, 0, 1, 1},
-// {1, 0, 1, 0, 0, 0, 0, 0, 0, 1, 1},
-// {1, 0, 2, 0, 0, 0, 0, 0, 0, 1, 1},
-// {1, 0, 1, 0, 0, 0, 0, 0, 0, 2, 1},
-// {1, 0, 1, 0, 0, 0, 0, 0, 0, 1, 1},
-// {1, 0, 1, 0, 0, 0, 0, 0, 0, 1, 1},
-// {1, 0, 1, 0, 0, 0, 0, 0, 0, 1, 1},
-// {1, 0, 1, 0, 0, 0, 0, 0, 0, 1, 1},
-// {1, 0, 1, 1, 1, 1, 2, 1, 1, 1, 1},
-// {1, 0, 1, 1, 1, 1, 1, 0, 0, 0, 1},
-// {1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1},
-// {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
-// };
 
 unsigned int	set_color(bool flag, int value)
 {
@@ -43,6 +19,42 @@ unsigned int	set_color(bool flag, int value)
 	if (flag == true)
 		color = value;
 	return (color);
+}
+
+static void	update_map(t_cub3d *cub)
+{
+	int	x;
+	int	y;
+
+	x = -1;
+	while (++x < cub->map_height)
+	{
+		y = -1;
+		while (++y < cub->map_width)
+			cub->map[x][y].visited = false;
+	}
+}
+
+static void	update_doors(t_cub3d *cub)
+{
+	t_door	*tmp;
+
+	tmp = cub->doors;
+	while (tmp)
+	{
+		if (tmp->ismoving == 1)
+		{
+			if (tmp->progress <= 1)
+				tmp->progress += 0.02;
+			else
+			{
+				tmp->progress = 1;
+				tmp->ismoving = 0;
+				tmp->isopen = 1;
+			}
+		}
+		tmp = tmp->next;
+	}
 }
 
 static void	put_background(t_cub3d *cub)
@@ -78,7 +90,7 @@ int	update_frame(void *param)
 	{
 		update_doors(cub);
 		put_background(cub);
-		// put_sprites(cub);
+		update_map(cub);
 		put_rays(cub);
 		minimap(cub);
 		mlx_put_image_to_window(cub->mlx.__mlx, \

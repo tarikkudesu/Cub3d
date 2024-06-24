@@ -5,19 +5,13 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: tamehri <tamehri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/06/07 18:21:02 by tamehri           #+#    #+#             */
-/*   Updated: 2024/06/11 22:46:24 by tamehri          ###   ########.fr       */
+/*   Created: 2024/06/23 17:14:14 by tamehri           #+#    #+#             */
+/*   Updated: 2024/06/23 17:14:38 by tamehri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/cub3d.h"
 
-int	is_wall(t_cub3d *cub, int x, int y)
-{
-	if (x >= 0 && x < cub->map_height && y >= 0 && y < cub->map_width)
-		return (cub->mapS[x][y].wall);
-	return (0);
-}
 
 static void	set_ray_data(t_cub3d *cub, t_ray *ray)
 {
@@ -64,7 +58,7 @@ static int	door_hit(t_cub3d *cub, t_ray *ray, int x, int y)
 
 static int	hit(t_cub3d *cub, t_ray *ray, int x, int y)
 {
-	cub->mapS[x][y].visited = true;
+	cub->map[x][y].visited = true;
 	if (is_door(cub, x, y))
 		return (door_hit(cub, ray, x, y));
 	return (is_wall(cub, x, y));

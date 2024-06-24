@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: tamehri <tamehri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/06/08 19:36:29 by tamehri           #+#    #+#             */
-/*   Updated: 2024/06/11 22:41:51 by tamehri          ###   ########.fr       */
+/*   Created: 2024/06/23 17:03:27 by tamehri           #+#    #+#             */
+/*   Updated: 2024/06/24 10:15:48 by tamehri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,6 @@ static void	put_background(t_cub3d *cub)
 	int	j;
 
 	i = 40;
-	// set_color(true, 0x142F3B);
 	set_color(true, BACKGROUND);
 	while (i < 240)
 	{
@@ -87,11 +86,14 @@ static void	put_dir_rays(t_cub3d *cub)
 	}
 }
 
-static	void	put_player(t_cub3d *cub)
+void	minimap(t_cub3d *cub)
 {
 	int	i;
 	int	j;
 
+	put_background(cub);
+	put_minimap(cub);
+	put_dir_rays(cub);
 	i = 137;
 	while (++i < 142)
 	{
@@ -99,12 +101,4 @@ static	void	put_player(t_cub3d *cub)
 		while (++j < 142)
 			minimap_pixel_put(i, j, &cub->img);
 	}
-}
-
-void	minimap(t_cub3d *cub)
-{
-	put_background(cub);
-	put_minimap(cub);
-	put_dir_rays(cub);
-	put_player(cub);
 }

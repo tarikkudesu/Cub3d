@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: tamehri <tamehri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/06/10 09:56:27 by tamehri           #+#    #+#             */
-/*   Updated: 2024/06/11 17:57:17 by tamehri          ###   ########.fr       */
+/*   Created: 2024/06/23 16:57:46 by tamehri           #+#    #+#             */
+/*   Updated: 2024/06/23 16:59:12 by tamehri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,3 +61,4 @@ int	mouse_press(int button, int x, int y, void *param)
 		move_player(W, cub);
 	return (0);
 }
+

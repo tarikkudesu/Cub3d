@@ -5,14 +5,15 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: tamehri <tamehri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/12 10:04:08 by tamehri           #+#    #+#             */
-/*   Updated: 2024/06/11 22:19:40 by tamehri          ###   ########.fr       */
+/*   Created: 2024/06/23 13:16:36 by tamehri           #+#    #+#             */
+/*   Updated: 2024/06/23 15:52:21 by tamehri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef STRUCT_H
 # define STRUCT_H
 
+typedef struct s_line	t_line;
 typedef struct s_cub3d	t_cub3d;
 typedef struct s_color	t_color;
 typedef struct s_heap	t_heap;
@@ -26,6 +27,15 @@ typedef struct s_door	t_door;
 typedef struct s_image	t_image;
 typedef struct s_sprite	t_sprite;
 typedef struct s_player	t_player;
+
+struct s_line
+{
+	int			y;
+    int			off;
+    int			last;
+    char		*line;
+    t_line		*next;
+};
 
 struct s_map
 {
@@ -139,13 +149,13 @@ struct s_sprite
 	int			index;
 	bool		visible;
 	double		distance;
-	t_sprite	*node;
+	t_sprite	*next;
 };
 
 /*--------------------------- Main Struct -------------------------------*/
 struct s_cub3d
 {
-	t_map		**mapS;
+	t_map		**map;
 	t_color		floor_color;
 	t_color		ceiling_color;
 	t_heap		*heap;
@@ -158,6 +168,7 @@ struct s_cub3d
 	t_door		*doors;
 	t_sprite	*sprites;
 	t_image		sprite_img;
+	t_line		*line;
 
 	int			gun;
 	int			button;

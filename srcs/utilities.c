@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: tamehri <tamehri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/06/10 20:52:52 by tamehri           #+#    #+#             */
-/*   Updated: 2024/06/11 19:31:47 by tamehri          ###   ########.fr       */
+/*   Created: 2024/06/23 17:04:29 by tamehri           #+#    #+#             */
+/*   Updated: 2024/06/23 17:05:38 by tamehri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ void	rotate_vector(t_vect *vector, double angle)
 	vector->y = tmp * sin(angle) + vector->y * cos(angle);
 }
 
-bool	is_in_cercle(int x, int y)
+static bool	is_in_cercle(int x, int y)
 {
 	int	dx;
 	int	dy;

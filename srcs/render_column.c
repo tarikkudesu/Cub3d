@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   render_wall.c                                      :+:      :+:    :+:   */
+/*   render_column.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tamehri <tamehri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/06/10 12:05:18 by tamehri           #+#    #+#             */
-/*   Updated: 2024/06/11 22:26:41 by tamehri          ###   ########.fr       */
+/*   Created: 2024/06/23 17:15:01 by tamehri           #+#    #+#             */
+/*   Updated: 2024/06/23 17:15:19 by tamehri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,3 +82,4 @@ void	render_column(t_vect *start, t_vect *end, t_ray *ray, t_cub3d *cub)
 	else
 		render_wall(start, end, ray, cub);
 }
+

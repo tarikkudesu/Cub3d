@@ -1,11 +1,11 @@
 
-NO ./assets/nova/north.xpm
-SO ./assets/nova/south.xpm
-WE ./assets/nova/west.xpm
-EA ./assets/nova/east.xpm
+NO ./assets/gris/north.xpm
+SO ./assets/gris/south.xpm
+WE ./assets/gris/west.xpm
+EA ./assets/gris/east.xpm
 
-F 0,0,0
-C 0,0,0
+F 20,47,59
+C 225,225,225
 
 11111111111
 10000000001
@@ -15,7 +15,7 @@ C 0,0,0
 10000000001
 10000000001
 10000000001
-10000000001
+11110000001
 10010001001
 10000000001
 11111211111

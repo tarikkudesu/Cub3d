@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: tamehri <tamehri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/06/03 12:54:58 by tamehri           #+#    #+#             */
-/*   Updated: 2024/06/11 22:07:30 by tamehri          ###   ########.fr       */
+/*   Created: 2024/06/23 15:00:40 by tamehri           #+#    #+#             */
+/*   Updated: 2024/06/23 16:42:44 by tamehri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,18 +15,6 @@
 void	leaks(void)
 {
 	system("leaks cub3D");
-}
-
-t_heap	*heapnew(void *content)
-{
-	t_heap	*head;
-
-	head = (t_heap *)malloc(sizeof(t_heap));
-	if (!head)
-		return (NULL);
-	head->ptr = content;
-	head->next = NULL;
-	return (head);
 }
 
 void	heap_add_back(t_heap **lst, t_heap *new)
@@ -44,6 +32,18 @@ void	heap_add_back(t_heap **lst, t_heap *new)
 	while (temp->next)
 		temp = temp->next;
 	temp->next = new;
+}
+
+t_heap	*heapnew(void *content)
+{
+	t_heap	*head;
+
+	head = (t_heap *)malloc(sizeof(t_heap));
+	if (!head)
+		return (NULL);
+	head->ptr = content;
+	head->next = NULL;
+	return (head);
 }
 
 void	clearheap(t_heap **node)
@@ -74,9 +74,10 @@ void	*talloc(t_heap **heap, size_t __size)
 	__node = heapnew(__ptr);
 	if (!__node)
 		return (free(__ptr), NULL);
-	heap_add_back(heap, __node);
-	if (Z)
-		printf("pointer \033[32m%p\033[0m was allocated, size : \
-			\033[32m%ld\033[0m\n", __ptr, __size);
+	(void)heap;
+	// heap_add_back(heap, __node);
+	// if (Z)
+	// 	printf("pointer \033[32m%p\033[0m was allocated, size : \
+	// 		\033[32m%ld\033[0m\n", __ptr, __size);
 	return (__ptr);
 }
