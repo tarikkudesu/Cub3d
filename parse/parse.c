@@ -3,70 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   parse.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tamehri <tamehri@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ooulcaid <ooulcaid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/20 15:29:12 by ooulcaid          #+#    #+#             */
-/*   Updated: 2024/06/25 11:54:07 by tamehri          ###   ########.fr       */
+/*   Updated: 2024/06/25 16:41:22 by ooulcaid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/cub3d.h"
-
-int	parse_map(t_cub3d *cub)
-{
-	t_line	*c_line;
-	t_line	*p_line;
-
-	p_line = cub->line;
-	if (!all_ones(p_line->line))
-		return (0);
-	while (p_line->next)
-	{
-		c_line = p_line->next;
-		if (c_line->off < p_line->off && !wall_exist(1, 1, c_line, p_line))
-			return (0);
-		if (c_line->off > p_line->off && !wall_exist(1, 0, c_line, p_line))
-			return (0);
-		c_line = p_line->next;
-		if (c_line->last < p_line->last && !wall_exist(0, 1, c_line, p_line))
-			return (0);
-		if (c_line->last > p_line->last && !wall_exist(0, 0, c_line, p_line))
-			return (0);
-		if (c_line->line[c_line->off] != '1' \
-		|| c_line->line[c_line->last] != '1')
-			return (0);
-		p_line = c_line;
-		c_line = c_line->next;
-	}
-	return (all_ones(p_line->line));
-}
-
-int	parse_line(t_cub3d *cub, char *line, int *off, int *last)
-{
-	int			i;
-
-	i = 0;
-	while (line[i] && line[i] == ' ')
-		i++;
-	*off = i;
-	while (line[i])
-	{
-		while (line[i] && line[i] != '\n' && valid_char(line[i]) \
-		&& line[i] != ' ')
-		{	
-			if (line[i] == 'N' || line[i] == 'E' || line[i] == 'W' \
-			|| line[i] == 'S')
-				cub->player_nbr++;
-			i++;
-		}
-		if (line[i] && line[i] != ' ' && !valid_char(line[i]))
-			return (0);
-		*last = i - 1;
-		while (line[i] && (line[i] == ' ' || line[i] == '\n'))
-			i++;
-	}
-	return (1);
-}
 
 int	valid_map(t_cub3d *cub, int fd)
 {

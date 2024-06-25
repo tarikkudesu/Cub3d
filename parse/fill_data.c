@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fill_data.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tamehri <tamehri@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ooulcaid <ooulcaid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/20 21:19:48 by ooulcaid          #+#    #+#             */
-/*   Updated: 2024/06/24 11:17:01 by tamehri          ###   ########.fr       */
+/*   Updated: 2024/06/25 16:40:49 by ooulcaid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,8 @@ int	fill_one(t_cub3d *cub, t_map **map, t_line *line, int min)
 	int	i;
 
 	i = 0;
-	while (line->line[i + min] && line->line[i + min] != '\n')
+	while (line->line[i + min] && line->line[i + min] \
+		!= '\n' && i < cub->map_width)
 	{
 		if (line->line[i + min] == ' ' || line->line[i + min] == '1')
 			(set_wall(map, i));

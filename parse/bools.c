@@ -3,12 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   bools.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tamehri <tamehri@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ooulcaid <ooulcaid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/20 15:27:56 by ooulcaid          #+#    #+#             */
-/*   Updated: 2024/06/23 16:02:01 by tamehri          ###   ########.fr       */
+/*   Updated: 2024/06/25 13:16:41 by ooulcaid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "../include/cub3d.h"
 
 int	is_num(char c)
 {
@@ -34,8 +36,9 @@ int	ft_strcmp(char *s1, char *s2)
 	return (*s1 - *s2);
 }
 
-int	valid_char(char line)
+int	valid_char(t_cub3d *cub, char line)
 {
-	return (line == 'N' || line == 'E' || line == 'W' || line == 'S' \
-	||line == '0' || line == '1' || line == '2' || line == '\n' || line == '3');
+	if (line == 'N' || line == 'E' || line == 'W' || line == 'S')
+		return (++cub->player_nbr);
+	return (line == '0' || line == '1' || line == '2' || line == '3');
 }

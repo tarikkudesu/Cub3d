@@ -6,7 +6,7 @@
 /*   By: tamehri <tamehri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/23 13:13:44 by tamehri           #+#    #+#             */
-/*   Updated: 2024/06/25 16:55:37 by tamehri          ###   ########.fr       */
+/*   Updated: 2024/06/25 17:18:39 by tamehri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,27 +29,28 @@
 # endif
 
 /*--------------------parser-------------------*/
-int 	get_map_cord(t_cub3d *cub);
-int 	file_parse(t_cub3d *cub, char *file);
-void	line_add_back(t_line **line, t_line *node);
-void	get_min_max(t_line *line, int *min, int *max);
-t_line	*new_line(char *line, int off, int last);
-int 	fill_one(t_cub3d *cub, t_map **map, t_line *line, int min);
+int				parse_map(t_cub3d *cub);
+int				get_map_cord(t_cub3d *cub);
+int				file_parse(t_cub3d *cub, char *file);
+int				check_arround(t_line *line, int i);
+t_line			*new_line(char *line, int off, int last);
+void			line_add_back(t_line **line, t_line *node);
+void			get_min_max(t_line *line, int *min, int *max);
+int				parse_line(t_cub3d *cub, char *line, int *off, int *last);
+int				fill_one(t_cub3d *cub, t_map **map, t_line *line, int min);
 
-//bools
-int 	is_num(char c);
-int 	empty(char *line);
-int 	all_num(char *str);
-int 	all_ones(char *line);
-int 	valid_char(char line);
-int 	valid_component(t_cub3d *cub, char *line);
-int 	wall_exist(int front, int less, t_line *c_line, t_line *p_line);
+int				is_num(char c);
+int				empty(char *line);
+int				all_num(char *str);
+int				all_ones(t_line *line);
+int				valid_char(t_cub3d *cub, char line);
+int				valid_component(t_cub3d *cub, char *line);
+int				wall_exist(t_line *c_line, t_line *p_line);
 
-//mini_libft
 char			*get_next_line(int fd);
-int 			ft_atoi(const char *s);
-int 			ft_strlen(const char *s);
-int 			ft_strcmp(char *s1, char *s2);
+int				ft_atoi(const char *s);
+int				ft_strlen(const char *s);
+int				ft_strcmp(char *s1, char *s2);
 char			*ft_strchr(const char *s, int c);
 char			**ft_split(char const *s, char c);
 char			*ft_strrchr(const char *s, int c);
@@ -68,8 +69,6 @@ void			change(char **s1, char **s2);
 void			*talloc(size_t __size);
 char			*ft_strdup(const char *s1);
 void			putendl_fd(char *s, int fd);
-
-/* FUNCTIONS */
 void			set_direction(t_cub3d *cub);
 void			update_doors(t_cub3d *cub);
 void			terror(char *__err__message);

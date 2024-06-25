@@ -6,7 +6,7 @@
 /*   By: tamehri <tamehri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/23 13:16:36 by tamehri           #+#    #+#             */
-/*   Updated: 2024/06/25 13:28:27 by tamehri          ###   ########.fr       */
+/*   Updated: 2024/06/25 16:58:08 by tamehri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,7 @@ struct s_line
     int			last;
     char		*line;
     t_line		*next;
+    t_line		*prev;
 };
 
 struct s_map

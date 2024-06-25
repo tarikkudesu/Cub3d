@@ -6,7 +6,7 @@
 /*   By: tamehri <tamehri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/24 10:23:45 by tamehri           #+#    #+#             */
-/*   Updated: 2024/06/25 15:39:06 by tamehri          ###   ########.fr       */
+/*   Updated: 2024/06/25 17:04:13 by tamehri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,7 @@ void	set_data(t_cub3d *cub)
 		x = -1;
 		while (++x < cub->map_width)
 		{
+			printf("%d %d-%d  ", cub->map[y][x].v, cub->map[y][x].wall, cub->map[y][x].door);
 			if (cub->map[y][x].door)
 				new_door(cub, x, y);
 			else if (cub->map[y][x].v == 3)
@@ -58,6 +59,7 @@ void	set_data(t_cub3d *cub)
 				cub->player.pos.y = x + 0.5;
 			}
 		}
+		printf("\n");
 	}
 	set_player_data(cub);
 }
