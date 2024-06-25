@@ -6,7 +6,7 @@
 /*   By: tamehri <tamehri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/23 15:00:40 by tamehri           #+#    #+#             */
-/*   Updated: 2024/06/25 11:52:59 by tamehri          ###   ########.fr       */
+/*   Updated: 2024/06/25 16:54:52 by tamehri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ t_cub3d	*get_cub(t_cub3d *cub)
 
 void	leaks(void)
 {
-	system("lsof -c cub3D");
+	system("leaks cub3D");
 }
 
 void	*talloc(size_t __size)

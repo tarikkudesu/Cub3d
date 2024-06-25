@@ -1,0 +1,16 @@
+F 139,99,58
+C 171,154,137
+
+NO ./assets/nova/north.xpm
+SO ./assets/nova/south.xpm
+WE ./assets/nova/west.xpm
+EA ./assets/nova/east.xpm
+
+11111
+11011
+100011
+10N0031
+100011
+11211
+11011
+  1

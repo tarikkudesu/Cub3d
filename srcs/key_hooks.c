@@ -6,7 +6,7 @@
 /*   By: tamehri <tamehri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/23 16:53:19 by tamehri           #+#    #+#             */
-/*   Updated: 2024/06/25 14:18:36 by tamehri          ###   ########.fr       */
+/*   Updated: 2024/06/25 15:43:42 by tamehri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,13 +38,13 @@ static void	rotate_player(int key, t_cub3d *cub)
 {
 	if (key == RIGHT)
 	{
-		rotate_vector(&cub->player.dir, 0.0174533 * 4);
-		rotate_vector(&cub->player.plan, 0.0174533 * 4);
+		rotate_vector(&cub->player.dir, -0.0174533 * 4);
+		rotate_vector(&cub->player.plan, -0.0174533 * 4);
 	}
 	else if (key == LEFT)
 	{
-		rotate_vector(&cub->player.dir, -0.0174533 * 4);
-		rotate_vector(&cub->player.plan, -0.0174533 * 4);
+		rotate_vector(&cub->player.dir, 0.0174533 * 4);
+		rotate_vector(&cub->player.plan, 0.0174533 * 4);
 	}
 	set_direction(cub);
 }
@@ -60,9 +60,9 @@ void	move_player(int key, t_cub3d *cub)
 	else if (key == S)
 		rotate_vector(&rotated, M_PI);
 	else if (key == A)
-		rotate_vector(&rotated, - M_PI / 2);
-	else if (key == D)
 		rotate_vector(&rotated, M_PI / 2);
+	else if (key == D)
+		rotate_vector(&rotated, - M_PI / 2);
 	check_for_wall(cub, &rotated);
 }
 

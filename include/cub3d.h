@@ -6,7 +6,7 @@
 /*   By: tamehri <tamehri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/23 13:13:44 by tamehri           #+#    #+#             */
-/*   Updated: 2024/06/25 10:33:43 by tamehri          ###   ########.fr       */
+/*   Updated: 2024/06/25 16:55:37 by tamehri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,32 +46,32 @@ int 	valid_component(t_cub3d *cub, char *line);
 int 	wall_exist(int front, int less, t_line *c_line, t_line *p_line);
 
 //mini_libft
-char	*get_next_line(int fd);
-int 	ft_atoi(const char *s);
-int 	ft_strlen(const char *s);
-int 	ft_strcmp(char *s1, char *s2);
-char	*ft_strchr(const char *s, int c);
-char	**ft_split(char const *s, char c);
-char	*ft_strrchr(const char *s, int c);
-char	*ft_strtrim(char const *s1, char const *set);
-int 	ft_strncmp(const char *s1, const char *s2, size_t n);
-char	*ft_substr(char const *s, unsigned int start, size_t len);
-char	*get_next_line(int fd);
-char	*ft_gl(char	**buf);
-int		read_swap(char **buf, int fd, int *check);
-char	*strjoin(char *s1, char *s2);
-int		get_index(char *s);
-int		exist(char *s);
-void	ft_cpy(char *dst, char *src, unsigned int len);
-void	change(char **s1, char **s2);
+char			*get_next_line(int fd);
+int 			ft_atoi(const char *s);
+int 			ft_strlen(const char *s);
+int 			ft_strcmp(char *s1, char *s2);
+char			*ft_strchr(const char *s, int c);
+char			**ft_split(char const *s, char c);
+char			*ft_strrchr(const char *s, int c);
+char			*ft_strtrim(char const *s1, char const *set);
+int 			ft_strncmp(const char *s1, const char *s2, size_t n);
+char			*ft_substr(char const *s, unsigned int start, size_t len);
+char			*get_next_line(int fd);
+char			*ft_gl(char	**buf);
+int				read_swap(char **buf, int fd, int *check);
+char			*strjoin(char *s1, char *s2);
+int				get_index(char *s);
+int				exist(char *s);
+void			ft_cpy(char *dst, char *src, unsigned int len);
+void			change(char **s1, char **s2);
 
-void	*talloc(size_t __size);
-char	*ft_strdup(const char *s1);
-void	putendl_fd(char *s, int fd);
+void			*talloc(size_t __size);
+char			*ft_strdup(const char *s1);
+void			putendl_fd(char *s, int fd);
 
 /* FUNCTIONS */
-void	set_direction(t_cub3d *cub);
-void	update_doors(t_cub3d *cub);
+void			set_direction(t_cub3d *cub);
+void			update_doors(t_cub3d *cub);
 void			terror(char *__err__message);
 void			destroy_images(t_imgcontainer *node);
 void			clearheap(t_heap **node);
