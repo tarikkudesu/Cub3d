@@ -6,7 +6,7 @@
 /*   By: tamehri <tamehri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/23 17:14:14 by tamehri           #+#    #+#             */
-/*   Updated: 2024/06/24 11:24:57 by tamehri          ###   ########.fr       */
+/*   Updated: 2024/06/25 13:51:42 by tamehri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,9 +37,7 @@ static int	door_hit(t_cub3d *cub, t_ray *ray, int x, int y)
 	{
 		if (tmp->x == x && tmp->y == y)
 		{
-			if (tmp->isopen)
-				return (0);
-			else
+			if (!tmp->isopen || (tmp->isopen && tmp->ismoving))
 			{
 				set_ray_data(cub, ray);
 				if (ray->tex_pos_x <= tmp->progress)
@@ -50,6 +48,8 @@ static int	door_hit(t_cub3d *cub, t_ray *ray, int x, int y)
 					return (2);
 				}
 			}
+			else
+				return (0);
 		}
 		tmp = tmp->next;
 	}

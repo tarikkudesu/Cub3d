@@ -6,11 +6,29 @@
 /*   By: tamehri <tamehri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/23 16:57:46 by tamehri           #+#    #+#             */
-/*   Updated: 2024/06/23 16:59:12 by tamehri          ###   ########.fr       */
+/*   Updated: 2024/06/25 14:18:15 by tamehri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/cub3d.h"
+
+void	set_direction(t_cub3d *cub)
+{
+	if (fabs(cub->player.dir.x) < fabs(cub->player.dir.y))
+	{
+		if (cub->player.dir.y < 0)
+			cub->player.pole = NORTH;
+		else
+			cub->player.pole = SOUTH;
+	}
+	else
+	{
+		if (cub->player.dir.x < 0)
+			cub->player.pole = WEST;
+		else
+			cub->player.pole = EASTH;
+	}
+}
 
 int	mouse_release(int button, int x, int y, void *param)
 {
@@ -39,6 +57,7 @@ int	mouse_move(int x, int y, void *param)
 	{
 		rotate_vector(&cub->player.dir, 2 * (old_x - x) / (double)WIDTH);
 		rotate_vector(&cub->player.plan, 2 * (old_x - x) / (double)WIDTH);
+		set_direction(cub);
 	}
 	old_x = x;
 	return (0);

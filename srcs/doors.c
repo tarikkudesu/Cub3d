@@ -6,7 +6,7 @@
 /*   By: tamehri <tamehri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/23 16:19:16 by tamehri           #+#    #+#             */
-/*   Updated: 2024/06/24 10:24:29 by tamehri          ###   ########.fr       */
+/*   Updated: 2024/06/25 14:12:21 by tamehri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ static void	open_door(t_cub3d *cub, int d_x, int d_y)
 	t_door	*tmp;
 
 	tmp = cub->doors;
+	puts("      opening door        ");
 	while (tmp)
 	{
 		if (tmp->x == d_x && tmp->y == d_y)

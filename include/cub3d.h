@@ -70,6 +70,8 @@ char	*ft_strdup(const char *s1);
 void	putendl_fd(char *s, int fd);
 
 /* FUNCTIONS */
+void	set_direction(t_cub3d *cub);
+void	update_doors(t_cub3d *cub);
 void			terror(char *__err__message);
 void			destroy_images(t_imgcontainer *node);
 void			clearheap(t_heap **node);

@@ -6,7 +6,7 @@
 /*   By: tamehri <tamehri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/23 17:00:29 by tamehri           #+#    #+#             */
-/*   Updated: 2024/06/24 19:18:58 by tamehri          ###   ########.fr       */
+/*   Updated: 2024/06/25 13:59:07 by tamehri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,28 +35,6 @@ static void	update_map(t_cub3d *cub)
 		y = -1;
 		while (++y < cub->map_width)
 			cub->map[x][y].visited = false;
-	}
-}
-
-static void	update_doors(t_cub3d *cub)
-{
-	t_door	*tmp;
-
-	tmp = cub->doors;
-	while (tmp)
-	{
-		if (tmp->ismoving == 1)
-		{
-			if (tmp->progress <= 1)
-				tmp->progress += 0.02;
-			else
-			{
-				tmp->progress = 1;
-				tmp->ismoving = 0;
-				tmp->isopen = 1;
-			}
-		}
-		tmp = tmp->next;
 	}
 }
 

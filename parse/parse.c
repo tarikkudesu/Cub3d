@@ -6,7 +6,7 @@
 /*   By: tamehri <tamehri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/20 15:29:12 by ooulcaid          #+#    #+#             */
-/*   Updated: 2024/06/25 11:48:08 by tamehri          ###   ########.fr       */
+/*   Updated: 2024/06/25 11:54:07 by tamehri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,8 +85,6 @@ int	valid_map(t_cub3d *cub, int fd)
 		if (!parse_line(cub, line, &first, &last))
 			return (0);
 		node = new_line(line, first, last);
-		if (!node)
-			return (0);
 		line_add_back(&cub->line, node);
 		cub->map_height++;
 		line = get_next_line(fd);

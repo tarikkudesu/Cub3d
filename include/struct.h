@@ -6,7 +6,7 @@
 /*   By: tamehri <tamehri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/23 13:16:36 by tamehri           #+#    #+#             */
-/*   Updated: 2024/06/25 11:08:56 by tamehri          ###   ########.fr       */
+/*   Updated: 2024/06/25 13:28:27 by tamehri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,7 @@ struct s_door
 {
 	int		x;
 	int		y;
+	int		timer;
 	int		isopen;
 	int		ismoving;
 	double	progress;

@@ -7,6 +7,6 @@ if [ $# -gt 0 ]; then
 	# make clean
 else
 	# cc -Wall -Wextra -Werror $file -o cub3D -g -L./minilibx-linux -lmlx -lXext -lX11 -lm -lbsd
-	cc -Wall -Wextra -Werror $file -o cub3D -g -fsanitize=address -L/usr/local/lib -l mlx -framework OpenGL -framework AppKit
+	cc -Wall -Wextra -Werror $file -o cub3D -g -L/usr/local/lib -l mlx -framework OpenGL -framework AppKit
 	# make clean
 fi

@@ -6,7 +6,7 @@
 /*   By: tamehri <tamehri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/23 15:48:54 by tamehri           #+#    #+#             */
-/*   Updated: 2024/06/24 19:38:20 by tamehri          ###   ########.fr       */
+/*   Updated: 2024/06/25 13:32:24 by tamehri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,10 +32,9 @@ void new_door(t_cub3d *cub, int x, int y)
 	t_door *door;
 
 	door = talloc(sizeof(t_door));
-	if (!door)
-		return ;
 	door->x = y;
 	door->y	= x;
+	door->timer = 0;
 	door->isopen = 0;
 	door->ismoving = 0;
 	door->progress = 0.f;

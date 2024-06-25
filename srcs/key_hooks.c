@@ -6,7 +6,7 @@
 /*   By: tamehri <tamehri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/23 16:53:19 by tamehri           #+#    #+#             */
-/*   Updated: 2024/06/24 15:43:18 by tamehri          ###   ########.fr       */
+/*   Updated: 2024/06/25 14:18:36 by tamehri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,20 +46,7 @@ static void	rotate_player(int key, t_cub3d *cub)
 		rotate_vector(&cub->player.dir, -0.0174533 * 4);
 		rotate_vector(&cub->player.plan, -0.0174533 * 4);
 	}
-	if (fabs(cub->player.dir.x) < fabs(cub->player.dir.y))
-	{
-		if (cub->player.dir.y < 0)
-			cub->player.pole = NORTH;
-		else
-			cub->player.pole = SOUTH;
-	}
-	else
-	{
-		if (cub->player.dir.x < 0)
-			cub->player.pole = WEST;
-		else
-			cub->player.pole = EASTH;
-	}
+	set_direction(cub);
 }
 
 void	move_player(int key, t_cub3d *cub)
