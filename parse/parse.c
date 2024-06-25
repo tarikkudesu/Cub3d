@@ -6,7 +6,7 @@
 /*   By: tamehri <tamehri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/20 15:29:12 by ooulcaid          #+#    #+#             */
-/*   Updated: 2024/06/24 19:49:46 by tamehri          ###   ########.fr       */
+/*   Updated: 2024/06/25 11:48:08 by tamehri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,9 +41,8 @@ int	parse_map(t_cub3d *cub)
 	return (all_ones(p_line->line));
 }
 
-int	parse_line(char *line, int *off, int *last)
+int	parse_line(t_cub3d *cub, char *line, int *off, int *last)
 {
-	static int	bol;
 	int			i;
 
 	i = 0;
@@ -54,13 +53,13 @@ int	parse_line(char *line, int *off, int *last)
 	{
 		while (line[i] && line[i] != '\n' && valid_char(line[i]) \
 		&& line[i] != ' ')
-		{
+		{	
 			if (line[i] == 'N' || line[i] == 'E' || line[i] == 'W' \
 			|| line[i] == 'S')
-				bol++;
+				cub->player_nbr++;
 			i++;
 		}
-		if (bol > 1 || (line[i] && line[i] != ' ' && !valid_char(line[i])))
+		if (line[i] && line[i] != ' ' && !valid_char(line[i]))
 			return (0);
 		*last = i - 1;
 		while (line[i] && (line[i] == ' ' || line[i] == '\n'))
@@ -81,7 +80,9 @@ int	valid_map(t_cub3d *cub, int fd)
 		line = get_next_line(fd);
 	while (line)
 	{
-		if (!parse_line(line, &first, &last))
+		if (empty(line))
+			return (0);
+		if (!parse_line(cub, line, &first, &last))
 			return (0);
 		node = new_line(line, first, last);
 		if (!node)
@@ -90,9 +91,9 @@ int	valid_map(t_cub3d *cub, int fd)
 		cub->map_height++;
 		line = get_next_line(fd);
 	}
-	if (cub->map_height < 3)
+	if (cub->map_height < 3 || cub->map_height > 100)
 		return (0);
-	return (parse_map(cub) && get_map_cord(cub));
+	return (cub->player_nbr == 1 && parse_map(cub) && get_map_cord(cub));
 }
 
 int	headers_parse(t_cub3d *cub, int fd)
@@ -104,13 +105,13 @@ int	headers_parse(t_cub3d *cub, int fd)
 	line = get_next_line(fd);
 	while (line && i < 6)
 	{
-		if (!empty(line)) // the line maybe empty
+		if (!empty(line))
 		{
 			if (!valid_component(cub, line))
 				return (0);
 			i++;
 		}
-		if (i < 6) //in order to not lose the offset of the first line of map
+		if (i < 6)
 			line = get_next_line(fd);
 	}
 	return (line != NULL);

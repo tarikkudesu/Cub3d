@@ -6,7 +6,7 @@
 /*   By: tamehri <tamehri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/24 10:23:45 by tamehri           #+#    #+#             */
-/*   Updated: 2024/06/24 20:08:42 by tamehri          ###   ########.fr       */
+/*   Updated: 2024/06/25 11:09:12 by tamehri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,8 @@ void	set_data(t_cub3d *cub)
 	set_player_data(cub);
 }
 
+
+
 void	initialize_data(t_cub3d *cub)
 {
 	if (Z) {atexit(leaks);}
@@ -74,13 +76,16 @@ void	initialize_data(t_cub3d *cub)
 	cub->sprites_list = NULL;
 	cub->mode = INTRO;
 	cub->frame = 0;
-	cub->player.pole = WEST;
+	cub->map_height = 0;
+	cub->map_width = 0;
+	cub->player_nbr = 0;
 	cub->imgcontainer = NULL;
 	cub->wall_width = 10;
 	cub->img.__img = NULL;
 	cub->img.__addr = NULL;
-	cub->player.pos.x = 1.5;
-	cub->player.pos.y = 1.5;
-	cub->map_width = 0;
-	cub->map_height = 0;
+	cub->mlx.__mlx = NULL;
+	cub->mlx.__win = NULL;
+	cub->mlx.__menu = NULL;
+	cub->mlx.__intro = NULL;
+	cub->img.__img = NULL;
 }

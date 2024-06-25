@@ -6,7 +6,7 @@
 /*   By: tamehri <tamehri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/23 13:13:44 by tamehri           #+#    #+#             */
-/*   Updated: 2024/06/24 19:38:55 by tamehri          ###   ########.fr       */
+/*   Updated: 2024/06/25 10:33:43 by tamehri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,11 +70,14 @@ char	*ft_strdup(const char *s1);
 void	putendl_fd(char *s, int fd);
 
 /* FUNCTIONS */
-void	image_addback(t_imgcontainer **lst, t_imgcontainer *new);
-t_heap	*image_new(void *content);
-void	heap_addback(t_heap **lst, t_heap *new);
-t_heap	*heap_new(void *content);
-void	leaks(void);
+void			terror(char *__err__message);
+void			destroy_images(t_imgcontainer *node);
+void			clearheap(t_heap **node);
+void			init_textures(t_cub3d *cub);
+void			*create_image(char *filename, int *width, int *height);
+void			heap_addback(t_heap **lst, t_heap *new);
+t_heap			*heap_new(void *content);
+void			leaks(void);
 t_cub3d			*get_cub(t_cub3d *cub);
 bool			set_sprite_data(t_cub3d *cub);
 void			set_distance(t_cub3d *cub);

@@ -1,11 +1,10 @@
+F 139,99,58
+C 171,154,137
 
-NO ./assets/gris/north.xpm
-SO ./assets/gris/south.xpm
-WE ./assets/gris/west.xpm
-EA ./assets/gris/east.xpm
-
-F 20,47,59
-C 225,225,225
+NO ./assets/nova/north.xpm
+SO ./assets/nova/south.xpm
+WE ./assets/nova/west.xpm
+EA ./assets/nova/east.xpm
 
 11111111111
 10000000001

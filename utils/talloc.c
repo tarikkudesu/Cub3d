@@ -6,7 +6,7 @@
 /*   By: tamehri <tamehri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/23 15:00:40 by tamehri           #+#    #+#             */
-/*   Updated: 2024/06/24 20:12:10 by tamehri          ###   ########.fr       */
+/*   Updated: 2024/06/25 10:39:26 by tamehri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,11 +35,11 @@ void	*talloc(size_t __size)
 	__cub = get_cub(NULL);
 	__ptr = malloc(__size);
 	if (__ptr == NULL)
-		return (NULL);
+		terror(ERR_MAL);
 	__node = heap_new(__ptr);
 	if (!__node)
-		return (free(__ptr), NULL);
-	heap_add_back(&__cub->heap, __node);
+		(free(__ptr), terror(ERR_MAL));
+	heap_addback(&__cub->heap, __node);
 	// if (Z)
 		// printf("pointer \033[32m%p\033[0m was allocated, size : \
 		// 	\033[32m%ld\033[0m\n", __ptr, __size);

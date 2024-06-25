@@ -6,7 +6,7 @@
 /*   By: tamehri <tamehri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/23 13:16:36 by tamehri           #+#    #+#             */
-/*   Updated: 2024/06/24 20:08:25 by tamehri          ###   ########.fr       */
+/*   Updated: 2024/06/25 11:08:56 by tamehri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,9 +56,7 @@ struct s_mlx
 {
 	void	*__mlx;
 	void	*__win;
-	void	*__gun;
 	void	*__intro;
-	void	*__gun_shot;
 	void	*__menu;
 };
 
@@ -179,6 +177,7 @@ struct s_cub3d
 	t_heap			*heap;
 	t_line			*line;
 
+	int				player_nbr;
 	int				mode;
 	int				button;
 	int				map_width;
