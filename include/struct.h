@@ -6,7 +6,7 @@
 /*   By: tamehri <tamehri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/23 13:16:36 by tamehri           #+#    #+#             */
-/*   Updated: 2024/06/25 16:58:08 by tamehri          ###   ########.fr       */
+/*   Updated: 2024/06/25 19:40:24 by tamehri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,11 +38,11 @@ struct s_imgcontainer
 struct s_line
 {
 	int			y;
-    int			off;
-    int			last;
-    char		*line;
-    t_line		*next;
-    t_line		*prev;
+	int			off;
+	int			last;
+	char		*line;
+	t_line		*next;
+	t_line		*prev;
 };
 
 struct s_map
@@ -66,8 +66,9 @@ struct s_door
 	int		x;
 	int		y;
 	int		timer;
-	int		isopen;
-	int		ismoving;
+	bool	isopen;
+	bool	isopening;
+	bool	isclosing;
 	double	progress;
 	t_door	*next;
 };

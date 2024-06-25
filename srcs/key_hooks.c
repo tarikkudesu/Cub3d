@@ -6,7 +6,7 @@
 /*   By: tamehri <tamehri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/23 16:53:19 by tamehri           #+#    #+#             */
-/*   Updated: 2024/06/25 15:43:42 by tamehri          ###   ########.fr       */
+/*   Updated: 2024/06/25 17:28:50 by tamehri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ void	move_player(int key, t_cub3d *cub)
 	else if (key == A)
 		rotate_vector(&rotated, M_PI / 2);
 	else if (key == D)
-		rotate_vector(&rotated, - M_PI / 2);
+		rotate_vector(&rotated, -1 * M_PI / 2);
 	check_for_wall(cub, &rotated);
 }
 
@@ -70,8 +70,8 @@ int	handle_key(int key, t_cub3d *cub)
 {
 	if (key == Q)
 		exit_program(cub);
-	else if (key == SPACE && cub->mode == INTRO && cub->button == 0) {
-		cub->mode = GAME; return (0); }
+	else if (key == SPACE && cub->mode == INTRO && cub->button == 0)
+		return (cub->mode = GAME, 0);
 	else if (key == ESC && cub->mode == MENU && cub->button == 0)
 		cub->mode = GAME;
 	else if (key == ESC && cub->mode == GAME && cub->button == 0)

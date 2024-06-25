@@ -6,7 +6,7 @@
 /*   By: tamehri <tamehri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/24 10:23:45 by tamehri           #+#    #+#             */
-/*   Updated: 2024/06/25 17:04:13 by tamehri          ###   ########.fr       */
+/*   Updated: 2024/06/25 17:40:44 by tamehri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,8 @@ static void	set_player_data(t_cub3d *cub)
 	cub->player.plan.y = 0.66;
 	if (cub->player.pole == WEST)
 	{
-		rotate_vector(&cub->player.dir, - M_PI / 2);
-		rotate_vector(&cub->player.plan, - M_PI / 2);
+		rotate_vector(&cub->player.dir, -1 * M_PI / 2);
+		rotate_vector(&cub->player.plan, -1 * M_PI / 2);
 	}
 	else if (cub->player.pole == SOUTH)
 	{
@@ -46,7 +46,6 @@ void	set_data(t_cub3d *cub)
 		x = -1;
 		while (++x < cub->map_width)
 		{
-			printf("%d %d-%d  ", cub->map[y][x].v, cub->map[y][x].wall, cub->map[y][x].door);
 			if (cub->map[y][x].door)
 				new_door(cub, x, y);
 			else if (cub->map[y][x].v == 3)
@@ -59,16 +58,12 @@ void	set_data(t_cub3d *cub)
 				cub->player.pos.y = x + 0.5;
 			}
 		}
-		printf("\n");
 	}
 	set_player_data(cub);
 }
 
-
-
 void	initialize_data(t_cub3d *cub)
 {
-	if (Z) {atexit(leaks);}
 	cub->button = 0;
 	cub->heap = NULL;
 	cub->map = NULL;

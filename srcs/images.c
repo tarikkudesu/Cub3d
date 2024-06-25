@@ -6,7 +6,7 @@
 /*   By: tamehri <tamehri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/24 20:04:00 by tamehri           #+#    #+#             */
-/*   Updated: 2024/06/25 10:28:30 by tamehri          ###   ########.fr       */
+/*   Updated: 2024/06/25 17:26:31 by tamehri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 static char	*get_name(int c, bool f)
 {
-	int 	i;
-	int 	j;
+	int		i;
+	int		j;
 	char	*name;
 	char	*prename;
 	char	*postname;

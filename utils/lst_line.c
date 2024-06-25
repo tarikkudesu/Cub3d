@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   list_op.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ooulcaid <ooulcaid@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tamehri <tamehri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/21 09:22:20 by ooulcaid          #+#    #+#             */
-/*   Updated: 2024/06/25 14:27:19 by ooulcaid         ###   ########.fr       */
+/*   Updated: 2024/06/25 17:32:34 by tamehri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,15 +45,4 @@ void	line_add_back(t_line **line, t_line *node)
 		tmp = tmp->next;
 	tmp->next = node;
 	node->prev = tmp;
-}
-
-void	clear_lines(t_line *line)
-{
-	t_line	*tmp;
-
-	while (line)
-	{
-		tmp = line;
-		line = line->next;
-	}
 }

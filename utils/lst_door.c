@@ -6,7 +6,7 @@
 /*   By: tamehri <tamehri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/23 15:48:54 by tamehri           #+#    #+#             */
-/*   Updated: 2024/06/25 17:07:38 by tamehri          ###   ########.fr       */
+/*   Updated: 2024/06/25 19:43:12 by tamehri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 static void	door_addback(t_door **doors, t_door *door)
 {
-	t_door *tmp;
+	t_door	*tmp;
 
 	if (!*doors)
 	{
@@ -27,16 +27,17 @@ static void	door_addback(t_door **doors, t_door *door)
 	tmp->next = door;
 }
 
-void new_door(t_cub3d *cub, int x, int y)
+void	new_door(t_cub3d *cub, int x, int y)
 {
-	t_door *door;
+	t_door	*door;
 
 	door = talloc(sizeof(t_door));
 	door->x = y;
-	door->y	= x;
+	door->y = x;
 	door->timer = 0;
 	door->isopen = 0;
-	door->ismoving = 0;
+	door->isopening = false;
+	door->isclosing = false;
 	door->progress = 0.f;
 	door->next = NULL;
 	door_addback(&cub->doors, door);

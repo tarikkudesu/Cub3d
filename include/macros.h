@@ -6,7 +6,7 @@
 /*   By: tamehri <tamehri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/23 13:11:05 by tamehri           #+#    #+#             */
-/*   Updated: 2024/06/25 17:18:56 by tamehri          ###   ########.fr       */
+/*   Updated: 2024/06/25 17:20:54 by tamehri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,16 +24,6 @@
 # define ERR_MLX_INIT		"Error : mlx_init error"
 # define ERR_MAL			"Error : talloc error"
 # define ERR_EMTY			"Error : empty file"
-
-# ifdef Z
-#  define _MAL_CALL_INFO() \
-    printf("\t\tFile: \033[35m%s\033[0m, Line: \033[35m%d\033[0m, Function: \033[35m%s\033[0m\n", __FILE__, __LINE__, __func__)
-# endif
-
-# ifndef Z
-#  define Z 0
-#  define _MAL_CALL_INFO() 1
-# endif
 
 # define PI_1			0.0174533
 # define WIDTH			1200
@@ -59,6 +49,6 @@
 # define BLACK		0x000000
 # define BACKGROUND	0x081020
 # define WHITE		0xFFFFFF
-# define GREEN		0x00FF00
+# define CYAN		0x74f9ff
 
 #endif

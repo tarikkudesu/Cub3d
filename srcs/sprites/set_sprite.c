@@ -6,7 +6,7 @@
 /*   By: tamehri <tamehri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/24 14:45:00 by tamehri           #+#    #+#             */
-/*   Updated: 2024/06/24 15:46:43 by tamehri          ###   ########.fr       */
+/*   Updated: 2024/06/25 17:24:14 by tamehri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ bool	set_sprite_data(t_cub3d *cub)
 	screen_x = (int)((WIDTH / 2) * (1 + trans_x / trans_y));
 	cub->sprite->height = abs((int)(HEIGHT / trans_y));
 	cub->sprite->width = abs((int)(HEIGHT / trans_y));
-	cub->sprite->start_x = - cub->sprite->width / 2 + screen_x;
+	cub->sprite->start_x = -1 * cub->sprite->width / 2 + screen_x;
 	cub->sprite->end_x = cub->sprite->width / 2 + screen_x ;
 	cub->sprite->start_y = HEIGHT / 2 - cub->sprite->height / 2;
 	cub->sprite->end_y = HEIGHT / 2 + cub->sprite->height / 2;

@@ -6,7 +6,7 @@
 /*   By: tamehri <tamehri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/23 13:13:44 by tamehri           #+#    #+#             */
-/*   Updated: 2024/06/25 17:18:39 by tamehri          ###   ########.fr       */
+/*   Updated: 2024/06/25 17:21:40 by tamehri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ char			*ft_strchr(const char *s, int c);
 char			**ft_split(char const *s, char c);
 char			*ft_strrchr(const char *s, int c);
 char			*ft_strtrim(char const *s1, char const *set);
-int 			ft_strncmp(const char *s1, const char *s2, size_t n);
+int				ft_strncmp(const char *s1, const char *s2, size_t n);
 char			*ft_substr(char const *s, unsigned int start, size_t len);
 char			*get_next_line(int fd);
 char			*ft_gl(char	**buf);
@@ -86,7 +86,8 @@ void			initialize_data(t_cub3d *cub);
 void			open_doors(t_cub3d *cub);
 void			put_sprites(t_cub3d *cub, int *z_coor);
 void			dda(t_cub3d *cub, t_ray *ray);
-void			render_column(t_vect *start, t_vect *end, t_ray *ray, t_cub3d *cub);
+void			render_column(t_vect *start, t_vect *end, \
+					t_ray *ray, t_cub3d *cub);
 void			put_rays(t_cub3d *cub);
 bool			is_door(t_cub3d *cub, int x, int y);
 int				is_wall(t_cub3d *cub, int x, int y);

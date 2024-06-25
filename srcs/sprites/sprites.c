@@ -6,17 +6,17 @@
 /*   By: tamehri <tamehri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/23 17:16:03 by tamehri           #+#    #+#             */
-/*   Updated: 2024/06/24 16:59:13 by tamehri          ###   ########.fr       */
+/*   Updated: 2024/06/25 17:25:10 by tamehri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/cub3d.h"
 
-static void put_sprite_pixel(t_cub3d *cub, int x, int y)
+static void	put_sprite_pixel(t_cub3d *cub, int x, int y)
 {
 	int	tex_x;
 	int	tex_y;
-	
+
 	tex_x = (double)(x - cub->sprite->start_x) / \
 		(cub->sprite->end_x - cub->sprite->start_x) \
 		* cub->sprite_img[cub->frame].width;
@@ -26,7 +26,8 @@ static void put_sprite_pixel(t_cub3d *cub, int x, int y)
 	if (tex_x >= 0 && tex_x < cub->sprite_img[cub->frame].width && \
 		tex_y >= 0 && tex_y < cub->sprite_img[cub->frame].height)
 	{
-		set_color(1, cub->sprite_img[cub->frame].__addr[cub->sprite_img[cub->frame].height \
+		set_color(1, cub->sprite_img[cub->frame].__addr[\
+			cub->sprite_img[cub->frame].height \
 			* tex_y + tex_x]);
 		if (set_color(0, 0) != 0xff000000)
 			my_mlx_pixel_put(x, y, &cub->img);
@@ -35,8 +36,8 @@ static void put_sprite_pixel(t_cub3d *cub, int x, int y)
 
 void	put_sprite(t_cub3d *cub, int *z_coor)
 {
-	int x;
-	int y;
+	int	x;
+	int	y;
 
 	x = cub->sprite->start_x - 1;
 	while (++x < cub->sprite->end_x)
@@ -64,7 +65,6 @@ void	put_sprites(t_cub3d *cub, int *z_coor)
 
 	i = 0;
 	set_distance(cub);
-	// printf("%f %f       %d %d\n", cub->sprites_list->distance, cub->sprites_list->next->distance, cub->sprites_list->index, cub->sprites_list->next->index);
 	sprite = cub->sprites_list;
 	while (sprite)
 	{

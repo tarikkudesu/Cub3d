@@ -6,7 +6,7 @@
 /*   By: tamehri <tamehri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/23 17:03:27 by tamehri           #+#    #+#             */
-/*   Updated: 2024/06/25 16:26:30 by tamehri          ###   ########.fr       */
+/*   Updated: 2024/06/25 17:30:27 by tamehri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,11 +77,11 @@ static void	put_dir_rays(t_cub3d *cub)
 	i = -1;
 	start.x = 140;
 	start.y = 140;
-	set_color(true, 0x74f9ff);
-	dir.x = - cub->player.dir.y;
-	dir.y = - cub->player.dir.x;
+	set_color(true, CYAN);
+	dir.x = -1 * cub->player.dir.y;
+	dir.y = -1 * cub->player.dir.x;
 	rotate_vector(&dir, M_PI);
-	rotate_vector(&dir, - PI_1 * 30);
+	rotate_vector(&dir, -1 * PI_1 * 30);
 	while (++i < 60)
 	{
 		end.x = start.x + 100 * dir.x;

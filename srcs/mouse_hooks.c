@@ -6,7 +6,7 @@
 /*   By: tamehri <tamehri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/23 16:57:46 by tamehri           #+#    #+#             */
-/*   Updated: 2024/06/25 15:54:58 by tamehri          ###   ########.fr       */
+/*   Updated: 2024/06/25 20:09:06 by tamehri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,16 +17,16 @@ void	set_direction(t_cub3d *cub)
 	if (fabs(cub->player.dir.x) < fabs(cub->player.dir.y))
 	{
 		if (cub->player.dir.y < 0)
-			cub->player.pole = NORTH;
+			cub->player.pole = WEST;
 		else
-			cub->player.pole = SOUTH;
+			cub->player.pole = EASTH;
 	}
 	else
 	{
 		if (cub->player.dir.x < 0)
-			cub->player.pole = WEST;
+			cub->player.pole = NORTH;
 		else
-			cub->player.pole = EASTH;
+			cub->player.pole = SOUTH;
 	}
 }
 
@@ -41,7 +41,7 @@ int	mouse_release(int button, int x, int y, void *param)
 		return (0);
 	if (button == 1)
 		cub->button = 0;
-	return (0);	
+	return (0);
 }
 
 int	mouse_move(int x, int y, void *param)
@@ -80,4 +80,3 @@ int	mouse_press(int button, int x, int y, void *param)
 		move_player(W, cub);
 	return (0);
 }
-

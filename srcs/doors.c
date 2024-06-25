@@ -6,7 +6,7 @@
 /*   By: tamehri <tamehri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/23 16:19:16 by tamehri           #+#    #+#             */
-/*   Updated: 2024/06/25 17:15:36 by tamehri          ###   ########.fr       */
+/*   Updated: 2024/06/25 20:10:10 by tamehri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,6 @@ bool	is_door(t_cub3d *cub, int x, int y)
 	return (false);
 }
 
-
 static void	open_door(t_cub3d *cub, int d_x, int d_y)
 {
 	t_door	*tmp;
@@ -34,8 +33,11 @@ static void	open_door(t_cub3d *cub, int d_x, int d_y)
 	tmp = cub->doors;
 	while (tmp)
 	{
-		if (tmp->x == d_x && tmp->y == d_y)
-			tmp->ismoving = 1;
+		if (tmp->x == d_x && tmp->y == d_y && !tmp->isopen)
+		{
+			if (!tmp->isclosing && !tmp->isopening)
+				tmp->isopening = true;
+		}
 		tmp = tmp->next;
 	}
 }
@@ -51,13 +53,13 @@ void	open_doors(t_cub3d *cub)
 	p_y = cub->player.pos.y;
 	while (++i <= 2)
 	{
-		if (cub->player.pole == NORTH && is_door(cub, p_x, p_y - i))
-			open_door(cub, p_x, p_y - i);
-		else if (cub->player.pole == SOUTH && is_door(cub, p_x, p_y + i))
-			open_door(cub, p_x, p_y + i);
-		else if (cub->player.pole == WEST && is_door(cub, p_x - i, p_y))
+		if (cub->player.pole == NORTH && is_door(cub, p_x - i, p_y))
 			open_door(cub, p_x - i, p_y);
-		else if (cub->player.pole == EASTH && is_door(cub, p_x + i, p_y))
+		else if (cub->player.pole == SOUTH && is_door(cub, p_x + i, p_y))
 			open_door(cub, p_x + i, p_y);
+		else if (cub->player.pole == WEST && is_door(cub, p_x, p_y - i))
+			open_door(cub, p_x, p_y - i);
+		else if (cub->player.pole == EASTH && is_door(cub, p_x, p_y + i))
+			open_door(cub, p_x, p_y + i);
 	}
 }

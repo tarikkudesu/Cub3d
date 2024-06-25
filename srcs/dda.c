@@ -6,12 +6,11 @@
 /*   By: tamehri <tamehri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/23 17:14:14 by tamehri           #+#    #+#             */
-/*   Updated: 2024/06/25 15:47:34 by tamehri          ###   ########.fr       */
+/*   Updated: 2024/06/25 19:47:26 by tamehri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/cub3d.h"
-
 
 static void	set_ray_data(t_cub3d *cub, t_ray *ray)
 {
@@ -37,7 +36,7 @@ static int	door_hit(t_cub3d *cub, t_ray *ray, int x, int y)
 	{
 		if (tmp->x == x && tmp->y == y)
 		{
-			if (!tmp->isopen || (tmp->isopen && tmp->ismoving))
+			if (!tmp->isopen)
 			{
 				set_ray_data(cub, ray);
 				if (ray->tex_pos_x <= tmp->progress)
@@ -53,7 +52,7 @@ static int	door_hit(t_cub3d *cub, t_ray *ray, int x, int y)
 		}
 		tmp = tmp->next;
 	}
-	return(0);
+	return (0);
 }
 
 static int	hit(t_cub3d *cub, t_ray *ray, int x, int y)
@@ -67,7 +66,7 @@ static int	hit(t_cub3d *cub, t_ray *ray, int x, int y)
 
 void	dda(t_cub3d *cub, t_ray *ray)
 {
-	int rt;
+	int	rt;
 
 	rt = 0;
 	while (rt == 0)

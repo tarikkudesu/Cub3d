@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_map_2.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ooulcaid <ooulcaid@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tamehri <tamehri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/25 16:33:06 by ooulcaid          #+#    #+#             */
-/*   Updated: 2024/06/25 16:41:48 by ooulcaid         ###   ########.fr       */
+/*   Updated: 2024/06/25 18:39:59 by tamehri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int	valid_pos(char *line, int index)
 
 int	check_arround(t_line *line, int i)
 {
-	if (!valid_pos(line->line, i - 1) || !valid_pos(line->line, i - 1))
+	if (!valid_pos(line->line, i - 1) || !valid_pos(line->line, i + 1))
 		return (0);
 	if (line->prev && i < line->prev->last - line->prev->off && \
 		!valid_pos(line->prev->line, i))

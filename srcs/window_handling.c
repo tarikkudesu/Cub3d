@@ -6,7 +6,7 @@
 /*   By: tamehri <tamehri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/23 16:49:03 by tamehri           #+#    #+#             */
-/*   Updated: 2024/06/25 17:09:20 by tamehri          ###   ########.fr       */
+/*   Updated: 2024/06/25 17:31:02 by tamehri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,12 +33,6 @@ static void	init_mlx(t_cub3d *cub)
 int	init_window(t_cub3d *cub)
 {
 	init_mlx(cub);
-	t_door *tmp = cub->doors;
-	while (tmp)
-	{
-		printf("%d %d\n", tmp->x, tmp->y);
-		tmp = tmp->next;
-	}
 	mlx_loop_hook(cub->mlx.__mlx, update_frame, cub);
 	mlx_hook(cub->mlx.__win, 2, 0, handle_key, cub);
 	mlx_hook(cub->mlx.__win, 6, 0, mouse_move, cub);

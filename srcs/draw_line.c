@@ -6,7 +6,7 @@
 /*   By: tamehri <tamehri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/23 17:06:27 by tamehri           #+#    #+#             */
-/*   Updated: 2024/06/23 17:07:38 by tamehri          ###   ########.fr       */
+/*   Updated: 2024/06/25 17:26:15 by tamehri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,7 +85,9 @@ void	draw_line(t_vect *a, t_vect *b, const t_image *img)
 {
 	my_mlx_pixel_put(a->x, a->y, img);
 	if (abs((int)(b->x - a->x)) > abs((int)(b->y - a->y)))
-		lesser(2 * abs((int)(b->y - a->y)) - abs((int)(b->x - a->x)), a, b, img);
+		lesser(2 * abs((int)(b->y - a->y)) - \
+			abs((int)(b->x - a->x)), a, b, img);
 	else
-		bigger(2 * abs((int)(b->x - a->x)) - abs((int)(b->y - a->y)), a, b, img);
+		bigger(2 * abs((int)(b->x - a->x)) - \
+			abs((int)(b->y - a->y)), a, b, img);
 }

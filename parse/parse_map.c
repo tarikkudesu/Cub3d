@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_map.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ooulcaid <ooulcaid@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tamehri <tamehri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/20 15:26:58 by ooulcaid          #+#    #+#             */
-/*   Updated: 2024/06/25 16:19:49 by ooulcaid         ###   ########.fr       */
+/*   Updated: 2024/06/25 20:15:55 by tamehri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int	all_ones(t_line *line)
 	while (line->line[++i] && i <= line->last && line->line[i] != '\n')
 	{
 		if ((line->line[i] == ' ' && !check_arround(line, i)) \
-			|| line->line[i] != '1')
+			|| line->line[i] == '2' || line->line[i] == '3')
 			return (0);
 	}
 	return (i == line->last + 1 || line->line[i] == '\n' || !line->line[i]);

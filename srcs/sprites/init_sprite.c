@@ -6,40 +6,41 @@
 /*   By: tamehri <tamehri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/24 15:09:07 by tamehri           #+#    #+#             */
-/*   Updated: 2024/06/24 16:38:57 by tamehri          ###   ########.fr       */
+/*   Updated: 2024/06/25 17:23:26 by tamehri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/cub3d.h"
 
-void    swap_data(double *x, double *y)
+void	swap_data(double *x, double *y)
 {
-    double    n;
+	double	n;
 
-    n = *x;
-    *x = *y;
-    *y = n;    
+	n = *x;
+	*x = *y;
+	*y = n;
 }
 
-void    sort_list(t_cub3d *cub)
+void	sort_list(t_cub3d *cub)
 {
-    t_sprite    *list_i;
-    t_sprite    *list_j;
+	t_sprite	*list_i;
+	t_sprite	*list_j;
 
-    if (!cub->sprites_list || !cub->sprites_list->next)
-        return ;
-    list_i = cub->sprites_list;
-    while (list_i->next)
-    {
-        list_j = list_i->next;
-        while (list_j)
-        {
-            if (list_j->distance > list_i->distance)
-                (swap_data(&list_j->x, &list_i->x), swap_data(&list_j->y, &list_i->y));
-            list_j = list_j->next;
-        }
-        list_i = list_i->next;
-    }
+	if (!cub->sprites_list || !cub->sprites_list->next)
+		return ;
+	list_i = cub->sprites_list;
+	while (list_i->next)
+	{
+		list_j = list_i->next;
+		while (list_j)
+		{
+			if (list_j->distance > list_i->distance)
+				(swap_data(&list_j->x, &list_i->x), \
+				swap_data(&list_j->y, &list_i->y));
+			list_j = list_j->next;
+		}
+		list_i = list_i->next;
+	}
 }
 
 void	set_distance(t_cub3d *cub)
