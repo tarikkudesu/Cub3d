@@ -6,7 +6,7 @@
 /*   By: tamehri <tamehri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/23 17:16:03 by tamehri           #+#    #+#             */
-/*   Updated: 2024/06/25 17:25:10 by tamehri          ###   ########.fr       */
+/*   Updated: 2024/06/27 09:15:59 by tamehri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ static void	put_sprite_pixel(t_cub3d *cub, int x, int y)
 			cub->sprite_img[cub->frame].height \
 			* tex_y + tex_x]);
 		if (set_color(0, 0) != 0xff000000)
-			my_mlx_pixel_put(x, y, &cub->img);
+			my_mlx_pixel_put(x, y);
 	}
 }
 

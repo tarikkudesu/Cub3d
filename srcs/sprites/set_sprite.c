@@ -6,18 +6,11 @@
 /*   By: tamehri <tamehri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/24 14:45:00 by tamehri           #+#    #+#             */
-/*   Updated: 2024/06/25 17:24:14 by tamehri          ###   ########.fr       */
+/*   Updated: 2024/06/27 09:44:58 by tamehri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/cub3d.h"
-
-bool	is_visible(t_cub3d *cub, int x, int y)
-{
-	if (x >= 0 && x < cub->map_height && y >= 0 && cub->map_width)
-		return (cub->map[x][y].visited);
-	return (false);
-}
 
 static void	transform_sprite(t_cub3d *cub, double *trans_x, double *trans_y)
 {
@@ -39,7 +32,7 @@ bool	set_sprite_data(t_cub3d *cub)
 	double		trans_x;
 	double		trans_y;
 
-	if (!is_visible(cub, cub->sprite->x, cub->sprite->y))
+	if (!is_visible(cub->sprite->x, cub->sprite->y))
 		return (false);
 	transform_sprite(cub, &trans_x, &trans_y);
 	screen_x = (int)((WIDTH / 2) * (1 + trans_x / trans_y));

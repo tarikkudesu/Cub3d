@@ -6,6 +6,7 @@ SRCS	=	./srcs/dda.c \
 			./parse/parse.c \
 			./srcs/images.c \
 			./utils/talloc.c \
+			./srcs/boolean.c \
 			./utils/terror.c \
 			./srcs/mini_map.c \
 			./utils/lst_img.c \

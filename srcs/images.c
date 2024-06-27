@@ -6,7 +6,7 @@
 /*   By: tamehri <tamehri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/24 20:04:00 by tamehri           #+#    #+#             */
-/*   Updated: 2024/06/25 17:26:31 by tamehri          ###   ########.fr       */
+/*   Updated: 2024/06/27 09:30:38 by tamehri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,6 @@ static char	*get_name(int c, bool f)
 
 	i = -1;
 	name = talloc(sizeof(char) * 21);
-	if (!name)
-		return (NULL);
 	prename = ft_strdup("assets/sprite/");
 	postname = ft_strdup(".xpm");
 	while (*(prename + ++i))

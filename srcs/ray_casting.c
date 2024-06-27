@@ -6,7 +6,7 @@
 /*   By: tamehri <tamehri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/23 17:12:05 by tamehri           #+#    #+#             */
-/*   Updated: 2024/06/23 17:14:09 by tamehri          ###   ########.fr       */
+/*   Updated: 2024/06/27 09:04:56 by tamehri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ static void	set_ray(t_cub3d *cub, t_ray *ray)
 	}
 }
 
-static void	put_ray(t_cub3d *cub, t_ray *ray, int x)
+static void	put_ray(t_ray *ray, int x)
 {
 	t_vect	start;
 	t_vect	end;
@@ -46,7 +46,7 @@ static void	put_ray(t_cub3d *cub, t_ray *ray, int x)
 	end.x = x;
 	start.y = HEIGHT / 2 - ray->height / 2;
 	end.y = HEIGHT / 2 + ray->height / 2;
-	render_column(&start, &end, ray, cub);
+	render_column(&start, &end, ray);
 }
 
 void	put_rays(t_cub3d *cub)
@@ -72,7 +72,7 @@ void	put_rays(t_cub3d *cub)
 			ray.delta_y = fabs(1 / ray.dir.y);
 		set_ray(cub, &ray);
 		dda(cub, &ray);
-		put_ray(cub, &ray, i);
+		put_ray(&ray, i);
 		z_coor[i] = ray.height;
 	}
 	put_sprites(cub, z_coor);

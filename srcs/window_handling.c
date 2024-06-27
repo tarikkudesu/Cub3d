@@ -6,7 +6,7 @@
 /*   By: tamehri <tamehri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/23 16:49:03 by tamehri           #+#    #+#             */
-/*   Updated: 2024/06/25 17:31:02 by tamehri          ###   ########.fr       */
+/*   Updated: 2024/06/27 09:17:57 by tamehri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ static void	init_mlx(t_cub3d *cub)
 	init_textures(cub);
 }
 
-int	init_window(t_cub3d *cub)
+void	init_window(t_cub3d *cub)
 {
 	init_mlx(cub);
 	mlx_loop_hook(cub->mlx.__mlx, update_frame, cub);
@@ -40,5 +40,4 @@ int	init_window(t_cub3d *cub)
 	mlx_hook(cub->mlx.__win, 5, 0, mouse_release, cub);
 	mlx_hook(cub->mlx.__win, 17, 0, exit_program, cub);
 	mlx_loop(cub->mlx.__mlx);
-	return (0);
 }

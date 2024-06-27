@@ -6,7 +6,7 @@
 /*   By: tamehri <tamehri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/23 16:59:34 by tamehri           #+#    #+#             */
-/*   Updated: 2024/06/25 10:22:57 by tamehri          ###   ########.fr       */
+/*   Updated: 2024/06/26 18:30:43 by tamehri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,10 @@ void	terror(char *__err__message)
 int	exit_program(t_cub3d *cub)
 {
 	destroy_images(cub->imgcontainer);
-	mlx_destroy_image(cub->mlx.__mlx, cub->img.__img);
-	mlx_destroy_window(cub->mlx.__mlx, cub->mlx.__win);
+	if (cub->img.__img)
+		mlx_destroy_image(cub->mlx.__mlx, cub->img.__img);
+	if (cub->mlx.__win)
+		mlx_destroy_window(cub->mlx.__mlx, cub->mlx.__win);
 	clearheap(&cub->heap);
-	exit(0);
+	exit(EXIT_SUCCESS);
 }

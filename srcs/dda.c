@@ -6,7 +6,7 @@
 /*   By: tamehri <tamehri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/23 17:14:14 by tamehri           #+#    #+#             */
-/*   Updated: 2024/06/25 19:47:26 by tamehri          ###   ########.fr       */
+/*   Updated: 2024/06/27 09:43:26 by tamehri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,9 +59,9 @@ static int	hit(t_cub3d *cub, t_ray *ray, int x, int y)
 {
 	if (x >= 0 && x < cub->map_height && y >= 0 && y < cub->map_width)
 		cub->map[x][y].visited = true;
-	if (is_door(cub, x, y))
+	if (is_door(x, y))
 		return (door_hit(cub, ray, x, y));
-	return (is_wall(cub, x, y));
+	return (is_wall(x, y));
 }
 
 void	dda(t_cub3d *cub, t_ray *ray)

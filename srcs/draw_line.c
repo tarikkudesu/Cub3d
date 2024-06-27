@@ -6,24 +6,26 @@
 /*   By: tamehri <tamehri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/23 17:06:27 by tamehri           #+#    #+#             */
-/*   Updated: 2024/06/25 17:26:15 by tamehri          ###   ########.fr       */
+/*   Updated: 2024/06/27 09:10:31 by tamehri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/cub3d.h"
 
-void	my_mlx_pixel_put(int x, int y, const t_image *img)
+void	my_mlx_pixel_put(int x, int y)
 {
+	t_cub3d	*cub;
 	int		*addr;
 	int		pixel;
 
-	addr = (int *)img->__addr;
-	pixel = y * img->line_bytes / 4 + x;
+	cub = get_cub(NULL);
+	addr = (int *)cub->img.__addr;
+	pixel = y * cub->img.line_bytes / 4 + x;
 	if (x < WIDTH && x >= 0 && y < HEIGHT && y >= 0)
 		addr[pixel] = set_color(false, 0);
 }
 
-void	lesser(int p, t_vect *a, t_vect *b, const t_image *img)
+static void	lesser(int p, t_vect *a, t_vect *b)
 {
 	int	x;
 	int	y;
@@ -48,11 +50,11 @@ void	lesser(int p, t_vect *a, t_vect *b, const t_image *img)
 				y += 1;
 			p = p + 2 * abs((int)(b->y - a->y)) - 2 * abs((int)(b->x - a->x));
 		}
-		my_mlx_pixel_put(x, y, img);
+		my_mlx_pixel_put(x, y);
 	}
 }
 
-void	bigger(int p, t_vect *a, t_vect *b, const t_image *img)
+static void	bigger(int p, t_vect *a, t_vect *b)
 {
 	int	x;
 	int	y;
@@ -77,17 +79,17 @@ void	bigger(int p, t_vect *a, t_vect *b, const t_image *img)
 				x += 1;
 			p = p + 2 * abs((int)(b->x - a->x)) - 2 * abs((int)(b->y - a->y));
 		}
-		my_mlx_pixel_put(x, y, img);
+		my_mlx_pixel_put(x, y);
 	}
 }
 
-void	draw_line(t_vect *a, t_vect *b, const t_image *img)
+void	draw_line(t_vect *a, t_vect *b)
 {
-	my_mlx_pixel_put(a->x, a->y, img);
+	my_mlx_pixel_put(a->x, a->y);
 	if (abs((int)(b->x - a->x)) > abs((int)(b->y - a->y)))
 		lesser(2 * abs((int)(b->y - a->y)) - \
-			abs((int)(b->x - a->x)), a, b, img);
+			abs((int)(b->x - a->x)), a, b);
 	else
 		bigger(2 * abs((int)(b->x - a->x)) - \
-			abs((int)(b->y - a->y)), a, b, img);
+			abs((int)(b->y - a->y)), a, b);
 }

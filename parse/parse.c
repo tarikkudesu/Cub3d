@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ooulcaid <ooulcaid@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tamehri <tamehri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/20 15:29:12 by ooulcaid          #+#    #+#             */
-/*   Updated: 2024/06/25 16:41:22 by ooulcaid         ###   ########.fr       */
+/*   Updated: 2024/06/27 09:21:17 by tamehri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,18 +59,18 @@ int	headers_parse(t_cub3d *cub, int fd)
 	return (line != NULL);
 }
 
-int	file_parse(t_cub3d *cub, char *file)
+void	file_parse(t_cub3d *cub, char *file)
 {
 	int	fd;
 
 	if (ft_strcmp(ft_strrchr(file, '.'), ".cub"))
-		return (putendl_fd("Error\nnot valid Extention", 2), 0);
+		terror("Error\nnot valid Extention");
 	fd = open(file, O_RDONLY);
 	if (fd < 0)
-		return (putendl_fd("error\nfail to open file", 2), 0);
+		terror("error\nfail to open file");
 	if (!headers_parse(cub, fd))
-		return (putendl_fd("Error\nnot valid Headers", 2), 0);
+		(close(fd), terror("Error\nnot valid Headers"));
 	if (!valid_map(cub, fd))
-		return (putendl_fd("Error\nnot a valid map", 2), 0);
-	return (close(fd), 1);
+		(close(fd), terror("Error\nnot a valid map"));
+	close(fd);
 }
