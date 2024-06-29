@@ -6,7 +6,7 @@
 /*   By: tamehri <tamehri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/23 15:51:06 by tamehri           #+#    #+#             */
-/*   Updated: 2024/06/25 16:51:33 by tamehri          ###   ########.fr       */
+/*   Updated: 2024/06/29 08:03:23 by tamehri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,8 +33,8 @@ void	new_sprite(t_cub3d *cub, int x, int y)
 	static int	size;
 
 	new = talloc(sizeof(t_sprite));
-	new->x = y + 0.5;
-	new->y = x + 0.5;
+	new->x = x + 0.5;
+	new->y = y + 0.5;
 	new->visible = false;
 	new->distance = 0;
 	new->index = 0;

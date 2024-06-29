@@ -6,7 +6,7 @@
 /*   By: tamehri <tamehri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/23 17:15:01 by tamehri           #+#    #+#             */
-/*   Updated: 2024/06/27 09:43:59 by tamehri          ###   ########.fr       */
+/*   Updated: 2024/06/29 09:49:18 by tamehri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,15 +26,17 @@ static t_tex	*get_texture(t_ray *ray)
 	return (&cub->tex[3]);
 }
 
-static void	render_door(t_vect *start, t_vect *end, t_ray *ray, t_cub3d *cub)
+static void	render_door(t_vect *start, t_vect *end, t_ray *ray)
 {
 	int		t_x;
 	int		t_y;
 	int		y;
+	t_cub3d	*cub;
 
 	y = (int)start->y;
 	if (start->y < 0)
 		y = 0;
+	cub = get_cub(NULL);
 	t_x = ray->tex_pos_x * cub->tex[4].img.width;
 	while (y < HEIGHT && y < (int)end->y)
 	{
@@ -70,11 +72,8 @@ static void	render_wall(t_vect *start, t_vect *end, t_ray *ray)
 
 void	render_column(t_vect *start, t_vect *end, t_ray *ray)
 {
-	t_cub3d	*cub;
-
-	cub = get_cub(NULL);
 	if (is_door(ray->map_x, ray->map_y))
-		render_door(start, end, ray, cub);
+		render_door(start, end, ray);
 	else
 		render_wall(start, end, ray);
 }
