@@ -6,7 +6,7 @@
 /*   By: tamehri <tamehri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/20 15:29:12 by ooulcaid          #+#    #+#             */
-/*   Updated: 2024/06/27 09:21:17 by tamehri          ###   ########.fr       */
+/*   Updated: 2024/06/29 20:05:07 by tamehri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,10 +64,10 @@ void	file_parse(t_cub3d *cub, char *file)
 	int	fd;
 
 	if (ft_strcmp(ft_strrchr(file, '.'), ".cub"))
-		terror("Error\nnot valid Extention");
+		terror("Error\nnot a valid file Extention");
 	fd = open(file, O_RDONLY);
 	if (fd < 0)
-		terror("error\nfail to open file");
+		terror("error\nfailed to open file");
 	if (!headers_parse(cub, fd))
 		(close(fd), terror("Error\nnot valid Headers"));
 	if (!valid_map(cub, fd))

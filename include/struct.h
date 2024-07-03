@@ -6,7 +6,7 @@
 /*   By: tamehri <tamehri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/23 13:16:36 by tamehri           #+#    #+#             */
-/*   Updated: 2024/06/25 19:40:24 by tamehri          ###   ########.fr       */
+/*   Updated: 2024/07/02 21:19:20 by tamehri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -167,7 +167,7 @@ struct s_cub3d
 	t_color			ceiling_color;
 	t_image			sprite_img[40];
 	t_imgcontainer	*imgcontainer;
-	t_tex			tex[5];
+	t_tex			tex[6];
 	t_mlx			mlx;
 	t_image			img;
 	int				frame;
