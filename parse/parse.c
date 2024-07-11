@@ -6,7 +6,7 @@
 /*   By: tamehri <tamehri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/20 15:29:12 by ooulcaid          #+#    #+#             */
-/*   Updated: 2024/06/29 20:05:07 by tamehri          ###   ########.fr       */
+/*   Updated: 2024/07/10 12:03:59 by tamehri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,18 +59,18 @@ int	headers_parse(t_cub3d *cub, int fd)
 	return (line != NULL);
 }
 
-void	file_parse(t_cub3d *cub, char *file)
+int	file_parse(t_cub3d *cub, char *file)
 {
 	int	fd;
 
 	if (ft_strcmp(ft_strrchr(file, '.'), ".cub"))
-		terror("Error\nnot a valid file Extention");
+		terror("Error\nnot valid Extention");
 	fd = open(file, O_RDONLY);
 	if (fd < 0)
-		terror("error\nfailed to open file");
+		terror("error\nfail to open file");
 	if (!headers_parse(cub, fd))
-		(close(fd), terror("Error\nnot valid Headers"));
+		terror("Error\nnot valid Headers");
 	if (!valid_map(cub, fd))
-		(close(fd), terror("Error\nnot a valid map"));
-	close(fd);
+		terror("Error\nnot a valid map");
+	return (close(fd), 1);
 }

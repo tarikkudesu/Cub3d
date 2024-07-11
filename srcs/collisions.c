@@ -6,7 +6,7 @@
 /*   By: tamehri <tamehri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/23 16:55:28 by tamehri           #+#    #+#             */
-/*   Updated: 2024/06/27 09:43:14 by tamehri          ###   ########.fr       */
+/*   Updated: 2024/07/11 20:58:29 by tamehri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,88 +38,92 @@ static bool	move(t_cub3d *cub, int x, int y)
 
 void	north(t_cub3d *cub, t_vect *new_pos)
 {
-	if (!move(cub, floor(cub->player.pos.x), floor(cub->player.pos.y) - 1))
-		cub->player.pos.y = new_pos->y;
-	else if (new_pos->y >= floor(cub->player.pos.y) + 0.1)
-		cub->player.pos.y = new_pos->y;
-	if (new_pos->x < cub->player.pos.x)
-	{
-		if (!move(cub, floor(cub->player.pos.x) - 1, floor(cub->player.pos.y)))
-			cub->player.pos.x = new_pos->x;
-		else if (new_pos->x >= floor(cub->player.pos.x) + 0.1)
-			cub->player.pos.x = new_pos->x;
-	}
-	else
-	{
-		if (!move(cub, floor(cub->player.pos.x) + 1, floor(cub->player.pos.y)))
-			cub->player.pos.x = new_pos->x;
-		else if (new_pos->x <= floor(cub->player.pos.x) + 1 - 0.1)
-			cub->player.pos.x = new_pos->x;
-	}
-}
-
-void	south(t_cub3d *cub, t_vect *new_pos)
-{
-	if (!move(cub, floor(cub->player.pos.x), floor(cub->player.pos.y) + 1))
-		cub->player.pos.y = new_pos->y;
-	else if (new_pos->y <= floor(cub->player.pos.y) + 1 - 0.1)
-		cub->player.pos.y = new_pos->y;
-	if (new_pos->x < cub->player.pos.x)
-	{
-		if (!move(cub, floor(cub->player.pos.x) - 1, floor(cub->player.pos.y)))
-			cub->player.pos.x = new_pos->x;
-		else if (new_pos->x >= floor(cub->player.pos.x) + 0.1)
-			cub->player.pos.x = new_pos->x;
-	}
-	else
-	{
-		if (!move(cub, floor(cub->player.pos.x) + 1, floor(cub->player.pos.y)))
-			cub->player.pos.x = new_pos->x;
-		else if (new_pos->x <= floor(cub->player.pos.x) + 1 - 0.1)
-			cub->player.pos.x = new_pos->x;
-	}
-}
-
-void	easth(t_cub3d *cub, t_vect *new_pos)
-{
+	puts("north");
 	if (!move(cub, floor(cub->player.pos.x) - 1, floor(cub->player.pos.y)))
 		cub->player.pos.x = new_pos->x;
 	else if (new_pos->x >= floor(cub->player.pos.x) + 0.1)
 		cub->player.pos.x = new_pos->x;
 	if (new_pos->y < cub->player.pos.y)
 	{
-		if (!move(cub, floor(cub->player.pos.x), floor(cub->player.pos.y) - 1))
+		if (!move(cub, floor(cub->player.pos.x), floor(cub->player.pos.y) + 1))
 			cub->player.pos.y = new_pos->y;
 		else if (new_pos->y >= floor(cub->player.pos.y) + 0.1)
 			cub->player.pos.y = new_pos->y;
 	}
 	else
 	{
+		if (!move(cub, floor(cub->player.pos.x), floor(cub->player.pos.y) - 1))
+			cub->player.pos.y = new_pos->y;
+		else if (new_pos->y >= floor(cub->player.pos.y) + 0.1)
+			cub->player.pos.y = new_pos->y;
+	}
+}
+
+void	south(t_cub3d *cub, t_vect *new_pos)
+{
+	puts("south");
+	if (!move(cub, floor(cub->player.pos.x) + 1, floor(cub->player.pos.y)))
+		cub->player.pos.x = new_pos->x;
+	else if (new_pos->x >= floor(cub->player.pos.x) + 0.1)
+		cub->player.pos.x = new_pos->x;
+	if (new_pos->y < cub->player.pos.y)
+	{
 		if (!move(cub, floor(cub->player.pos.x), floor(cub->player.pos.y) + 1))
 			cub->player.pos.y = new_pos->y;
-		else if (new_pos->y <= floor(cub->player.pos.y) + 1 - 0.1)
+		else if (new_pos->y >= floor(cub->player.pos.y) + 0.1)
 			cub->player.pos.y = new_pos->y;
+	}
+	else
+	{
+		if (!move(cub, floor(cub->player.pos.x), floor(cub->player.pos.y) - 1))
+			cub->player.pos.y = new_pos->y;
+		else if (new_pos->y >= floor(cub->player.pos.y) + 0.1)
+			cub->player.pos.y = new_pos->y;
+	}
+}
+
+void	easth(t_cub3d *cub, t_vect *new_pos)
+{
+	puts("east");
+	if (!move(cub, floor(cub->player.pos.x), floor(cub->player.pos.y) + 1))
+		cub->player.pos.y = new_pos->y;
+	else if (new_pos->y >= floor(cub->player.pos.y) + 0.1)
+		cub->player.pos.y = new_pos->y;
+	if (new_pos->x < cub->player.pos.x)
+	{
+		if (!move(cub, floor(cub->player.pos.x), floor(cub->player.pos.y) + 1))
+			cub->player.pos.x = new_pos->x;
+		else if (new_pos->x >= floor(cub->player.pos.x) + 0.1)
+			cub->player.pos.x = new_pos->x;
+	}
+	else
+	{
+		if (!move(cub, floor(cub->player.pos.x), floor(cub->player.pos.y) - 1))
+			cub->player.pos.x = new_pos->x;
+		else if (new_pos->x >= floor(cub->player.pos.x) + 0.1)
+			cub->player.pos.x = new_pos->x;
 	}
 }
 
 void	west(t_cub3d *cub, t_vect *new_pos)
 {
-	if (!move(cub, floor(cub->player.pos.x) + 1, floor(cub->player.pos.y)))
-		cub->player.pos.x = new_pos->x;
-	else if (new_pos->x <= floor(cub->player.pos.x) + 1 - 0.1)
-		cub->player.pos.x = new_pos->x;
-	if (new_pos->y < cub->player.pos.y)
+	puts("west");
+	if (!move(cub, floor(cub->player.pos.x), floor(cub->player.pos.y) - 1))
+		cub->player.pos.y = new_pos->y;
+	else if (new_pos->y >= floor(cub->player.pos.y) + 0.1)
+		cub->player.pos.y = new_pos->y;
+	if (new_pos->x < cub->player.pos.x)
 	{
-		if (!move(cub, floor(cub->player.pos.x), floor(cub->player.pos.y) - 1))
-			cub->player.pos.y = new_pos->y;
-		else if (new_pos->y >= floor(cub->player.pos.y) + 0.1)
-			cub->player.pos.y = new_pos->y;
+		if (!move(cub, floor(cub->player.pos.x), floor(cub->player.pos.y) + 1))
+			cub->player.pos.x = new_pos->x;
+		else if (new_pos->x >= floor(cub->player.pos.x) + 0.1)
+			cub->player.pos.x = new_pos->x;
 	}
 	else
 	{
-		if (!move(cub, floor(cub->player.pos.x), floor(cub->player.pos.y) + 1))
-			cub->player.pos.y = new_pos->y;
-		else if (new_pos->y <= floor(cub->player.pos.y) + 1 - 0.1)
-			cub->player.pos.y = new_pos->y;
+		if (!move(cub, floor(cub->player.pos.x), floor(cub->player.pos.y) - 1))
+			cub->player.pos.x = new_pos->x;
+		else if (new_pos->x >= floor(cub->player.pos.x) + 0.1)
+			cub->player.pos.x = new_pos->x;
 	}
 }

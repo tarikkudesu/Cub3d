@@ -6,7 +6,7 @@
 /*   By: tamehri <tamehri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/24 10:23:45 by tamehri           #+#    #+#             */
-/*   Updated: 2024/06/29 08:25:32 by tamehri          ###   ########.fr       */
+/*   Updated: 2024/07/11 20:14:23 by tamehri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,15 @@ void	set_data(t_cub3d *cub)
 
 void	initialize_data(t_cub3d *cub)
 {
+	cub->keys.space = false;
+	cub->keys.right = false;
+	cub->keys.left = false;
+	cub->keys.esc = false;
+	cub->keys.q = false;
+	cub->keys.w = false;
+	cub->keys.d = false;
+	cub->keys.s = false;
+	cub->keys.a = false;
 	cub->frame = 0;
 	cub->button = 0;
 	cub->map = NULL;

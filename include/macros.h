@@ -3,27 +3,27 @@
 /*                                                        :::      ::::::::   */
 /*   macros.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tamehri <tamehri@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ooulcaid <ooulcaid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/23 13:11:05 by tamehri           #+#    #+#             */
-/*   Updated: 2024/06/25 17:20:54 by tamehri          ###   ########.fr       */
+/*   Updated: 2024/07/10 19:51:49 by ooulcaid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef MACROS_H
 # define MACROS_H
 
-# define ERR_MLX_XPM		"Error : mlx_xpm_file_to_image error"
-# define ERR_ARG			"Error : Wrong number of arguments"
-# define ERR_MLX_ADDRESS	"Error : mlx_get_data_addr error"
-# define ERR_OPEN			"Error : Error opening the file"
-# define ERR_READ			"Error : Error reading the file"
-# define ERR_MLX_WIN		"Error : mlx_new_window error"
-# define ERR_MLX_IMG		"Error : mlx_new_image error"
-# define ERR_FILE			"Error : Wrong file format"
-# define ERR_MLX_INIT		"Error : mlx_init error"
-# define ERR_MAL			"Error : talloc error"
-# define ERR_EMTY			"Error : empty file"
+# define ERR_MLX_XPM		"Error\nmlx_xpm_file_to_image error"
+# define ERR_ARG			"Error\nWrong number of arguments"
+# define ERR_MLX_ADDRESS	"Error\nmlx_get_data_addr error"
+# define ERR_OPEN			"Error\nError opening the file"
+# define ERR_READ			"Error\nError reading the file"
+# define ERR_MLX_WIN		"Error\nmlx_new_window error"
+# define ERR_MLX_IMG		"Error\nmlx_new_image error"
+# define ERR_FILE			"Error\nWrong file format"
+# define ERR_MLX_INIT		"Error\nmlx_init error"
+# define ERR_MAL			"Error\ntalloc error"
+# define ERR_EMTY			"Error\nempty file"
 
 # define PI_1			0.0174533
 # define WIDTH			1200

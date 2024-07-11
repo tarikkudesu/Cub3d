@@ -6,7 +6,7 @@
 /*   By: tamehri <tamehri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/23 17:15:01 by tamehri           #+#    #+#             */
-/*   Updated: 2024/07/02 21:37:24 by tamehri          ###   ########.fr       */
+/*   Updated: 2024/07/11 20:35:54 by tamehri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,9 @@ static t_tex	*get_texture(t_ray *ray)
 	t_cub3d	*cub;
 
 	cub = get_cub(NULL);
-	if (ray->side && ray->dir.y > 0)
+	if (!ray->side && ray->dir.x < 0)
 		return (&cub->tex[0]);
-	else if (ray->side)
+	else if (ray->side && ray->dir.y > 0)
 		return (&cub->tex[1]);
 	else if (!ray->side && ray->dir.x > 0)
 		return (&cub->tex[2]);

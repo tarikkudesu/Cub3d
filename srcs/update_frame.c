@@ -6,7 +6,7 @@
 /*   By: tamehri <tamehri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/23 17:00:29 by tamehri           #+#    #+#             */
-/*   Updated: 2024/07/06 19:03:46 by tamehri          ###   ########.fr       */
+/*   Updated: 2024/07/11 20:19:09 by tamehri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,7 @@ int	update_frame(void *param)
 			cub->mlx.__win, cub->mlx.__menu, 0, 0);
 	else if (cub->mode == GAME)
 	{
+		update_hooks(cub);
 		update_doors(cub);
 		put_background(cub);
 		update_map(cub);

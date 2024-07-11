@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_map_2.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tamehri <tamehri@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ooulcaid <ooulcaid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/25 16:33:06 by ooulcaid          #+#    #+#             */
-/*   Updated: 2024/06/25 18:39:59 by tamehri          ###   ########.fr       */
+/*   Updated: 2024/07/11 17:10:49 by ooulcaid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,21 +36,19 @@ int	parse_map(t_cub3d *cub)
 	t_line	*curr;
 
 	curr = cub->line;
-	if (!all_ones(curr))
+	if (!all_ones(curr) || !check_last(curr->next, curr->next->last - curr->last))
 		return (0);
 	while (curr->next)
 	{
-		if (curr->prev && (!wall_exist(curr, curr->prev)))
-			return (0);
 		if (curr->line[curr->off] != '1' || curr->line[curr->last] != '1')
 			return (0);
 		i = 0;
-		while (curr->line[++i] != '\n')
-			if (curr->line[i] == ' ' && !check_arround(curr, i))
+		while (curr->line[++i] != '\n' && i < curr->last)
+			if ((curr->line[i] == ' ' && !check_arround(curr, i)))
 				return (0);
 		curr = curr->next;
 	}
-	return (all_ones(curr));
+	return (all_ones(curr) && check_last(curr->prev, curr->prev->last - curr->last));
 }
 
 int	parse_line(t_cub3d *cub, char *line, int *off, int *last)

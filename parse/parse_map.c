@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_map.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tamehri <tamehri@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ooulcaid <ooulcaid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/20 15:26:58 by ooulcaid          #+#    #+#             */
-/*   Updated: 2024/06/25 20:15:55 by tamehri          ###   ########.fr       */
+/*   Updated: 2024/07/11 17:11:04 by ooulcaid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,12 @@ int	check_first(t_line *line, int nb_chars)
 	int	i;
 
 	i = 0;
-	while (i < nb_chars && line->line[i + line->off] == '1')
+	while (i < nb_chars)
+	{
+		if (line->line[i + line->off] == ' ' && !check_arround(line, i))
+			return (0);
 		i++;
+	}
 	return (i == nb_chars);
 }
 
@@ -42,9 +46,20 @@ int	check_last(t_line *line, int nb_chars)
 	int	len;
 
 	i = 0;
-	len = ft_strlen(line->line);
-	while (i < nb_chars && line->line[len - 2 - i] == '1')
+	len = line->last;
+	while (i < nb_chars)
+	{
+		if (line->line[len - i] == '0')
+		{
+			if (line->prev && line->prev->last < line->last)
+				return (0);
+			if (line->next && line->next->last < line->last)
+				return (0);
+		}
+		if (line->line[len - i] == ' ' && !check_arround(line, len - i))
+			return (0);
 		i++;
+	}
 	return (i == nb_chars);
 }
 

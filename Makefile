@@ -24,6 +24,7 @@ SRCS	=	./srcs/dda.c \
 			./srcs/update_door.c \
 			./utils/lst_sprite.c \
 			./parse/parse_map_2.c \
+			./srcs/update_hooks.c \
 			./srcs/update_frame.c \
 			./parse/parse_header.c \
 			./srcs/render_column.c \
@@ -47,9 +48,9 @@ SRCS	=	./srcs/dda.c \
 
 CC			=	cc
 NAME		=	cub3D
-HEADER		=	include/cub3d.h include/struct.h
+HEADER		=	./include/cub3d.h ./include/macros.h ./include/struct.h
 OBJ			=	$(SRCS:.c=.o)
-CFLAGS		=	-Wall -Wextra -Werror -g
+CFLAGS		=	-Wall -Wextra -Werror
 MLXFLAGS	=	-L/usr/local/lib -l mlx -framework OpenGL -framework AppKit
 
 all: $(NAME)
