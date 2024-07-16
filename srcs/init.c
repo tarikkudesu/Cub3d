@@ -6,7 +6,7 @@
 /*   By: tamehri <tamehri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/24 10:23:45 by tamehri           #+#    #+#             */
-/*   Updated: 2024/07/11 20:14:23 by tamehri          ###   ########.fr       */
+/*   Updated: 2024/07/16 11:49:52 by tamehri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ static void	set_player_data(t_cub3d *cub)
 		rotate_vector(&cub->player.dir, M_PI);
 		rotate_vector(&cub->player.plan, M_PI);
 	}
-	else if (cub->player.pole == EASTH)
+	else if (cub->player.pole == EAST)
 	{
 		rotate_vector(&cub->player.dir, -1 * M_PI / 2);
 		rotate_vector(&cub->player.plan, -1 * M_PI / 2);
@@ -64,7 +64,7 @@ void	set_data(t_cub3d *cub)
 	set_player_data(cub);
 }
 
-void	initialize_data(t_cub3d *cub)
+static void	init_keys(t_cub3d *cub)
 {
 	cub->keys.space = false;
 	cub->keys.right = false;
@@ -75,6 +75,10 @@ void	initialize_data(t_cub3d *cub)
 	cub->keys.d = false;
 	cub->keys.s = false;
 	cub->keys.a = false;
+}
+
+void	initialize_data(t_cub3d *cub)
+{
 	cub->frame = 0;
 	cub->button = 0;
 	cub->map = NULL;
@@ -95,4 +99,5 @@ void	initialize_data(t_cub3d *cub)
 	cub->mlx.__intro = NULL;
 	cub->imgcontainer = NULL;
 	cub->sprites_list = NULL;
+	init_keys(cub);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mouse_hooks.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tamehri <tamehri@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ooulcaid <ooulcaid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/23 16:57:46 by tamehri           #+#    #+#             */
-/*   Updated: 2024/07/11 20:25:35 by tamehri          ###   ########.fr       */
+/*   Updated: 2024/07/12 10:27:46 by ooulcaid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	set_direction(t_cub3d *cub)
 		if (cub->player.dir.y < 0)
 			cub->player.pole = WEST;
 		else
-			cub->player.pole = EASTH;
+			cub->player.pole = EAST;
 	}
 	else
 	{

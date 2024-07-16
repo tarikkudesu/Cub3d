@@ -6,7 +6,7 @@
 /*   By: tamehri <tamehri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/23 13:16:36 by tamehri           #+#    #+#             */
-/*   Updated: 2024/07/11 20:21:18 by tamehri          ###   ########.fr       */
+/*   Updated: 2024/07/16 11:48:09 by tamehri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,8 @@ typedef struct s_sprite			t_sprite;
 typedef struct s_player			t_player;
 typedef struct s_imgcontainer	t_imgcontainer;
 
-enum e_hook {
+enum e_hook
+{
 	ON_KEYDOWN = 2,
 	ON_KEYUP = 3,
 	ON_MOUSEDOWN = 4,
@@ -144,7 +145,7 @@ struct s_image
 enum e_dir
 {
 	NORTH = 'N',
-	EASTH = 'E',
+	EAST = 'E',
 	SOUTH = 'S',
 	WEST = 'W',
 };
@@ -214,12 +215,9 @@ struct s_cub3d
 	int				wall_width;
 };
 
-
-/* FUNCTIONS */
-void	update_hooks(t_cub3d *cub);
-void	rotate_player(t_cub3d *cub);
-int	check_last(t_line *line, int nb_chars);
-int	key_up(int key, t_cub3d *cub);
-int	key_down(int key, t_cub3d *cub);
+void		update_hooks(t_cub3d *cub);
+int			check_last(t_line *line, int nb_chars);
+int			key_up(int key, t_cub3d *cub);
+int			key_down(int key, t_cub3d *cub);
 
 #endif

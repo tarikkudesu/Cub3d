@@ -6,7 +6,7 @@
 /*   By: tamehri <tamehri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/23 13:13:44 by tamehri           #+#    #+#             */
-/*   Updated: 2024/07/11 20:23:11 by tamehri          ###   ########.fr       */
+/*   Updated: 2024/07/16 11:47:51 by tamehri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@
 # include <mlx.h>
 # include "struct.h"
 # include "macros.h"
-#include <stdio.h> //----------------------------------------
+
 # ifndef BUFFER_SIZE
 #  define BUFFER_SIZE 1
 # endif
@@ -105,7 +105,7 @@ int				handle_key(int key, t_cub3d *cub);
 void			move_player(t_cub3d *cub);
 void			west(t_cub3d *cub, t_vect *new_pos);
 void			north(t_cub3d *cub, t_vect *new_pos);
-void			easth(t_cub3d *cub, t_vect *new_pos);
+void			east(t_cub3d *cub, t_vect *new_pos);
 void			south(t_cub3d *cub, t_vect *new_pos);
 int				mouse_move(int x, int y, void *param);
 void			put_sprites(t_cub3d *cub, int *z_coor);

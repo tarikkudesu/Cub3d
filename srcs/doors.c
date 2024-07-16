@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   doors.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tamehri <tamehri@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ooulcaid <ooulcaid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/23 16:19:16 by tamehri           #+#    #+#             */
-/*   Updated: 2024/06/27 09:43:46 by tamehri          ###   ########.fr       */
+/*   Updated: 2024/07/12 10:27:46 by ooulcaid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ void	open_doors(t_cub3d *cub)
 			open_door(cub, p_x + i, p_y);
 		else if (cub->player.pole == WEST && is_door(p_x, p_y - i))
 			open_door(cub, p_x, p_y - i);
-		else if (cub->player.pole == EASTH && is_door(p_x, p_y + i))
+		else if (cub->player.pole == EAST && is_door(p_x, p_y + i))
 			open_door(cub, p_x, p_y + i);
 	}
 }

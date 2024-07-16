@@ -6,13 +6,13 @@
 /*   By: tamehri <tamehri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/24 15:09:07 by tamehri           #+#    #+#             */
-/*   Updated: 2024/06/25 17:23:26 by tamehri          ###   ########.fr       */
+/*   Updated: 2024/07/16 11:30:11 by tamehri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/cub3d.h"
 
-void	swap_data(double *x, double *y)
+static void	swap_data(double *x, double *y)
 {
 	double	n;
 
@@ -21,7 +21,7 @@ void	swap_data(double *x, double *y)
 	*y = n;
 }
 
-void	sort_list(t_cub3d *cub)
+static void	sort_sprites(t_cub3d *cub)
 {
 	t_sprite	*list_i;
 	t_sprite	*list_j;
@@ -57,5 +57,5 @@ void	set_distance(t_cub3d *cub)
 		sprite->distance = dx * dx + dy * dy;
 		sprite = sprite->next;
 	}
-	sort_list(cub);
+	sort_sprites(cub);
 }
