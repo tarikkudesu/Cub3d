@@ -6,7 +6,7 @@
 /*   By: tamehri <tamehri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/23 13:13:44 by tamehri           #+#    #+#             */
-/*   Updated: 2024/07/16 11:47:51 by tamehri          ###   ########.fr       */
+/*   Updated: 2025/06/21 10:00:32 by tamehri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,10 @@
 # include <unistd.h>
 # include <stdbool.h>
 # include <limits.h>
-# include <mlx.h>
 # include "struct.h"
 # include "macros.h"
+# include "../minilibx-linux/mlx.h"
+# include <stdio.h>
 
 # ifndef BUFFER_SIZE
 #  define BUFFER_SIZE 1

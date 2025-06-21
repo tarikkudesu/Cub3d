@@ -6,7 +6,7 @@
 /*   By: tamehri <tamehri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/23 17:16:03 by tamehri           #+#    #+#             */
-/*   Updated: 2024/07/10 18:30:53 by tamehri          ###   ########.fr       */
+/*   Updated: 2025/06/21 09:55:09 by tamehri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,9 +61,7 @@ void	put_sprite(t_cub3d *cub, int *z_coor)
 void	put_sprites(t_cub3d *cub, int *z_coor)
 {
 	t_sprite	*sprite;
-	int			i;
 
-	i = 0;
 	set_distance(cub);
 	sprite = cub->sprites_list;
 	while (sprite)

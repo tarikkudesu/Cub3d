@@ -6,7 +6,7 @@
 /*   By: tamehri <tamehri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/18 12:29:37 by ooulcaid          #+#    #+#             */
-/*   Updated: 2024/06/24 19:51:42 by tamehri          ###   ########.fr       */
+/*   Updated: 2025/06/21 09:54:39 by tamehri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ char	*get_next_line(int fd)
 	char		*tmp;
 	int			check;
 
-	if (fd < 0 || fd > OPEN_MAX || read(fd, buffer, 0) < 0 || BUFFER_SIZE < 1)
+	if (fd < 0 || read(fd, buffer, 0) < 0 || BUFFER_SIZE < 1)
 		return (NULL);
 	if (buffer && *buffer && exist(buffer))
 		return (ft_gl(&buffer));

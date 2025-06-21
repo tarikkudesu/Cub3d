@@ -34,11 +34,11 @@ void	init_window(t_cub3d *cub)
 {
 	init_mlx(cub);
 	mlx_loop_hook(cub->mlx.__mlx, update_frame, cub);
-	mlx_hook(cub->mlx.__win, ON_KEYUP, 0, key_up, cub);
-	mlx_hook(cub->mlx.__win, ON_KEYDOWN, 0, key_down, cub);
-	mlx_hook(cub->mlx.__win, ON_MOUSEMOVE, 0, mouse_move, cub);
-	mlx_hook(cub->mlx.__win, ON_MOUSEDOWN, 0, mouse_press, cub);
-	mlx_hook(cub->mlx.__win, ON_MOUSEUP, 0, mouse_release, cub);
+	mlx_hook(cub->mlx.__win, ON_KEYUP, 1L << 1, key_up, cub);
+	mlx_hook(cub->mlx.__win, ON_KEYDOWN, 1L << 0, key_down, cub);
+	mlx_hook(cub->mlx.__win, ON_MOUSEMOVE, 1L << 6, mouse_move, cub);
+	mlx_hook(cub->mlx.__win, ON_MOUSEDOWN, 1L << 2, mouse_press, cub);
+	mlx_hook(cub->mlx.__win, ON_MOUSEUP, 1L << 3, mouse_release, cub);
 	mlx_hook(cub->mlx.__win, ON_DESTROY, 0, exit_program, cub);
 	mlx_loop(cub->mlx.__mlx);
 }

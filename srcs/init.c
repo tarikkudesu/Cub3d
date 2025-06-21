@@ -6,7 +6,7 @@
 /*   By: tamehri <tamehri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/24 10:23:45 by tamehri           #+#    #+#             */
-/*   Updated: 2024/07/16 11:49:52 by tamehri          ###   ########.fr       */
+/*   Updated: 2025/06/21 09:59:52 by tamehri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,7 +85,7 @@ void	initialize_data(t_cub3d *cub)
 	cub->heap = NULL;
 	cub->line = NULL;
 	cub->doors = NULL;
-	cub->mode = INTRO;
+	cub->mode = GAME;
 	cub->sprite = NULL;
 	cub->map_width = 0;
 	cub->map_height = 0;
